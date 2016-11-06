@@ -46,12 +46,50 @@
 
 \section{Introdução}
 
-\section{Serviços de nuvem}
+Portanto, o objetivo deste trabalho é identificar as métricas de QoS que a ferramenta Openstack fornece aos seus usuários. % MELHORAR
 
-\section{Qualidade de Serviço em nuvem}
+\subsection{Serviços de nuvem}
 
-\section{Openstack}
-\section{Materiais e métodos}
+\subsection{Qualidade de Serviço em nuvem}
+
+\subsection{Openstack}
+
+\section{Metodologia}
+
+Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada na Figura \ref{metodologia},
+cujas etapas são explicadas a seguir:
+
+\begin{itemize}
+ \item \textbf{Levantamento das métricas existentes} - Esta etapa consistiu em consultar na literatura as métricas de QoS para
+	serviços de nuvem e documentá-las;
+ \item \textbf{Filtragem das métricas} - A partir das métricas levantadas com a revisão da literatura, a próxima etapa consistiu em 
+	identificar quais métricas se aplicam para o modelo de serviço IaaS, pois pode acontecer de algumas métricas se encaixarem
+	mais aos outros modelos de serviço e não serem propícias ao modelo IaaS, devido às suas características peculiares;
+ \item \textbf{Confronto das métricas} - Esta etapa consistiu em verificar a existência das métricas identificadas no Openstack,
+	com base na documentação da ferramenta, identificando como a ferramenta apresenta essa métrica;
+ \item \textbf{Validação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta,
+	realizando uma simples coleta das métricas idenficadas presentes no Openstack a partir da execução da ferramenta, a título de teste.
+	Esta etapa englobou as seguintes atividades:
+	\subitem - \emph{\textbf{Caracterizar contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta,
+		 considerando itens como ambiente para execução do teste, versão da ferramenta utilizada, topologia utilizada, ferramentas
+		 e recursos disponíveis;
+	\subitem - \emph{\textbf{Elaborar plano de medição}}: Nesta atividade um plano de medição resumido foi criado para guiar a medição
+		 a ser feita;
+	\subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas foram coletadas e documentadas, seguindo o
+		 plano de medição definido anteriormente.
+ \item \textbf{Analise dos resultados} - Nesta etapa final o resultado do teste realizado na etapa de validação foi comparado com o resultado
+       da etapa de confronto, para verificar se as métricas que estão documentadas são percebidas na prática.
+\end{itemize}
+
+
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[width=.5\textwidth]{metodologia.jpg}
+%   \caption{Metodologia proposta}
+%   \label{metodologia}
+% \end{figure}
+
+
 \section{Desenvolvimento do trabalho}
 % \subsection{Subsections}
 
@@ -70,8 +108,37 @@
 % \includegraphics[width=.7\textwidth]{table.jpg}
 % \end{table}
 
+\section{Considerações finais}
+
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
 
 \end{document}
+
+% % % % % 
+
+% Objetivo deste trabalho:
+% - Identificar quais métricas de QoS o Openstack fornece
+% 
+% Explicar:
+% 
+% - Modelos de serviço oferecidos pela nuvem (SaaS, PaaS e IaaS) e dizer que o Openstack oferece IaaS
+% - Brevemente o que é QoS
+% - Openstack
+% 
+% Metodologia
+% - Levantar métricas existentes de QoS em Nuvem, com base na literatura
+% - Selecionar métricas para IaaS (muitas métricas são para SaaS e não se aplicam para IaaS)
+% - Verificar a existência de tais métricas no Openstack
+%   - Explicar como é coletado pelo Openstack
+% - Elaborar plano de medição para as métricas existentes(GQM ?)
+%   - Criar um contexto para a coleta dos dados (Nada demais nesse plano...)
+% - Executar o plano de medição (Coletar as métricas) a título de exemplo.
+% - Apresentar os resultados
+% 
+% 
+% Contribuições deste trabalho:
+% - Insumos para ferramentas de seleção de serviços de nuvem;
+
+% % % % % 
