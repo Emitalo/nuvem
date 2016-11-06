@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 
 \usepackage{sbc-template}
-
+\usepackage{cite}
 \usepackage{graphicx,url}
 
 \usepackage[brazil]{babel}   
@@ -90,6 +90,73 @@ cujas etapas são explicadas a seguir:
 % \end{figure}
 
 
+\section{Serviços de nuvem}
+De acordo com \citeonline{armbrust2010view}, a computação em nuvem refere-se a aplicações que entregam serviços a partir da internet. 
+Os quais são providos através de hardware e software presentes em \textit{data centers}. São serviços que oferecem mecanismos
+para prover acesso aos usuários virtualmente a recursos ilimitados baseado no modelo \textit{payper-use}, ou seja, pagamento
+pelo uso. \cite{sefraoui2012openstack}
+
+Com a finalidade de prover esses serviços a computação em nuvem é estruturada em três módulos: Infraestrutura como serviço(IaaS),
+Plataforma como serviço(PaaS) e Software como serviço (SaaS), as quais estão ordenadas por nível de abstração, do mais baixo 
+para o mais alto, respectivamente \cite{rehman2011teaching, sefraoui2012openstack, armbrust2010view, mell2011nist}. 
+Essa estrutura pode ser vista na Figura \ref{fig:cloud_structure}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{figuras/cloud_structure.png}
+\caption{Estrutura de serviços da computação em nuvem. Fonte: \cite{sefraoui2012openstack}}
+\label{fig:cloud_structure}
+\end{figure}
+
+\citeonline{sefraoui2012openstack}, afirma que a IaaS é onde o recurso de hardware é provido em forma de máquinas vituais. O cliente mantém
+as aplicações, bancos de dados e servidores enquanto o servidor mantém a virtualização da nuvem, o hardware, o armazenamento e as redes.
+Para \citeonline{bhardwaj2010cloud}, é o serviço de entrega de hardware (servidor, armazenamento e rede) e software associado 
+(sistema de arquivos e virtualização de sistemas).
+
+De acordo com \citeonline{leite2016influencia} (apud \cite{mell2011nist}), os serviços de nuvens devem possuir as seguintes
+características: autoatendimento sob demanda, amplo acesso a rede,
+agrupamento de recursos, elasticidade rápida e medição de serviço.
+
+\subsection{Qualidade de Serviço em nuvem}
+
+A medição dos serviços de nuvem é uma das características essenciais de acordo com 
+\citeonline{mell2011nist}. \citeonline{leite2016influencia} afirma que essas medições proporcionam
+transparência ao provedor e ao cliente. Medir os serviços de nuvem auxiliam no 
+cumprimento dos níveis de serviços acordados.
+
+
+\citeonline{leite2016influencia} trata a qualidade de serviço em duas abordagens:
+uma relacionada à rede e outra em nível de aplicação. Em relação a rede são tratados
+os requisitos para garantir a qualidade do serviço. Em nível de aplicação são tratados
+os atributos que implicam no cumprimento dos níveis de serviço acordado. 
+Neste trabalho será tratada a qualidade de serviço do ponto de vista da aplicação.
+
+\citeonline{siegel2012cloud} apresentam métricas para cálculo dos benefícios e riscos
+de serviços de computação em nuvem. Características como prestação de contas, agilidade,
+garantia, financeira, desempenho, segurança e privacidade e usabilidade. 
+
+%Características como memória, processamento, enlace e sistemas operacionais suportados
+%são comumente relacionadas com a qualidade dos serviços prestados. Assim como a 
+%disponibilidade, segurança, privacidade e integridade. \cite{leite2016influencia}
+
+
+% Métricas: 
+  % Principais: memória, processamento, enlace e SO
+  % Outras: Disponibilidade, Segurança, Privacidade, Integridade
+
+
+
+\subsection{Infraestrutura como serviço}
+
+\citeonline{bhardwaj2010cloud} estabelece os seguintes serviços a serem providos 
+por IaaS: Infraestrutura virtual (servidor, armazenamento e rede);
+Implantação de aplicativos baseados na Web para fácil disponibilização sob demanda; Balanceamento de carga; 
+Estabelecimento de acordos de nível de serviço com os clientes;  Segurança dos CPUs, dados e rede;
+e Gestão e provisionamento de conta.
+
+\subsection{Openstack}
+
+\section{Materiais e métodos}
 \section{Desenvolvimento do trabalho}
 % \subsection{Subsections}
 
