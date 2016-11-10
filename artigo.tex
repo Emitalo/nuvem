@@ -48,46 +48,44 @@
 
 Portanto, o objetivo deste trabalho é identificar as métricas de QoS que a ferramenta Openstack fornece aos seus usuários. % MELHORAR
 
-\subsection{Serviços de nuvem}
-
-\subsection{Qualidade de Serviço em nuvem}
-
-\subsection{Openstack}
 
 \section{Metodologia}
 
 Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada na Figura \ref{metodologia},
-cujas etapas são explicadas a seguir:
+cujas etapas são explicadas a seguir.
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.6\textwidth]{figuras/metodologia.png}
+  \caption{Metodologia proposta. Fonte: Autor.}
+  \label{metodologia}
+\end{figure}
+
 
 \begin{itemize}
  \item \textbf{Levantamento das métricas existentes} - Esta etapa consistiu em consultar na literatura as métricas de QoS para
 	serviços de nuvem e documentá-las;
  \item \textbf{Filtragem das métricas} - A partir das métricas levantadas com a revisão da literatura, a próxima etapa consistiu em 
 	identificar quais métricas se aplicam para o modelo de serviço IaaS, pois pode acontecer de algumas métricas se encaixarem
-	mais aos outros modelos de serviço e não serem propícias ao modelo IaaS, devido às suas características peculiares;
- \item \textbf{Confronto das métricas} - Esta etapa consistiu em verificar a existência das métricas identificadas no Openstack,
-	com base na documentação da ferramenta, identificando como a ferramenta apresenta essa métrica;
- \item \textbf{Validação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta,
-	realizando uma simples coleta das métricas idenficadas presentes no Openstack a partir da execução da ferramenta, a título de teste.
+	mais aos outros modelos de serviço e não serem propícias ao modelo IaaS, devido às suas características peculiares. Além disso,
+	métricas muito complexas (que exigem muitos insumos, insumos complicados de se obter e/ou cálculos mais complexos) foram descartadas,
+	a fim de obter métricas mais passíveis da ferramenta fornecer;
+ \item \textbf{Levantamento das métricas do Openstack} - Esta etapa consistiu em verificar quais métricas a ferramenta oferecia,
+	realizando uma simples coleta das métricas presentes no Openstack a partir da execução da ferramenta em um cenário de teste 
+	e análise da documentação.
 	Esta etapa englobou as seguintes atividades:
-	\subitem - \emph{\textbf{Caracterizar contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta,
+	\subitem - \emph{\textbf{Caracterizar cenário/contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta,
 		 considerando itens como ambiente para execução do teste, versão da ferramenta utilizada, topologia utilizada, ferramentas
 		 e recursos disponíveis;
 	\subitem - \emph{\textbf{Elaborar plano de medição}}: Nesta atividade um plano de medição resumido foi criado para guiar a medição
 		 a ser feita;
 	\subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas foram coletadas e documentadas, seguindo o
 		 plano de medição definido anteriormente.
- \item \textbf{Analise dos resultados} - Nesta etapa final o resultado do teste realizado na etapa de validação foi comparado com o resultado
-       da etapa de confronto, para verificar se as métricas que estão documentadas são percebidas na prática.
+ \item \textbf{Confronto das métricas} - Esta etapa consistiu em comparar as métricas encontradas na literatura com as métricas
+	identificadas no Openstack, para verificar quais métricas propostas na literatura são percebidas na prática no Openstack;
+ \item \textbf{Análise e redação dos resultados}: Nesta etapa os resultados obtidos na etapa anterior foram interpretados e documentados.
 \end{itemize}
-
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[width=.5\textwidth]{metodologia.jpg}
-%   \caption{Metodologia proposta}
-%   \label{metodologia}
-% \end{figure}
 
 
 \section{Serviços de nuvem}
@@ -156,24 +154,9 @@ e Gestão e provisionamento de conta.
 
 \subsection{Openstack}
 
-\section{Materiais e métodos}
+
 \section{Desenvolvimento do trabalho}
-% \subsection{Subsections}
 
-% \begin{figure}[ht]
-% \centering
-% \includegraphics[width=.5\textwidth]{fig1.jpg}
-% \caption{A typical figure}
-% \label{fig:exampleFig1}
-% \end{figure}
-
-% \begin{table}[ht]
-% \centering
-% \caption{Variables to be considered on the evaluation of interaction
-%   techniques}
-% \label{tab:exTable1}
-% \includegraphics[width=.7\textwidth]{table.jpg}
-% \end{table}
 
 \section{Considerações finais}
 
