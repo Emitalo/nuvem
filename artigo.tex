@@ -11,7 +11,7 @@
      
 \sloppy
 
-\title{Qualidade de Serviço em serviços de nuvem: uma análise do Openstack}
+\title{Qualidade de Serviço em serviços de nuvem: uma análise do OpenStack}
 
 \author{Emilie Trindade de Morais\inst{1}, Italo Paiva Batista\inst{1}}
 
@@ -46,7 +46,7 @@
 
 \section{Introdução}
 
-Portanto, o objetivo deste trabalho é identificar as métricas de QoS que a ferramenta Openstack fornece aos seus usuários. % MELHORAR
+Portanto, o objetivo deste trabalho é identificar as métricas de QoS que a ferramenta OpenStack fornece aos seus usuários. % MELHORAR
 
 
 \section{Metodologia}
@@ -71,8 +71,8 @@ cujas etapas são explicadas a seguir.
 	mais aos outros modelos de serviço e não serem propícias ao modelo IaaS, devido às suas características peculiares. Além disso,
 	métricas muito complexas (que exigem muitos insumos, insumos complicados de se obter e/ou cálculos mais complexos) foram descartadas,
 	a fim de obter métricas mais passíveis da ferramenta fornecer;
- \item \textbf{Levantamento das métricas do Openstack} - Esta etapa consistiu em verificar quais métricas a ferramenta oferecia,
-	realizando uma simples coleta das métricas presentes no Openstack a partir da execução da ferramenta em um cenário de teste 
+ \item \textbf{Levantamento das métricas do OpenStack} - Esta etapa consistiu em verificar quais métricas a ferramenta oferecia,
+	realizando uma simples coleta das métricas presentes no OpenStack a partir da execução da ferramenta em um cenário de teste 
 	e análise da documentação.
 	Esta etapa englobou as seguintes atividades:
 	\subitem - \emph{\textbf{Caracterizar cenário/contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta,
@@ -83,7 +83,7 @@ cujas etapas são explicadas a seguir.
 	\subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas foram coletadas e documentadas, seguindo o
 		 plano de medição definido anteriormente.
  \item \textbf{Confronto das métricas} - Esta etapa consistiu em comparar as métricas encontradas na literatura com as métricas
-	identificadas no Openstack, para verificar quais métricas propostas na literatura são percebidas na prática no Openstack;
+	identificadas no OpenStack, para verificar quais métricas propostas na literatura são percebidas na prática no OpenStack;
  \item \textbf{Análise e redação dos resultados}: Nesta etapa os resultados obtidos na etapa anterior foram interpretados e documentados.
 \end{itemize}
 
@@ -152,7 +152,32 @@ Implantação de aplicativos baseados na Web para fácil disponibilização sob deman
 Estabelecimento de acordos de nível de serviço com os clientes;  Segurança dos CPUs, dados e rede;
 e Gestão e provisionamento de conta.
 
-\subsection{Openstack}
+\subsection{OpenStack}
+
+O OpenStack é uma plataforma de computação em nuvem de código aberto que permite o gerenciamento e desenvolvimento 
+de uma infraestrutura de computação em nuvem em um \textit{datacenter}, que é mantido pela 
+\textit{OpenStack Foundation} \cite{openstack} \cite{bui2016}.
+
+O OpenStack fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos (cada subprojeto é um módulo 
+do OpenStack) inter-relacionados 
+que controlam um conjunto de recursos de processamento (subprojeto \textit{Nova}), armazenamento (subprojetos \textit{Cinder} e \textit{Swift}),
+e de rede (subprojeto \textit{Neutron}) em uma infraestrutura de computação em nuvem \cite{openstack} \cite{bui2016}.
+Além desses subprojetos apresentados, o OpenStack conta com alguns serviços compartilhados entre os diferentes módulos, como o serviço de 
+autenticação e autorização (subprojeto \textit{Keystone}), serviço de gerenciamento de imagens (subprojeto \textit{Glance}) e o serviço de 
+telemetria (subprojeto \textit{Ceilometer}) \cite{openstack}.
+
+O gerenciamento e controle da infraestrutura da nuvem pelo OpenStack pode ser realizado por meio de uma aplicação \textit{web}
+(subprojeto \textit{Horizon}), APIs para linha de comando e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
+
+A Figura \ref{fig:openstack_architecture} ilustra a arquitetura conceitual do OpenStack, apresentando o relacionamento entre os
+módulos que o compõe.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.95\textwidth]{figuras/openstack_architecture.png}
+\caption{Arquitetura conceitual do OpenStack. Fonte: \cite{openstack}}
+\label{fig:openstack_architecture}
+\end{figure}
 
 
 \section{Desenvolvimento do trabalho}
@@ -169,19 +194,19 @@ e Gestão e provisionamento de conta.
 % % % % % 
 
 % Objetivo deste trabalho:
-% - Identificar quais métricas de QoS o Openstack fornece
+% - Identificar quais métricas de QoS o OpenStack fornece
 % 
 % Explicar:
 % 
-% - Modelos de serviço oferecidos pela nuvem (SaaS, PaaS e IaaS) e dizer que o Openstack oferece IaaS
+% - Modelos de serviço oferecidos pela nuvem (SaaS, PaaS e IaaS) e dizer que o OpenStack oferece IaaS
 % - Brevemente o que é QoS
-% - Openstack
+% - OpenStack
 % 
 % Metodologia
 % - Levantar métricas existentes de QoS em Nuvem, com base na literatura
 % - Selecionar métricas para IaaS (muitas métricas são para SaaS e não se aplicam para IaaS)
-% - Verificar a existência de tais métricas no Openstack
-%   - Explicar como é coletado pelo Openstack
+% - Verificar a existência de tais métricas no OpenStack
+%   - Explicar como é coletado pelo OpenStack
 % - Elaborar plano de medição para as métricas existentes(GQM ?)
 %   - Criar um contexto para a coleta dos dados (Nada demais nesse plano...)
 % - Executar o plano de medição (Coletar as métricas) a título de exemplo.
