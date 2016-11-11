@@ -535,14 +535,92 @@ cujas etapas são explicadas a seguir.
 	\subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas foram coletadas e documentadas, seguindo o
 		 plano de medição definido anteriormente.
  \item \textbf{Confronto das métricas} - Esta etapa consistiu em comparar as métricas encontradas na literatura com as métricas
-	identificadas no OpenStack, para verificar quais métricas propostas na literatura são percebidas na prática no OpenStack;
+	identificadas no OpenStack, para verificar quais métricas propostas na literatura são implementadas nativamente no OpenStack;
  \item \textbf{Análise e redação dos resultados}: Nesta etapa os resultados obtidos na etapa anterior foram interpretados e documentados.
 \end{itemize}
 
+\section{Desenvolvimento do trabalho} % MELHORAR ESSE TITULO
+
+  \subsection{Levantamento das métricas existentes}
+      
+      As métricas de QoS existentes propostas na literatura foram levantadas consultando as bases da
+      \textit{Institute of Electrical and Electronics Engineers} (IEEE). Foram encontrados seis artigos que apresentavam de forma concisa
+      métricas de QoS para serviços de nuvem. São eles:
+      
+      \begin{itemize}
+       \item \textbf{Artigo 1}: \textit{QoS Metrics for Cloud Computing Services Evaluation} \cite{bardsiri2014};
+       \item \textbf{Artigo 2}: \textit{On a Catalogue of Metrics for Evaluating Commercial Cloud Services} \cite{li2012};
+       \item \textbf{Artigo 3}: \textit{IaaS Cloud Service Selection using Case-Based Reasoning} \cite{soltani2016};
+       \item \textbf{Artigo 4}: \textit{SMICloud: A Framework for Comparing and Ranking Cloud Services} \cite{garg2011};
+       \item \textbf{Artigo 5}: \textit{Cloud Services Measures for Global Use} \cite{siegel2012cloud}
+       \item \textbf{Artigo 6}: \textit{An End-To-End QoS Mapping Approach for Cloud Service Selection} \cite{karim2013}
+      \end{itemize}
+     
+      
+      Estes artigos foram analisados e as seguintes métricas foram identificadas:
+      
+     \begin{itemize}
+      \item Metricas aqui em uma tabela ou imagem
+     \end{itemize}
+     
+  \subsection{Filtragem das métricas}
+  
+  \subsection{Levantamento das métricas do OpenStack}
+  
+    As métricas fornecidas pelo OpenStack foram levantadas executando um cenário de teste de uso da ferramenta. 
+    A Subseção \ref{cenario} descreve o cenário utilizado, a Subseção \ref{plano_medicao} apresenta o planejamento para a
+    coleta dos dados realizado e a Subseção \ref{resultados_levantamento} discorre sobre os resultados obtidos.
+  
+    \subsubsection{\textbf{Cenário de teste}} \label{cenario}
+	
+	A coleta dos dados foi realizada no seguinte cenário/contexto:
+	
+	\begin{itemize}
+	 \item Duas pessoas com dedicação parcial como equipe de coleta; % COLOCA DEDICAÇÃO PARCIAL ?
+	 \item Laboratório com máquinas que possuiam recursos de \textit{hardware} simples;
+	    \subitem Apenas máquinas com 4GB de memória RAM no máximo.
+	 \item Utilização da versão \textit{Kilo} do OpenStack;
+	 \item Utilização do CentOS 7 \cite{centos} como sistema operacional;
+	 \item Utilização da topologia apresentada na Figura \ref{fig:topologia};
+	    \subitem Foram utilizados dois computadores interconectados para distribuir a carga de processamento entre eles, 
+		     de modo que um computador ficava com o nó Controlador (\textit{Controller}) e o outro computador ficava
+		     com os nós de Processamento (\textit{Compute}) e de Rede (\textit{Network}).
+	\end{itemize}
+	
+	Foi utilizada a versão \textit{Kilo} \cite{openstack_kilo} do OpenStack por ser uma versão estável e mais leve, pois, como
+	os recursos disponíveis eram limitados, era preciso utilizar uma versão mais leve da ferramenta. Vale ressaltar que apesar do
+	suporte para versão \textit{Kilo} ter sido encerrado pelos mantenedores do OpenStack, sua arquitetura não distoa muito do seu 
+	sucessor subsequente ainda suportado, o OpenStack \textit{Liberty}, o que não impacta significativamente nem invalida
+	o presente trabalho \cite{openstack_liberty}.
+	
+% 	\begin{figure}[ht]
+% 	\centering
+% 	\includegraphics[width=.5\textwidth]{figuras/topologia.png}
+% 	\caption{Topologia utilizada no cenário de teste. Fonte: Autor.}
+% 	\label{fig:topologia}
+% 	\end{figure}
+
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% % % %  PROBLEMA: O OpenStack Kilo já está em End-Of-Life... Versão ainda suportada: Liberty.
+% % % %  Ou colocar como trabalho futuro, ou tentar trocar a versão.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \subsubsection{Plano de Medição} \label{plano_medicao}
+    
+    \subsubsection{Resultados} \label{resultados_levantamento}
+
+  \subsection{Confronto das métricas}
+  
 
 \section{Conclusão}
 The conclusion goes here.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% % Propor os requisitos de hardware (RAM, HD) como métrica de QoS
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % \subsection{Subsection Heading Here}
