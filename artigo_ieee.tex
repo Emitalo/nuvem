@@ -469,9 +469,12 @@ e Gestão e provisionamento de conta.
 
 \subsection{OpenStack}
 
-O OpenStack é uma plataforma de computação em nuvem de código aberto que permite o gerenciamento e desenvolvimento 
-de uma infraestrutura de computação em nuvem em um \textit{datacenter}, que é mantido pela 
-\textit{OpenStack Foundation} \cite{openstack} \cite{bui2016}.
+O OpenStack \cite{openstack_general} é uma plataforma de computação em nuvem de código aberto que permite o gerenciamento e desenvolvimento 
+de infraestruturas de computação em nuvem em um \textit{datacenter}, que é mantido pela 
+\textit{OpenStack Foundation} e está sendo utilizado por diversas empresas \cite{openstack} \cite{bui2016}.
+O OpenStack é bastante robusto, capaz de controlar uma grande de quantidade
+de recursos computacionais em um \textit{data center}, o que exige uma infraestrutura de \textit{hardware} 
+considerável para seu funcionamento pleno \cite{openstack_general} \cite{openstack}.
 
 O OpenStack fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos (cada subprojeto é um módulo 
 do OpenStack) inter-relacionados 
@@ -479,20 +482,24 @@ que controlam um conjunto de recursos de processamento (subprojeto \textit{Nova}
 e de rede (subprojeto \textit{Neutron}) em uma infraestrutura de computação em nuvem \cite{openstack} \cite{bui2016}.
 Além desses subprojetos apresentados, o OpenStack conta com alguns serviços compartilhados entre os diferentes módulos, como o serviço de 
 autenticação e autorização (subprojeto \textit{Keystone}), serviço de gerenciamento de imagens (subprojeto \textit{Glance}) e o serviço de 
-telemetria (subprojeto \textit{Ceilometer}) \cite{openstack}.
+telemetria (subprojeto \textit{Ceilometer}) \cite{openstack}. Estes são apenas os principais serviços providos pelo OpenStack, para uma
+descrição completa de todos os serviços consulte \cite{openstack}.
 
-O gerenciamento e controle da infraestrutura da nuvem pelo OpenStack pode ser realizado por meio de uma aplicação \textit{web}
-(subprojeto \textit{Horizon}), APIs para linha de comando e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
+O gerenciamento e controle da infraestrutura da nuvem pelo usuário podem ser realizados por meio de uma aplicação \textit{web}
+(subprojeto \textit{Horizon}), via linha de comando (\textit{Command Line Interface} (CLI)) e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
+Em relação à integração interna dos módulos do \textit{OpenStack}, esta é realizada por meio de APIs RESTful e 
+de \textit{Remote Procedure Call} (RPC) via RabbitMQ (ferramenta que implementa a comunicação inter-processos seguindo o protocolo
+\textit{Advanced Message Queue Protocol})\cite{bui2016}. Para mais detalhes sobre a integração dos módulos, consulte \cite{bui2016}.
 
 A Figura \ref{fig:openstack_architecture} ilustra a arquitetura conceitual do OpenStack, apresentando o relacionamento entre os
 módulos que o compõe.
 
-\begin{figure*}[ht]
+\begin{figure}[ht]
 \centering
-\includegraphics[width=.8\textwidth]{figuras/openstack_architecture.png}
+\includegraphics[width=.5\textwidth]{figuras/openstack_architecture.png}
 \caption{Arquitetura conceitual do OpenStack. Fonte: \cite{openstack}}
 \label{fig:openstack_architecture}
-\end{figure*}
+\end{figure}
 
 \section{Metodologia}
 
@@ -677,7 +684,7 @@ The conclusion goes here.
 % (used to reserve space for the reference number labels box)
 
 \bibliographystyle{IEEEtran}
-\bibliography{IEEEabrv, references}
+\bibliography{references}
 % \begin{thebibliography}{1}
 % 
 % \bibitem{IEEEhowto:kopka}
