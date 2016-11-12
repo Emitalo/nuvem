@@ -315,6 +315,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{cite}
 \usepackage{graphicx,url}
+\usepackage[table,xcdraw]{xcolor}
 
 \begin{document}
 %
@@ -324,7 +325,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Qualidade de Serviço em serviços de nuvem: uma análise do OpenStack}
+\title{Métricas de Qualidade de Serviço em ferramentas de IaaS: uma análise do OpenStack}
 
 
 % author names and affiliations
@@ -401,7 +402,35 @@ The abstract goes here.
 
 \section{Introdução}
 % no \IEEEPARstart
-Portanto, o objetivo deste trabalho é identificar as métricas de QoS que a ferramenta OpenStack fornece aos seus usuários. % MELHORAR
+A computação em nuvem é um paradigma de entrega de recursos, como infraestrutura, plataforma e software,
+por demanda \cite{garg2011}. Esse paradigma tem sido bastante difundido, principalmente por possuir benefícios como: escalabilidade de recursos, flexibilidade de software, pagamento por uso, sistema consolidado de manutenção e gerenciamento, confiabilidade e alta utilização e redução de 
+emissão de carbono \cite{rehman2011teaching}.
+
+Com a difusão do uso de serviços de nuvem alguns estudos (\citeonline{soltani2016};\citeonline{garg2011};\citeonline{li2012}, 
+\citeonline{bardsiri2014};\citeonline{lesun2016};\citeonline{quarati2016} tem sido realizados com o intuito de auxiliar na 
+escolha do serviço mais adequado, analisando aspectos inerentes a serviços de nuvem e de qualidade de serviço 
+(QoS, do inglês: \textit{Quality of service}).
+
+De acordo com a \citeonline{iso15939}, medições dão suporte ao gerenciamento e melhoria de processos e produtos. É uma disciplina
+chave na avaliação da qualidade. De acordo com \citeonline{mell2011nist}, a medição dos serviços de nuvem é uma das características essenciais. 
+
+\citeonline{leite2016influencia} afirma que essas medições proporcionam
+transparência ao provedor e ao cliente e que medir os serviços de nuvem auxiliam no 
+cumprimento dos níveis de serviços acordados.
+
+O OpenStack \cite{openstack_general} é uma plataforma de computação em nuvem de código aberto que permite o gerenciamento e desenvolvimento 
+de infraestruturas de computação em nuvem em um \textit{datacenter}, que é mantido pela 
+\textit{OpenStack Foundation} e está sendo utilizado por diversas empresas \cite{openstack} \cite{bui2016}.
+
+Considerando esse cenário de seleção de serviços de nuvem e o crescente uso do Openstack, o objetivo deste trabalho foi identificar as métricas estáticas e dinâmicas de QoS disponíveis no Openstack e coletá-las em um cenário de teste.
+
+Este trabalho está organizado em x seções. 
+Na seção Serviços de Nuvem são apresentados os conceitos relacionados a computação em nuvem e a qualidade desse serviço. 
+Na seção Openstack é apresentada uma visão geral acerca da ferramenta.
+Na seção Materiais e métodos são apresentadas as etapas de realização do trabalho, bem como os métodos utilizados. 
+Na seção Desenvolvimento é apresentada a execução do trabalho.
+Por fim, na seção Conclusão são apresentadas as considerações finais, limitações e trabalhos futuros.
+
 
 \section{Serviços de nuvem}
 De acordo com \citeonline{armbrust2010view}, a computação em nuvem refere-se a aplicações que entregam serviços a partir da internet. 
@@ -432,17 +461,15 @@ agrupamento de recursos, elasticidade rápida e medição de serviço.
 
 \subsection{Qualidade de Serviço em nuvem}
 
-A medição dos serviços de nuvem é uma das características essenciais de acordo com 
-\citeonline{mell2011nist}. \citeonline{leite2016influencia} afirma que essas medições proporcionam
-transparência ao provedor e ao cliente. Medir os serviços de nuvem auxiliam no 
-cumprimento dos níveis de serviços acordados.
+% A medição dos serviços de nuvem é uma das características essenciais de acordo com 
+% \citeonline{mell2011nist}. 
 
 
-\citeonline{leite2016influencia} trata a qualidade de serviço em duas abordagens:
-uma relacionada à rede e outra em nível de aplicação. Em relação a rede são tratados
-os requisitos para garantir a qualidade do serviço. Em nível de aplicação são tratados
-os atributos que implicam no cumprimento dos níveis de serviço acordado. 
-Neste trabalho será tratada a qualidade de serviço do ponto de vista da aplicação.
+% \citeonline{leite2016influencia} trata a qualidade de serviço em duas abordagens:
+% uma relacionada à rede e outra em nível de aplicação. Em relação a rede são tratados
+% os requisitos para garantir a qualidade do serviço. Em nível de aplicação são tratados
+% os atributos que implicam no cumprimento dos níveis de serviço acordado. 
+% Neste trabalho será tratada a qualidade de serviço do ponto de vista da aplicação.
 
 \citeonline{siegel2012cloud} apresentam métricas para cálculo dos benefícios e riscos
 de serviços de computação em nuvem. Características como prestação de contas, agilidade,
@@ -451,12 +478,6 @@ garantia, financeira, desempenho, segurança e privacidade e usabilidade.
 %Características como memória, processamento, enlace e sistemas operacionais suportados
 %são comumente relacionadas com a qualidade dos serviços prestados. Assim como a 
 %disponibilidade, segurança, privacidade e integridade. \cite{leite2016influencia}
-
-
-% Métricas: 
-  % Principais: memória, processamento, enlace e SO
-  % Outras: Disponibilidade, Segurança, Privacidade, Integridade
-
 
 
 \subsection{Infraestrutura como serviço}
@@ -469,14 +490,7 @@ e Gestão e provisionamento de conta.
 
 \subsection{OpenStack}
 
-O OpenStack \cite{openstack_general} é uma plataforma de computação em nuvem de código aberto que permite o gerenciamento e desenvolvimento 
-de infraestruturas de computação em nuvem em um \textit{datacenter}, que é mantido pela 
-\textit{OpenStack Foundation} e está sendo utilizado por diversas empresas \cite{openstack} \cite{bui2016}.
-O OpenStack é bastante robusto, capaz de controlar uma grande de quantidade
-de recursos computacionais em um \textit{data center}, o que exige uma infraestrutura de \textit{hardware} 
-considerável para seu funcionamento pleno \cite{openstack_general} \cite{openstack}.
-
-O OpenStack fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos (cada subprojeto é um módulo 
+O OpenStack é uma ferramenta que fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos (cada subprojeto é um módulo 
 do OpenStack) inter-relacionados 
 que controlam um conjunto de recursos de processamento (subprojeto \textit{Nova}), armazenamento (subprojetos \textit{Cinder} e \textit{Swift}),
 e de rede (subprojeto \textit{Neutron}) em uma infraestrutura de computação em nuvem \cite{openstack} \cite{bui2016}.
@@ -484,6 +498,10 @@ Além desses subprojetos apresentados, o OpenStack conta com alguns serviços co
 autenticação e autorização (subprojeto \textit{Keystone}), serviço de gerenciamento de imagens (subprojeto \textit{Glance}) e o serviço de 
 telemetria (subprojeto \textit{Ceilometer}) \cite{openstack}. Estes são apenas os principais serviços providos pelo OpenStack, para uma
 descrição completa de todos os serviços consulte \cite{openstack}.
+
+O OpenStack é bastante robusto, capaz de controlar uma grande de quantidade
+de recursos computacionais em um \textit{data center}, o que exige uma infraestrutura de \textit{hardware} 
+considerável para seu funcionamento pleno \cite{openstack_general} \cite{openstack}.
 
 O gerenciamento e controle da infraestrutura da nuvem pelo usuário podem ser realizados por meio de uma aplicação \textit{web}
 (subprojeto \textit{Horizon}), via linha de comando (\textit{Command Line Interface} (CLI)) e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
@@ -564,6 +582,87 @@ cujas etapas são explicadas a seguir.
      \end{itemize}
      
   \subsection{Filtragem das métricas}
+  
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table*}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{FFFFFF}\textbf{Métrica}} & \textbf{Critério 1}         & \textbf{Critério 2}                                & \textbf{Critério 3}                                & \textbf{Critério 4}                              \\ \hline
+Atraso de transferência TCP/UDP/IP                             & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Largura de Banda (download, upload)                            & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Carga de CPU                                                   & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Confiabilidade (número de erros)                               & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Controle de acesso                                             & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+CPU power                                                      & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Custo total                                                    & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Eficiência da Instância                                        & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Elasticidade                                                   & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Frequência de perda de pacotes                                 & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Habilidade de auditoria                                        & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Latência de comunicação sobre SSL                              & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Latência máxima                                                & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Número máximo de usuários concorrentes                         & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Memória (RAM requerida para instância)                         & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Banco de dados NoSQL                                           & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Número de núcleos de CPU                                       & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Número de instância                                            & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Número de balanceadores de carga                               & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Sistema Operacional (Tipo, Plataforma, Versão)                 & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Suporte a SGBD relacional                                      & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo de resposta (Intervalo)                                  & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+SSL aplicável?                                                 & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Armazenamento (Memória permanente. ex: HD)                     & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Taxa de erros de conexão                                       & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo de boot                                                  & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo de comunicação                                           & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo de deleção                                               & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo de implantação                                           & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo de resposta                                              & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo de suspensão                                             & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo médio entre falhas (MTBF)                                & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Tempo total de aquisição                                       & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Velocidade de transferência bit/byte TCP/UDP/IP                & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
+Acurácia                                                       & Sim                         & Sim                                                & Sim                                                & \cellcolor[HTML]{EA9999}Não                      \\ \hline
+Disponibilidade                                                & Sim                         & Sim                                                & Sim                                                & \cellcolor[HTML]{EA9999}Não                      \\ \hline
+Adequação                                                      & Sim                         & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -}   & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
+Apreensibilidade do serviço                                    & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
+Controle de Dados                                              & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
+Custo por tempo fixo                                           & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
+Defeitos por milhão                                            & Sim                         & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -}   & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
+Facilidade de uso                                              & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Instalabilidade do IaaS                                        & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Interoperabilidade                                             & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Políticas de controle de acesso                                & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Transparência                                                  & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Custo de VM                                                    & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Algoritmos de criptografia                                     & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Servidores de aplicação                                        & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Camadas de aplicação                                           & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Tipo de aplicação                                              & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Confidencialidade                                              & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Custo de recursos de componentes                               & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Custo por FLOP                                                 & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Efetividade                                                    & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+I/O performance                                                & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Modularidade                                                   & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Privacidade dos Dados                                          & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Razão Preço/Performance                                        & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Região                                                         & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Segurança (métrica geral)                                      & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Sensibilidade                                                  & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Taxa de atualização de RAM                                     & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Taxa de FLOPs (Float Point Operations Per Second)              & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Tempo de computação                                            & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Usuários suportados em um orçamento fixo                       & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Utilização de recursos                                         & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+Velocidade de memória                                          & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+\end{tabular}
+\end{table*}
   
   \subsection{Levantamento das métricas do OpenStack}
   
