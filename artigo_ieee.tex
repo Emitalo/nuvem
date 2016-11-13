@@ -501,7 +501,7 @@ O OpenStack é bastante robusto, capaz de controlar uma grande de quantidade
 de recursos computacionais em um \textit{data center}, o que exige uma infraestrutura de \textit{hardware} 
 considerável para seu funcionamento pleno \cite{openstack_general} \cite{openstack}.
 
-O gerenciamento e controle da infraestrutura da nuvem pelo usuário podem ser realizados por meio de uma aplicação \textit{web}
+O gerenciamento e controle da infraestrutura da nuvem pelo usuário podem ser realizados por meio de uma aplicação \textit{Web}
 (subprojeto \textit{Horizon}), via linha de comando (\textit{Command Line Interface} (CLI)) e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
 Em relação à integração interna dos módulos do \textit{OpenStack}, esta é realizada por meio de APIs RESTful e 
 de \textit{Remote Procedure Call} (RPC) via RabbitMQ (ferramenta que implementa a comunicação inter-processos seguindo o protocolo
@@ -578,9 +578,9 @@ Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada n
 \centering
  \caption{Métricas encontradas na literatura}
 \label{tab:metricas_literatura}
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{lll}
 \hline
-\multicolumn{1}{|c|}{\textbf{Métrica}}                                                       & \multicolumn{1}{c|}{\textbf{Categoria}}                                                                    & \multicolumn{1}{c|}{\textbf{Artigo}}                                                    \\ \hline
+\multicolumn{1}{c}{\textbf{Métrica}}                                                       & \multicolumn{1}{c}{\textbf{Categoria}}                                                                    & \multicolumn{1}{c}{\textbf{Artigo}}                                                    \\ \hline
 Algoritmos de criptografia                                                                   & Segurança                                                                                                  & \multirow{9}{*}{Artigo 6 [19]}                                                          \\ \cline{1-2}
 Apreensibilidade do serviço                                                                  & Usabilidade                                                                                                &                                                                                         \\ \cline{1-2}
 Controle de acesso                                                                           & Segurança                                                                                                  &                                                                                         \\ \cline{1-2}
@@ -591,7 +591,7 @@ Instalabilidade do IaaS                                                         
 Privacidade dos Dados                                                                        & Segurança                                                                                                  &                                                                                         \\ \cline{1-2}
 \begin{tabular}[c]{@{}l@{}}Tempo médio entre \\ falhas (MTBF)\end{tabular}                   & Confiabilidade                                                                                             &                                                                                         \\ \hline
 Políticas de controle de acesso                                                              & \begin{tabular}[c]{@{}l@{}}Segurança/ \\ Privacidade\end{tabular}                                          & Artigo 5 [18]                                                                           \\ \hline
-Custo de VM                                                                                  & Custo                                                                                                      & \begin{tabular}[c]{@{}l@{}}Artigo 5 [18]; \\ Artigo 4 [1]\end{tabular}                  \\ \hline
+Custo de VM                                                                                  & Custo                                                                                                      & \begin{tabular}[c]{@{}l@{}}Artigo 5 [18] \\ Artigo 4 [1]\end{tabular}                  \\ \hline
 \begin{tabular}[c]{@{}l@{}}Armazenamento \\ (memória permanente, ex.HD)\end{tabular}         & -                                                                                                          & \multirow{16}{*}{Artigo 3 [3]}                                                          \\ \cline{1-2}
 Banco de dados NoSQL                                                                         & -                                                                                                          &                                                                                         \\ \cline{1-2}
 Camadas de aplicação                                                                         & -                                                                                                          &                                                                                         \\ \cline{1-2}
@@ -608,10 +608,10 @@ Servidores de aplicação                                                       
 \begin{tabular}[c]{@{}l@{}}Sistema Operacional\\  (Tipo, Plataforma, Versão)\end{tabular}    & -                                                                                                          &                                                                                         \\ \cline{1-2}
 Suporte a SGBD relacional                                                                    & -                                                                                                          &                                                                                         \\ \cline{1-2}
 Tipo de aplicação                                                                            & -                                                                                                          &                                                                                         \\ \hline
-Segurança (métrica geral)                                                                    & -                                                                                                          & \begin{tabular}[c]{@{}l@{}}Artigo 3 [3]; \\ Artigo 6 [19]\end{tabular}                  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Memória (RAM requerida \\ para instância)\end{tabular}            & \begin{tabular}[c]{@{}l@{}}Garantia/ \\ Sustentabilidade \\ do serviço\end{tabular}                        & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Artigo 3 [3]; \\ Artigo 4 [1]\end{tabular}}  \\ \cline{1-2}
+Segurança (métrica geral)                                                                    & -                                                                                                          & \begin{tabular}[c]{@{}l@{}}Artigo 3 [3] \\ Artigo 6 [19]\end{tabular}                  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Memória (RAM requerida \\ para instância)\end{tabular}            & \begin{tabular}[c]{@{}l@{}}Garantia/ \\ Sustentabilidade \\ do serviço\end{tabular}                        & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Artigo 3 [3] \\ Artigo 4 [1]\end{tabular}}  \\ \cline{1-2}
 Tempo de resposta (aplicação)                                                                & Performance                                                                                                &                                                                                         \\ \hline
-Disponibilidade                                                                              & -                                                                                                          & \begin{tabular}[c]{@{}l@{}}Artigo 3 [3]; \\ Artigo 4 [1]; \\ Artigo 6 [19]\end{tabular} \\ \hline
+Disponibilidade                                                                              & -                                                                                                          & \begin{tabular}[c]{@{}l@{}}Artigo 3 [3] \\ Artigo 4 [1] \\ Artigo 6 [19]\end{tabular} \\ \hline
 \begin{tabular}[c]{@{}l@{}}Atraso de transferência \\ TCP/UDP/IP\end{tabular}                & \begin{tabular}[c]{@{}l@{}}Performance / \\ Comunicação/ \\ Latência\end{tabular}                          & \multirow{2}{*}{Artigo 2 [4]}                                                           \\ \cline{1-2}
 \begin{tabular}[c]{@{}l@{}}Velocidade de transferência \\ bit/byte TCP/UDP/IP\end{tabular}   & \begin{tabular}[c]{@{}l@{}}Performance / \\ Comunicação/ \\ Taxa de transferência \\ de dados\end{tabular} &                                                                                         \\ \hline
 Confidencialidade                                                                            & \begin{tabular}[c]{@{}l@{}}Segurança /\\ Autenticação\end{tabular}                                         & \multirow{9}{*}{Artigo 1 [5]}                                                           \\ \cline{1-2}
@@ -623,7 +623,13 @@ Tempo de boot                                                                   
 Tempo de computação                                                                          & \begin{tabular}[c]{@{}l@{}}Performance / \\ Tempo\end{tabular}                                             &                                                                                         \\ \cline{1-2}
 Utilização de recursos                                                                       & Eficiência                                                                                                 &                                                                                         \\ \cline{1-2}
 Velocidade de memória                                                                        & \begin{tabular}[c]{@{}l@{}}Performance /\\  Memória\end{tabular}                                           &                                                                                         \\ \hline
-Carga de CPU                                                                                 & \begin{tabular}[c]{@{}l@{}}Performance /\\ Computação\end{tabular}                                         & \multirow{21}{*}{\begin{tabular}[c]{@{}l@{}}Artigo 1 [5]; \\ Artigo 2 [4]\end{tabular}} \\ \cline{1-2}
+\end{tabular}
+\end{table}
+
+\begin{table}
+\begin{tabular}{lll}
+\hline
+Carga de CPU                                                                                 & \begin{tabular}[c]{@{}l@{}}Performance /\\ Computação\end{tabular}                                         & \multirow{21}{*}{\begin{tabular}[c]{@{}l@{}}Artigo 1 [5] \\ Artigo 2 [4]\end{tabular}} \\ \cline{1-2}
 \begin{tabular}[c]{@{}l@{}}Custo de recursos de \\ componentes\end{tabular}                  & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
 Custo por FLOP                                                                               & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
 Custo por tempo fixo                                                                         & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
@@ -847,7 +853,7 @@ Taxa de erros de conexão                          & \cellcolor[HTML]{EA9999}Nã
 \begin{tabular}{@{}lll@{}}
 \toprule
 \multicolumn{3}{c}{\textbf{Estáticas}}                                                                  \\ \midrule
-\textbf{Categoria}         & \textbf{Métrica}                               & \textbf{Há no Openstack?} \\
+\multicolumn{1}{c}{\textbf{Categoria}} & \multicolumn{1}{c}{\textbf{Métrica}}                                                  & \multicolumn{1}{c}{\textbf{Há no Openstack?}} \\
 Economia                   & Custo total                                    & -                         \\
 \multirow{3}{*}{Geral}     & Suporte a banco de dados NoSQL                 & Sim                       \\
                            & \begin{tabular}[c]{@{}l@{}}Sistema Operacional \\ (Tipo, Plataforma, Versão)\end{tabular} & Sim                       \\
@@ -864,7 +870,7 @@ Economia                   & Custo total                                    & - 
 \label{tab:confronto_dinamicas}
 \begin{tabular}{@{}lll@{}}
 \toprule
-\multicolumn{1}{c}{Dinâmicas}          &                                                                                       &                                               \\ \midrule
+\multicolumn{3}{c}{\textbf{Dinâmicas}}                                                                  \\ \midrule
 \multicolumn{1}{c}{\textbf{Categoria}} & \multicolumn{1}{c}{\textbf{Métrica}}                                                  & \multicolumn{1}{c}{\textbf{Há no Openstack?}} \\
 \multirow{2}{*}{Confiabilidade}        & Confiabilidade (número de erros)                                                      & Não                                           \\
                                        & Tempo médio entre falhas (MTBF)                                                       & Não                                           \\
@@ -905,9 +911,8 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
     \subitem - Volume de RAM utilizado pela instância (memory.usage);
     \subitem - Volume de RAM utilizada por projeto.
  \item \textbf{Armazenamento (Memória permanente. ex: HD)}
-    \subitem - Tamanho do disco do nó de processamento (disk.root.size);
+    \subitem - Tamanho do disco  (disk.root.size);
     \subitem - Memória permanente utilizada por projeto;
-    \subitem - Memória permante utilizada por instância.
  \item \textbf{Latência máxima  (aplicação)}
     \subitem - Latência média do disco (disk.latency);
     \subitem - Latência média do disco por dispositivo (disk.device.latency).
@@ -934,9 +939,11 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
     \subitem - Frequência da CPU (compute.node.cpu.frequency);
   \item \textbf{Eficiência da Instância}    
     \subitem - Utilização da CPU (compute.node.cpu.percent);
-    \item \textbf{Frequência de perda de pacotes}   
+  \item \textbf{Frequência de perda de pacotes}   
     \subitem - Taxa de entrada de pacotes (network.incoming.packets.rate);
     \subitem - Taxa de saída de pacotes (network.outgoing.packets.rate);
+    \subitem - Número de pacotes recebidos (network.incoming.packets);
+    \subitem - Número de pacotes enviados (network.outgoing.packets);
   \item \textbf{Performance de I/O} 
     \subitem - Número de requisições de leitura (disk.read.requests);
     \subitem - Taxa média de requisições de leitura (disk.read.requests.rate);
@@ -948,7 +955,7 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
     \subitem - Taxa média de escritas (disk.write.bytes.rate);
  \end{itemize}  
 
-  \subsection{Validação das métricas} 
+  \subsection{Exemplificação das métricas} 
     Para verificar como se apresentavam as métricas ditas presentes no OpenStack, foi executado um cenário de teste de uso da ferramenta
     para coletar tais métricas obtidas na seção \ref{confronto}. 
     A Subseção \ref{cenario} descreve o cenário utilizado, a Subseção \ref{plano_medicao} apresenta o planejamento para a
@@ -959,23 +966,40 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
 	A coleta dos dados foi realizada no seguinte cenário/contexto:
 	
 	\begin{itemize}
-	 \item Duas pessoas com dedicação parcial como equipe de coleta; % COLOCA DEDICAÇÃO PARCIAL ?
+% 	 \item Duas pessoas com dedicação parcial como equipe de coleta; % COLOCA DEDICAÇÃO PARCIAL ?
 	 \item Laboratório com máquinas que possuiam recursos de \textit{hardware} simples;
 	    \subitem Apenas máquinas com 4GB de memória RAM no máximo.
 	 \item Utilização da versão \textit{Kilo} do OpenStack;
 	 \item Utilização do CentOS 7 \cite{centos} como sistema operacional;
-	 \item Utilização da topologia apresentada na Figura \ref{fig:topologia};
+	 \item Utilização da topologia apresentada na Figura \ref{fig:topologia} para instalação do OpenStack;
 	    \subitem Foram utilizados dois computadores interconectados para distribuir a carga de processamento entre eles, 
-		     de modo que um computador ficava com o nó Controlador (\textit{Controller}) e o outro computador ficava
-		     com os nós de Processamento (\textit{Compute}) e de Rede (\textit{Network}), como ilustra a Figura \ref{fig:topologia}.
-	    \subitem A topologia utilizada foi baseada na topologia proposta por Ahmad Imanudin em \cite{imanudin}.
+		  de modo que um computador ficava com o nó Controlador (\textit{Controller}) e o outro computador ficava
+		     com os nós de Processamento (\textit{Compute}) e de Rede (\textit{Network}), como ilustra a Figura \ref{fig:topologia};
+	    \subitem A topologia utilizada foi baseada na topologia proposta por Ahmad Imanudin em \cite{imanudin};
+	  \item Criação de duas instâncias.
 	\end{itemize}
+	
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{figuras/topologia.png}
+	\caption{Topologia utilizada na instalação do OpenStack. Fonte: Autores.}
+	\label{fig:topologia}
+	\end{figure}
+	
+	Foram criadas duas instâncias na ferramenta para os dados serem coletados com as características elencadas abaixo. 
+	A topologia pode ser vista na Figura \ref{fig:instancias}.
+
+	\begin{itemize}
+	 \item Memória: 512 MB
+	 \item Sistema Operacional: CirrOS
+	\end{itemize}
+    
 	 
 	\begin{figure}[ht]
 	\centering
 	\includegraphics[width=.5\textwidth]{figuras/topologia.png}
-	\caption{Topologia utilizada no cenário de teste. Fonte: Autor.}
-	\label{fig:topologia}
+	\caption{Topologia utilizada como cenário de teste. {\tiny \textit{Imagem Retirada da Ferramenta}}}
+	\label{fig:instancias}
 	\end{figure}
 	
 	Foi utilizada a versão \textit{Kilo} \cite{openstack_kilo} do OpenStack por ser uma versão estável e mais leve, devido a
@@ -984,30 +1008,63 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
 	sua arquitetura não distoa muito do seu sucessor subsequente ainda suportado, o OpenStack \textit{Liberty}, o que
 	não impacta significativamente nem invalida o presente trabalho \cite{openstack_liberty}.
 
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% % % %  PROBLEMA: O OpenStack Kilo já está em End-Of-Life... Versão ainda suportada: Liberty.
-% % % %  Ou colocar como trabalho futuro, ou tentar trocar a versão.
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-%     \subsubsection{Plano de Medição} \label{plano_medicao}
-%     
-%     \subsubsection{Resultados} \label{resultados_levantamento}
+		    
+    \subsubsection{Resultados} \label{resultados_levantamento}
   
+	As métricas foram coletadas por meio do serviço de coleta de dados (módulo - \textit{Ceilometer}) e 
+	da aplicação \textit{Web} (módulo \textit{Horizon}). 
+	
+	Todas as métricas coletadas pelo serviço \textit{Ceilometer} foram obtidas pelo comando \textit{ceilometer meter-list} e
+	pode ser visualizada na Tabela \ref{tab:meters_list}.
+	
+% 	  \caption{Lista de métricas coletadas pelo \textit{Ceilometer}.}
+% 	  \label{tab:meters_list}
+	
+	Com o cenário de teste realizado as métricas coletadas podem ser vista na Tabela \ref{tab:metricas_coletadas}.
+	
+\begin{table}[h!]
+\centering
+\caption{Métricas coletadas no cenário de teste}
+\label{tab:metricas_coletadas}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\multicolumn{1}{c}{Métrica}   & Max      & Min      & Media      & Unidade       \\ \midrule
+cpu\_util                     & 16.11    & 0        & 7.9        & \%            \\
+memory                        & 512      & 512      & 512        & MB            \\
+memory.usage                  & -        & -        & -          & MB            \\
+disk.root.size                & 1        & 1        & 1          & GB            \\
+vcpus                         & 1        & 1        & 1          & nº vCPUs      \\
+network.incoming.packets      & 19       & 8        & 11.75      & pacotes       \\
+network.incoming.packets.rate & 0.0016   & 0.00011  & 0.00011    & pacotes/s     \\
+network.outgoing.packets      & 9        & 9        & 9          & pacotes       \\
+network.outgoing.packets.rate & 0        & 0        & 0          & pacotes/s     \\
+disk.read.requests            & 1122     & 877      & 1032.77    & requisições   \\
+disk.read.requests.rate       & 0.23     & 0        & 0.015      & requisições/s \\
+disk.write.requests           & 134      & 55       & 111.9      & requisições   \\
+disk.write.requests.rate      & 0.091    & 0        & 0.001      & requisições/s \\
+disk.read.bytes               & 20436992 & 18510848 & 20245043.2 & bytes         \\
+disk.read.bytes.rate          & 3700.63  & 0        & 206.49     & bytes/s       \\
+disk.write.bytes              & 397312   & 206848   & 348262.4   & bytes         \\
+disk.write.bytes.rate         & 268.85   & 0        & 22.14      & bytes/s       \\ \bottomrule
+\end{tabular}
+\end{table}
 
 \section{Conclusão}
 Com a revisão de literatura realizada foi possível coletar 68 métricas relacionadas a QoS para serviços de nuvem, das quais
 35 foram avaliadas no Openstack. Na avaliação foi possível perceber que o Openstack provia 40\% das métricas exatas e além disso
-possuia algumas outras métricas relacionadas com as métricas identificadas.
+possuia algumas outras métricas relacionadas com as métricas identificadas. 
 
-% .....
+O número de métricas encontradas deve-se ao fato de que o Openstack possui um módulo apenas para coleta de métricas. 
+Os resultados obtidos neste trabalham servem de insumo para outros estudos relacionadas e para construção de ferramentas de seleção de 
+serviços de nuvem, auxiliando no levantamento das métricas possíveis de serem extraídas do Openstack.
 
 Uma limitação identificada do trabalho é que foi considerada uma versão antiga da ferramenta. Outra limitação é que as métricas
 foram identificadas por uma revisão simples de literatura, o que não possibilitou uma visibilidade do máximo de trabalhos possíveis,
-ou seja, foram considerados poucos estudos relacionados.
+ou seja, foram considerados poucos estudos relacionados. A análise de apenas métricas nativas sem a consideração de \textit{plugins} e/ou
+outras ferramentas também é considerada uma limitação.
 
-Como proposta de trabalho futuro é vista a aplicação de uma revisão sistemática com o intuito de encontrar mais métricas e aplicá-las para
-uma versão mais atual do Openstack.
+Como trabalho futuro é visto a aplicação de uma revisão sistemática com o intuito de encontrar mais métricas e aplicá-las para
+uma versão mais atual do Openstack e considerar outras ferramentas.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
