@@ -316,6 +316,8 @@
 \usepackage{cite}
 \usepackage{graphicx,url}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
 
 \begin{document}
 %
@@ -406,15 +408,17 @@ A computação em nuvem é um paradigma de entrega de recursos, como infraestrut
 por demanda \cite{garg2011}. Esse paradigma tem sido bastante difundido, principalmente por possuir benefícios como: escalabilidade de recursos, flexibilidade de software, pagamento por uso, sistema consolidado de manutenção e gerenciamento, confiabilidade e alta utilização e redução de 
 emissão de carbono \cite{rehman2011teaching}.
 
-Com a difusão do uso de serviços de nuvem alguns estudos (\citeonline{soltani2016};\citeonline{garg2011};\citeonline{li2012}, 
-\citeonline{bardsiri2014};\citeonline{lesun2016};\citeonline{quarati2016} tem sido realizados com o intuito de auxiliar na 
+Com a difusão do uso de serviços de nuvem alguns estudos (\cite{soltani2016, garg2011, li2012, 
+bardsiri2014, lesun2016, quarati2016}) tem sido realizados com o intuito de auxiliar na 
 escolha do serviço mais adequado, analisando aspectos inerentes a serviços de nuvem e de qualidade de serviço 
-(QoS, do inglês: \textit{Quality of service}).
+(QoS, do inglês: \textit{Quality of service}). Xia et al. \cite{xia2013} afirmam que a qualidade de serviço na computação
+em nuvem é crítica, porém difícil de analisar.  
 
-De acordo com a \citeonline{iso15939}, medições dão suporte ao gerenciamento e melhoria de processos e produtos. É uma disciplina
-chave na avaliação da qualidade. De acordo com \citeonline{mell2011nist}, a medição dos serviços de nuvem é uma das características essenciais. 
+De acordo com ISO/IEC 15939 \cite{iso15939}, medições dão suporte ao gerenciamento e melhoria de processos e produtos. É uma disciplina
+chave na avaliação da qualidade. De acordo com Peter e Grance \cite{mell2011nist}, a medição dos serviços de nuvem é 
+uma das características essenciais. 
 
-\citeonline{leite2016influencia} afirma que essas medições proporcionam
+Filho e Dionísio \cite{leite2016influencia} afirmam que as medições proporcionam
 transparência ao provedor e ao cliente e que medir os serviços de nuvem auxiliam no 
 cumprimento dos níveis de serviços acordados.
 
@@ -422,23 +426,24 @@ O OpenStack \cite{openstack_general} é uma plataforma de computação em nuvem 
 de infraestruturas de computação em nuvem em um \textit{datacenter}, que é mantido pela 
 \textit{OpenStack Foundation} e está sendo utilizado por diversas empresas \cite{openstack} \cite{bui2016}.
 
-Considerando esse cenário de seleção de serviços de nuvem e o crescente uso do Openstack, o objetivo deste trabalho foi identificar as métricas estáticas e dinâmicas de QoS disponíveis no Openstack e coletá-las em um cenário de teste.
+Considerando esse cenário de seleção de serviços de nuvem e o crescente uso do Openstack, o objetivo deste trabalho foi identificar
+métricas de QoS disponíveis no Openstack.
 
-Este trabalho está organizado em x seções. 
+Este trabalho está organizado em cinco seções. 
 Na seção Serviços de Nuvem são apresentados os conceitos relacionados a computação em nuvem e a qualidade desse serviço. 
 Na seção Openstack é apresentada uma visão geral acerca da ferramenta.
 Na seção Materiais e métodos são apresentadas as etapas de realização do trabalho, bem como os métodos utilizados. 
-Na seção Desenvolvimento é apresentada a execução do trabalho.
+Na seção Execução é apresentada a execução do trabalho.
 Por fim, na seção Conclusão são apresentadas as considerações finais, limitações e trabalhos futuros.
 
 
 \section{Serviços de nuvem}
-De acordo com \citeonline{armbrust2010view}, a computação em nuvem refere-se a aplicações que entregam serviços a partir da internet. 
-Os quais são providos através de hardware e software presentes em \textit{data centers}. São serviços que oferecem mecanismos
-para prover acesso aos usuários virtualmente a recursos ilimitados baseado no modelo \textit{payper-use}, ou seja, pagamento
-pelo uso. \cite{sefraoui2012openstack}
+De acordo com Armbrust et al. \cite{armbrust2010view}, a computação em nuvem refere-se a aplicações que entregam serviços a 
+partir da internet. Os quais são providos através de hardware e software presentes em \textit{data centers}.
+São serviços que oferecem mecanismos para prover acesso aos usuários virtualmente a recursos ilimitados baseado no 
+modelo \textit{payper-use}, ou seja, pagamento pelo uso. \cite{sefraoui2012openstack}
 
-Com a finalidade de prover esses serviços a computação em nuvem é estruturada em três módulos: Infraestrutura como serviço(IaaS),
+Para provimento desses serviços a computação em nuvem é estruturada em três módulos: Infraestrutura como serviço(IaaS),
 Plataforma como serviço(PaaS) e Software como serviço (SaaS), as quais estão ordenadas por nível de abstração, do mais baixo 
 para o mais alto, respectivamente \cite{rehman2011teaching, sefraoui2012openstack, armbrust2010view, mell2011nist}. 
 Essa estrutura pode ser vista na Figura \ref{fig:cloud_structure}.
@@ -450,54 +455,47 @@ Essa estrutura pode ser vista na Figura \ref{fig:cloud_structure}.
 \label{fig:cloud_structure}
 \end{figure}
 
-\citeonline{sefraoui2012openstack}, afirma que a IaaS é onde o recurso de hardware é provido em forma de máquinas vituais. O cliente mantém
-as aplicações, bancos de dados e servidores enquanto o servidor mantém a virtualização da nuvem, o hardware, o armazenamento e as redes.
-Para \citeonline{bhardwaj2010cloud}, é o serviço de entrega de hardware (servidor, armazenamento e rede) e software associado 
-(sistema de arquivos e virtualização de sistemas).
-
-De acordo com \citeonline{leite2016influencia} (apud \cite{mell2011nist}), os serviços de nuvens devem possuir as seguintes
+De acordo com Filho e Dionísio \cite{leite2016influencia} (apud \cite{mell2011nist}), os serviços de nuvens devem possuir as seguintes
 características: autoatendimento sob demanda, amplo acesso a rede,
 agrupamento de recursos, elasticidade rápida e medição de serviço.
 
-\subsection{Qualidade de Serviço em nuvem}
+Sefraoui et al. \cite{sefraoui2012openstack} afirmam que a IaaS é onde o recurso de hardware é provido em forma de máquinas vituais. 
+O cliente mantém as aplicações, bancos de dados e servidores enquanto o servidor mantém a virtualização da nuvem, 
+o hardware, o armazenamento e as redes. 
 
-% A medição dos serviços de nuvem é uma das características essenciais de acordo com 
-% \citeonline{mell2011nist}. 
-
-
-% \citeonline{leite2016influencia} trata a qualidade de serviço em duas abordagens:
-% uma relacionada à rede e outra em nível de aplicação. Em relação a rede são tratados
-% os requisitos para garantir a qualidade do serviço. Em nível de aplicação são tratados
-% os atributos que implicam no cumprimento dos níveis de serviço acordado. 
-% Neste trabalho será tratada a qualidade de serviço do ponto de vista da aplicação.
-
-\citeonline{siegel2012cloud} apresentam métricas para cálculo dos benefícios e riscos
-de serviços de computação em nuvem. Características como prestação de contas, agilidade,
-garantia, financeira, desempenho, segurança e privacidade e usabilidade. 
-
-%Características como memória, processamento, enlace e sistemas operacionais suportados
-%são comumente relacionadas com a qualidade dos serviços prestados. Assim como a 
-%disponibilidade, segurança, privacidade e integridade. \cite{leite2016influencia}
-
-
-\subsection{Infraestrutura como serviço}
-
-\citeonline{bhardwaj2010cloud} estabelece os seguintes serviços a serem providos 
-por IaaS: Infraestrutura virtual (servidor, armazenamento e rede);
+Para Bhardwaj et al. \cite{bhardwaj2010cloud}, é o serviço de entrega de hardware 
+(servidor, armazenamento e rede) e software associado (sistema de arquivos e virtualização de sistemas). Os autores estabelecem
+os seguintes serviços a serem providos  por IaaS: Infraestrutura virtual (servidor, armazenamento e rede);
 Implantação de aplicativos baseados na Web para fácil disponibilização sob demanda; Balanceamento de carga; 
 Estabelecimento de acordos de nível de serviço com os clientes;  Segurança dos CPUs, dados e rede;
 e Gestão e provisionamento de conta.
 
-\subsection{OpenStack}
+\subsection{Qualidade de Serviço}
+
+A qualidade de serviço na computação em nuvem pode ser considerada como o
+desempenho de modo geral do serviço provido \cite{openstack}.
+
+Filho e Dionísio \cite{leite2016influencia} tratam a qualidade de serviço em duas abordagens:
+uma relacionada à rede e outra em nível de aplicação. Em relação a rede são tratados
+os requisitos para garantir a qualidade do serviço. Em nível de aplicação são tratados
+os atributos que implicam no cumprimento dos níveis de serviço acordado. 
+
+A qualidade de serviço também pode ser dividida em dois pontos de vista: o 
+ponto de vista do cliente e o ponto de vista do provedor \cite{openstack, bhardwaj2010cloud}. 
+O escopo deste trabalho trata apenas das métricas relacionadas ao ponto de vista do provedor.
+
+
+\section{OpenStack}
 
 O OpenStack é uma ferramenta que fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos (cada subprojeto é um módulo 
 do OpenStack) inter-relacionados 
 que controlam um conjunto de recursos de processamento (subprojeto \textit{Nova}), armazenamento (subprojetos \textit{Cinder} e \textit{Swift}),
 e de rede (subprojeto \textit{Neutron}) em uma infraestrutura de computação em nuvem \cite{openstack} \cite{bui2016}.
+
 Além desses subprojetos apresentados, o OpenStack conta com alguns serviços compartilhados entre os diferentes módulos, como o serviço de 
 autenticação e autorização (subprojeto \textit{Keystone}), serviço de gerenciamento de imagens (subprojeto \textit{Glance}) e o serviço de 
-telemetria (subprojeto \textit{Ceilometer}) \cite{openstack}. Estes são apenas os principais serviços providos pelo OpenStack, para uma
-descrição completa de todos os serviços consulte \cite{openstack}.
+telemetria (subprojeto \textit{Ceilometer}) \cite{openstack}. Estes são apenas os principais serviços providos pelo OpenStack, a
+descrição completa de todos os serviços pode ser vista na documentação da ferramenta \cite{openstack}.
 
 O OpenStack é bastante robusto, capaz de controlar uma grande de quantidade
 de recursos computacionais em um \textit{data center}, o que exige uma infraestrutura de \textit{hardware} 
@@ -507,7 +505,7 @@ O gerenciamento e controle da infraestrutura da nuvem pelo usuário podem ser re
 (subprojeto \textit{Horizon}), via linha de comando (\textit{Command Line Interface} (CLI)) e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
 Em relação à integração interna dos módulos do \textit{OpenStack}, esta é realizada por meio de APIs RESTful e 
 de \textit{Remote Procedure Call} (RPC) via RabbitMQ (ferramenta que implementa a comunicação inter-processos seguindo o protocolo
-\textit{Advanced Message Queue Protocol})\cite{bui2016}. Para mais detalhes sobre a integração dos módulos, consulte \cite{bui2016}.
+\textit{Advanced Message Queue Protocol})\cite{bui2016}. Mais detalhes sobre a integração dos módulos podem ser vistos no estudo de Bui \cite{bui2016}.
 
 A Figura \ref{fig:openstack_architecture} ilustra a arquitetura conceitual do OpenStack, apresentando o relacionamento entre os
 módulos que o compõe.
@@ -519,31 +517,34 @@ módulos que o compõe.
 \label{fig:openstack_architecture}
 \end{figure}
 
-\section{Metodologia}
+\section{Materiais e métodos}
 
-Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada na Figura \ref{metodologia},
-cujas etapas são explicadas a seguir.
-
+Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada na Figura \ref{metodologia}.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.3\textwidth]{figuras/metodologia.png}
-  \caption{Metodologia proposta. Fonte: Autor.}
+  \caption{Metodologia proposta. Fonte: Autores.}
   \label{metodologia}
 \end{figure}
 
 
 \begin{itemize}
  \item \textbf{Levantamento das métricas existentes} - Esta etapa consistiu em consultar na literatura as métricas de QoS para
-	serviços de nuvem e documentá-las;
- \item \textbf{Filtragem das métricas} - A partir das métricas levantadas com a revisão da literatura, a próxima etapa consistiu em 
-	identificar quais métricas se aplicam para o modelo de serviço IaaS, pois pode acontecer de algumas métricas se encaixarem
-	mais aos outros modelos de serviço e não serem propícias ao modelo IaaS, devido às suas características peculiares. Além disso,
-	métricas muito complexas (que exigem muitos insumos, insumos complicados de se obter e/ou cálculos mais complexos) foram descartadas,
-	a fim de obter métricas mais passíveis da ferramenta fornecer;
- \item \textbf{Levantamento das métricas do OpenStack} - Esta etapa consistiu em verificar quais métricas a ferramenta oferecia,
-	realizando uma simples coleta das métricas presentes no OpenStack a partir da execução da ferramenta em um cenário de teste 
-	e análise da documentação.
+	serviços de nuvem e documentá-las, por meio de uma revisão de literatura não sistemática;
+
+ \item \textbf{Filtragem das métricas} - A partir das métricas levantadas com a revisão da literatura, esta etapa consistiu em 
+	filtrar os resultados a partir de critérios previamente definidos.
+	
+ \item \textbf{Confronto das métricas} - Esta etapa consistiu em verificar a existência das métricas filtradas no Openstack,	
+	com base na documentação e execução da ferramenta, identificando também como a ferramenta apresenta essa métrica,
+	para verificar quais métricas propostas na literatura são implementadas nativamente no OpenStack. Além disso,
+	métricas que Openstack fornecia mas não se encontravam na literatura, porém estavam relacionadas com as métricas encontradas,
+	foram identificadas e documentadas;
+ 
+ \item \textbf{Validação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta e
+	como eram fornecidas,
+	realizando uma simples coleta das métricas idenficadas presentes no Openstack a partir da execução da ferramenta em um cenário de teste.
 	Esta etapa englobou as seguintes atividades:
 	\subitem - \emph{\textbf{Caracterizar cenário/contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta,
 		 considerando itens como ambiente para execução do teste, versão da ferramenta utilizada, topologia utilizada, ferramentas
@@ -552,18 +553,17 @@ cujas etapas são explicadas a seguir.
 		 a ser feita;
 	\subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas foram coletadas e documentadas, seguindo o
 		 plano de medição definido anteriormente.
- \item \textbf{Confronto das métricas} - Esta etapa consistiu em comparar as métricas encontradas na literatura com as métricas
-	identificadas no OpenStack, para verificar quais métricas propostas na literatura são implementadas nativamente no OpenStack;
+
  \item \textbf{Análise e redação dos resultados}: Nesta etapa os resultados obtidos na etapa anterior foram interpretados e documentados.
 \end{itemize}
 
-\section{Desenvolvimento do trabalho} % MELHORAR ESSE TITULO
+\section{Execução} % MELHORAR ESSE TITULO
 
   \subsection{Levantamento das métricas existentes}
       
-      As métricas de QoS existentes propostas na literatura foram levantadas consultando as bases da
-      \textit{Institute of Electrical and Electronics Engineers} (IEEE). Foram encontrados seis artigos que apresentavam de forma concisa
-      métricas de QoS para serviços de nuvem. São eles:
+      Foi realizada uma revisão de literatura não sistemática com o intuito de encontrar as métricas de QoS existentes
+      propostas em outros estudos. Foram encontrados seis artigos que apresentavam de forma explícita métricas de QoS para
+      serviços de nuvem.  Estes artigos foram analisados e foram identificadas 68 métricas que podem ser vistas na Tabela \ref{tab:metricas_literatura}.
       
       \begin{itemize}
        \item \textbf{Artigo 1}: \textit{QoS Metrics for Cloud Computing Services Evaluation} \cite{bardsiri2014};
@@ -573,100 +573,384 @@ cujas etapas são explicadas a seguir.
        \item \textbf{Artigo 5}: \textit{Cloud Services Measures for Global Use} \cite{siegel2012cloud}
        \item \textbf{Artigo 6}: \textit{An End-To-End QoS Mapping Approach for Cloud Service Selection} \cite{karim2013}
       \end{itemize}
-     
       
-      Estes artigos foram analisados e as seguintes métricas foram identificadas:
-      
-     \begin{itemize}
-      \item Metricas aqui em uma tabela ou imagem
-     \end{itemize}
+\begin{table}[]
+\centering
+ \caption{Métricas encontradas na literatura}
+\label{tab:metricas_literatura}
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Métrica}}                                                       & \multicolumn{1}{c|}{\textbf{Categoria}}                                                                    & \multicolumn{1}{c|}{\textbf{Artigo}}                                                    \\ \hline
+Algoritmos de criptografia                                                                   & Segurança                                                                                                  & \multirow{9}{*}{Artigo 6 [19]}                                                          \\ \cline{1-2}
+Apreensibilidade do serviço                                                                  & Usabilidade                                                                                                &                                                                                         \\ \cline{1-2}
+Controle de acesso                                                                           & Segurança                                                                                                  &                                                                                         \\ \cline{1-2}
+Controle de Dados                                                                            & Controle de Dados                                                                                          &                                                                                         \\ \cline{1-2}
+Defeitos por milhão (DPM)                                                                    & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Facilidade de uso                                                                            & Usabilidade                                                                                                &                                                                                         \\ \cline{1-2}
+Instalabilidade do IaaS                                                                      & Usabilidade                                                                                                &                                                                                         \\ \cline{1-2}
+Privacidade dos Dados                                                                        & Segurança                                                                                                  &                                                                                         \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Tempo médio entre \\ falhas (MTBF)\end{tabular}                   & Confiabilidade                                                                                             &                                                                                         \\ \hline
+Políticas de controle de acesso                                                              & \begin{tabular}[c]{@{}l@{}}Segurança/ \\ Privacidade\end{tabular}                                          & Artigo 5 [18]                                                                           \\ \hline
+Custo de VM                                                                                  & Custo                                                                                                      & \begin{tabular}[c]{@{}l@{}}Artigo 5 [18]; \\ Artigo 4 [1]\end{tabular}                  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Armazenamento \\ (memória permanente, ex.HD)\end{tabular}         & -                                                                                                          & \multirow{16}{*}{Artigo 3 [3]}                                                          \\ \cline{1-2}
+Banco de dados NoSQL                                                                         & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Camadas de aplicação                                                                         & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Frequência de CPU                                                                            & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Performance de I/O                                                                           & -                                                                                                          &                                                                                         \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Largura de banda \\ (download, upload)\end{tabular}               & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Latência máxima (aplicação)                                                                  & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Número de balanceadores de carga                                                             & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Número de instâncias                                                                         & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Número de núcleos de CPU                                                                     & -                                                                                                          &                                                                                         \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Número máximo de \\ usuários concorrentes\end{tabular}            & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Região                                                                                       & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Servidores de aplicação                                                                      & -                                                                                                          &                                                                                         \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Sistema Operacional\\  (Tipo, Plataforma, Versão)\end{tabular}    & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Suporte a SGBD relacional                                                                    & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Tipo de aplicação                                                                            & -                                                                                                          &                                                                                         \\ \hline
+Segurança (métrica geral)                                                                    & -                                                                                                          & \begin{tabular}[c]{@{}l@{}}Artigo 3 [3]; \\ Artigo 6 [19]\end{tabular}                  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Memória (RAM requerida \\ para instância)\end{tabular}            & \begin{tabular}[c]{@{}l@{}}Garantia/ \\ Sustentabilidade \\ do serviço\end{tabular}                        & \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Artigo 3 [3]; \\ Artigo 4 [1]\end{tabular}}  \\ \cline{1-2}
+Tempo de resposta (aplicação)                                                                & Performance                                                                                                &                                                                                         \\ \hline
+Disponibilidade                                                                              & -                                                                                                          & \begin{tabular}[c]{@{}l@{}}Artigo 3 [3]; \\ Artigo 4 [1]; \\ Artigo 6 [19]\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Atraso de transferência \\ TCP/UDP/IP\end{tabular}                & \begin{tabular}[c]{@{}l@{}}Performance / \\ Comunicação/ \\ Latência\end{tabular}                          & \multirow{2}{*}{Artigo 2 [4]}                                                           \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Velocidade de transferência \\ bit/byte TCP/UDP/IP\end{tabular}   & \begin{tabular}[c]{@{}l@{}}Performance / \\ Comunicação/ \\ Taxa de transferência \\ de dados\end{tabular} &                                                                                         \\ \hline
+Confidencialidade                                                                            & \begin{tabular}[c]{@{}l@{}}Segurança /\\ Autenticação\end{tabular}                                         & \multirow{9}{*}{Artigo 1 [5]}                                                           \\ \cline{1-2}
+Efetividade                                                                                  & \begin{tabular}[c]{@{}l@{}}Segurança / \\ Autenticação\end{tabular}                                        &                                                                                         \\ \cline{1-2}
+Habilidade de auditoria                                                                      & \begin{tabular}[c]{@{}l@{}}Segurança / \\ Segurança dos dados\end{tabular}                                 &                                                                                         \\ \cline{1-2}
+Modularidade                                                                                 & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Sensibilidade                                                                                & \begin{tabular}[c]{@{}l@{}}Segurança / \\ Autenticação\end{tabular}                                        &                                                                                         \\ \cline{1-2}
+Tempo de boot                                                                                & \begin{tabular}[c]{@{}l@{}}Economia / \\ Elasticidade\end{tabular}                                         &                                                                                         \\ \cline{1-2}
+Tempo de computação                                                                          & \begin{tabular}[c]{@{}l@{}}Performance / \\ Tempo\end{tabular}                                             &                                                                                         \\ \cline{1-2}
+Utilização de recursos                                                                       & Eficiência                                                                                                 &                                                                                         \\ \cline{1-2}
+Velocidade de memória                                                                        & \begin{tabular}[c]{@{}l@{}}Performance /\\  Memória\end{tabular}                                           &                                                                                         \\ \hline
+Carga de CPU                                                                                 & \begin{tabular}[c]{@{}l@{}}Performance /\\ Computação\end{tabular}                                         & \multirow{21}{*}{\begin{tabular}[c]{@{}l@{}}Artigo 1 [5]; \\ Artigo 2 [4]\end{tabular}} \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Custo de recursos de \\ componentes\end{tabular}                  & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
+Custo por FLOP                                                                               & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
+Custo por tempo fixo                                                                         & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
+Custo total                                                                                  & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
+Eficiência da Instância                                                                      & \begin{tabular}[c]{@{}l@{}}Performance / \\ Computação\end{tabular}                                        &                                                                                         \\ \cline{1-2}
+Frequência de perda de pacotes                                                               & \begin{tabular}[c]{@{}l@{}}Performance / \\ Comunicação\end{tabular}                                       &                                                                                         \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Latência de comunicação \\ sobre SSL\end{tabular}                 & \begin{tabular}[c]{@{}l@{}}Segurança / \\ Segurança dos dados\end{tabular}                                 &                                                                                         \\ \cline{1-2}
+Razão Preço/Performance                                                                      & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
+SSL aplicável?                                                                               & \begin{tabular}[c]{@{}l@{}}Segurança / \\ Segurança dos dados\end{tabular}                                 &                                                                                         \\ \cline{1-2}
+Taxa de atualização de RAM                                                                   & \begin{tabular}[c]{@{}l@{}}Performance / \\ Memória\end{tabular}                                           &                                                                                         \\ \cline{1-2}
+Taxa de erros de conexão                                                                     & \begin{tabular}[c]{@{}l@{}}Performance / \\ Comunicação\end{tabular}                                       &                                                                                         \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Taxa de FLOPs (Float Point \\ Operations Per Second)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Performance / \\ Computação\end{tabular}                                        &                                                                                         \\ \cline{1-2}
+Tempo de comunicação                                                                         & Performance / Tempo                                                                                        &                                                                                         \\ \cline{1-2}
+Tempo de deleção                                                                             & \begin{tabular}[c]{@{}l@{}}Economia /\\ Elasticidade\end{tabular}                                          &                                                                                         \\ \cline{1-2}
+Tempo de implantação                                                                         & \begin{tabular}[c]{@{}l@{}}Economia / \\ Elasticidade\end{tabular}                                         &                                                                                         \\ \cline{1-2}
+Tempo de suspensão                                                                           & \begin{tabular}[c]{@{}l@{}}Economia / \\ Elasticidade\end{tabular}                                         &                                                                                         \\ \cline{1-2}
+Tempo total de aquisição                                                                     & \begin{tabular}[c]{@{}l@{}}Economia / \\ Elasticidade\end{tabular}                                         &                                                                                         \\ \cline{1-2}
+\begin{tabular}[c]{@{}l@{}}Usuários suportados em um \\ orçamento fixo\end{tabular}          & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
+Interoperabilidade                                                                           & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Tempo de resposta (memória)                                                                  & \begin{tabular}[c]{@{}l@{}}Performance / \\ Memória\end{tabular}                                           &                                                                                         \\ \hline
+Acurácia                                                                                     & -                                                                                                          & \multirow{5}{*}{Artigo 4 [1]}                                                           \\ \cline{1-2}
+Adequação                                                                                    & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Confiabilidade                                                                               & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Elasticidade                                                                                 & -                                                                                                          &                                                                                         \\ \cline{1-2}
+Transparência                                                                                & -                                                                                                          &                                                                                         \\ \hline
+\end{tabular}
+\end{table}
+
+% \begin{table*}[]
+% \centering
+% \caption{Métricas encontradas na literatura}
+% \label{tab:metricas_literatura}
+% \begin{tabular}{@{}lccc@{}}
+% \toprule
+% \multicolumn{1}{c}{\textbf{Métrica}}                                                       & \textbf{Unidade}      & \textbf{Categoria}                                                                                   & \textbf{Artigo}                                                                                  \\ \hline
+% Algoritmos de criptografia                                                                   & -                     & Segurança                                                                                            & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Apreensibilidade do serviço                                                                  & -                     & Usabilidade                                                                                          & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Controle de acesso                                                                           & boolean               & Segurança                                                                                            & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Controle de Dados                                                                            & \%                    & Controle de Dados                                                                                    & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Defeitos por milhão (DPM)                                                                    & -                     & -                                                                                                    & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Facilidade de uso                                                                            & -                     & Usabilidade                                                                                          & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Instalabilidade do IaaS                                                                      & -                     & Usabilidade                                                                                          & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Privacidade dos Dados                                                                        & -                     & Segurança                                                                                            & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Tempo médio entre falhas (MTBF)								     & \%                    & Confiabilidade                                                                                       & Artigo 6 {[}19{]}                                                                                \\ \hline
+% Políticas de controle de acesso                                                              & escala ordinal        & Segurança/ Privacidade                                                                               & Artigo 5 {[}18{]}                                                                                \\ \hline
+% Custo de VM                                                                                  &                       & Custo;On-going cost base                                                                             & Artigo 5 {[}18{]}; Artigo 4 {[}1{]}                                                              \\ \hline
+% \begin{tabular}[c]{@{}l@{}}Armazenamento (memória \\ permanente, ex.HD)\end{tabular}         & GB                    & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Banco de dados NoSQL                                                                         & boolean               & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Camadas de aplicação                                                                         & -                     & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Frequência de CPU                                                                            & MHz, GHz              & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Performance de I/O                                                                           & escala ordinal        & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% \begin{tabular}[c]{@{}l@{}}Largura de banda \\ (download, upload)\end{tabular}               & MB/s, GB/s            & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Latência máxima (aplicação)                                                                  & ms                    & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Número de balanceadores de carga                                                             & escala absoluta       & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Número de instâncias                                                                         & escala absoluta       & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Número de núcleos de CPU                                                                     & escala absoluta       & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% \begin{tabular}[c]{@{}l@{}}Número máximo de usuários \\ concorrentes\end{tabular}            & escala absoluta       & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Região                                                                                       & -                     & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Servidores de aplicação                                                                      & -                     & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% \begin{tabular}[c]{@{}l@{}}Sistema Operacional \\ (Tipo, Plataforma, Versão)\end{tabular}    & escala nominal        & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Suporte a SGBD relacional                                                                    & boolean               & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Tipo de aplicação                                                                            & -                     & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
+% Segurança (métrica geral)                                                                    & escala ordinal; \%    & -                                                                                                    & Artigo 3 {[}3{]}; Artigo 6 {[}19{]}                                                              \\ \hline
+% Memória (RAM requerida para instância)                                                       & MB, GB                & Garantia; Sustentabilidade do serviço                                                                & Artigo 3 {[}3{]}; Artigo 4 {[}1{]}                                                               \\ \hline
+% Tempo de resposta (aplicação)                                                                & ms                    & Performance                                                                                          & Artigo 3 {[}3{]}; Artigo 4 {[}1{]}                                                               \\ \hline
+% Disponibilidade                                                                              & \%                    & -                                                                                                    & \begin{tabular}[c]{@{}c@{}}Artigo 3 {[}3{]}; Artigo 4 {[}1{]}; \\ Artigo 6 {[}19{]}\end{tabular} \\ \hline
+% Atraso de transferência TCP/UDP/IP                                                           & s, us                 & Performance / Comunicação/ Latência                                                                  & Artigo 2 {[}4{]}                                                                                 \\ \hline
+% \begin{tabular}[c]{@{}l@{}}Velocidade de transferência \\ bit/byte TCP/UDP/IP\end{tabular}   & bps, Mbps, MB/s, GB/s & \begin{tabular}[c]{@{}c@{}}Performance / Comunicação/\\  Taxa de transferência de dados\end{tabular} & Artigo 2 {[}4{]}                                                                                 \\ \hline
+% Confidencialidade                                                                            & -                     & Segurança / Autenticação                                                                             & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Efetividade                                                                                  & -                     & Segurança / Autenticação                                                                             & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Habilidade de auditoria                                                                      & boolean               & Segurança / Segurança dos dados                                                                      & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Modularidade                                                                                 & -                     & -                                                                                                    & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Sensibilidade                                                                                & -                     & Segurança / Autenticação                                                                             & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Tempo de boot                                                                                & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Tempo de computação                                                                          & -                     & Performance / Tempo                                                                                  & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Utilização de recursos                                                                       & -                     & Eficiência                                                                                           & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Velocidade de memória                                                                        & MB/s, GB/s            & Performance / Memória                                                                                & Artigo 1 {[}5{]}                                                                                 \\ \hline
+% Carga de CPU                                                                                 & \%                    & Performance / Computação                                                                             & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Custo de recursos de componentes                                                             & \$                     & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Custo por FLOP                                                                               & cent/FLOP, \$/GFLOP   & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Custo por tempo fixo                                                                         & \$/ano                & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Custo total                                                                                  & \$                     & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Eficiência da Instância                                                                      & \% de pico de CPU     & Performance / Computação                                                                             & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Frequência de perda de pacotes                                                               & pacotes/(s, ms)       & Performance / Comunicação                                                                            & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Latência de comunicação sobre SSL                                                            & ms, s                 & Segurança / Segurança dos dados                                                                      & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Razão Preço/Performance                                                                      &                       & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% SSL aplicável?                                                                               & boolean               & Segurança / Segurança dos dados                                                                      & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Taxa de atualização de RAM                                                                   & -                     & Performance / Memória                                                                                & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Taxa de erros de conexão                                                                     & -                     & Performance / Comunicação                                                                            & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Taxa de FLOPs (Float Point Operations Per Second)                                          & Gflops, TFlops        & Performance / Computação                                                                             & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Tempo de comunicação                                                                         & s                     & Performance / Tempo                                                                                  & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Tempo de deleção                                                                             & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Tempo de implantação                                                                         & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Tempo de suspensão                                                                           & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Tempo total de aquisição                                                                     & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% \begin{tabular}[c]{@{}l@{}}Usuários suportados em \\ um orçamento fixo\end{tabular}          & usuarios/\$           & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Interoperabilidade                                                                           & -                     & -                                                                                                    & Artigo 1 {[}5{]}; Artigo 4 {[}1{]}                                                               \\ \hline
+% Tempo de resposta (memória)                                                                  & ms                    & Performance / Memória                                                                                & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
+% Acurácia                                                                                     & escala absoluta       & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
+% Adequação                                                                                    & escala ordinal        & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
+% Confiabilidade                                                                               & -                     & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
+% Elasticidade                                                                                 & -                     & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
+% Transparência                                                                                & -                     & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
+% \end{tabular}
+% \end{table*}
      
   \subsection{Filtragem das métricas}
   
-% Please add the following required packages to your document preamble:
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+      Para filtragem das métricas foram definidos quatro critérios considerando o contexto e escopo do trabalho. A avaliação das
+      métricas coletadas pode ser vista na Tabela \ref{tab:avaliacao_metricas}.
+   
+	\begin{itemize}
+	 \item \textbf{Critério 1 - O significado é conhecido?}
+	    \subitem Esse critério foi utilizado para avaliar se o significado da métrica e sua forma de cálculo, eram conhecidas.
+	 \item \textbf{Critério 2 - Aplica-se para o modelo de serviço IaaS?}
+	    \subitem Este critério foi utilizado para selecionar as métricas propícias ao modelo IaaS, 
+	    devido às suas características peculiares;
+% 	    \subitem Este critério foi utilizado pois pode acontecer de algumas métricas se encaixarem mais aos outros modelos
+% 		     de serviço e não serem propícias ao modelo IaaS, devido às suas características peculiares;
+	 \item \textbf{Critério 3 - Pode ser coletada objetivamente?}
+	    \subitem Este critério foi utilizado para selecionar as métricas que são coletadas de forma objetiva, pois esse tipo
+	    de métrica pode ser coletado por meio de ferramentas;
+	 \item \textbf{Critério 4 - É do ponto de vista do provedor?}
+	    \subitem Este critério foi utilizado para selecionar as métricas que se tratavam do ponto de vista do provedor do serviço
+	    de nuvem;
+	\end{itemize}
+	
 \begin{table*}[]
 \centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{|l|c|c|c|c|}
-\hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{FFFFFF}\textbf{Métrica}} & \textbf{Critério 1}         & \textbf{Critério 2}                                & \textbf{Critério 3}                                & \textbf{Critério 4}                              \\ \hline
-Atraso de transferência TCP/UDP/IP                             & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Largura de Banda (download, upload)                            & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Carga de CPU                                                   & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Confiabilidade (número de erros)                               & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Controle de acesso                                             & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-CPU power                                                      & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Custo total                                                    & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Eficiência da Instância                                        & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Elasticidade                                                   & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Frequência de perda de pacotes                                 & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Habilidade de auditoria                                        & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Latência de comunicação sobre SSL                              & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Latência máxima                                                & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Número máximo de usuários concorrentes                         & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Memória (RAM requerida para instância)                         & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Banco de dados NoSQL                                           & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Número de núcleos de CPU                                       & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Número de instância                                            & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Número de balanceadores de carga                               & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Sistema Operacional (Tipo, Plataforma, Versão)                 & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Suporte a SGBD relacional                                      & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo de resposta (Intervalo)                                  & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-SSL aplicável?                                                 & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Armazenamento (Memória permanente. ex: HD)                     & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Taxa de erros de conexão                                       & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo de boot                                                  & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo de comunicação                                           & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo de deleção                                               & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo de implantação                                           & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo de resposta                                              & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo de suspensão                                             & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo médio entre falhas (MTBF)                                & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Tempo total de aquisição                                       & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Velocidade de transferência bit/byte TCP/UDP/IP                & Sim                         & Sim                                                & Sim                                                & Sim                                              \\ \hline
-Acurácia                                                       & Sim                         & Sim                                                & Sim                                                & \cellcolor[HTML]{EA9999}Não                      \\ \hline
-Disponibilidade                                                & Sim                         & Sim                                                & Sim                                                & \cellcolor[HTML]{EA9999}Não                      \\ \hline
-Adequação                                                      & Sim                         & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -}   & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
-Apreensibilidade do serviço                                    & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
-Controle de Dados                                              & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
-Custo por tempo fixo                                           & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
-Defeitos por milhão                                            & Sim                         & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -}   & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} -} \\ \hline
-Facilidade de uso                                              & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}{\color[HTML]{000000} Não} & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Instalabilidade do IaaS                                        & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Interoperabilidade                                             & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Políticas de controle de acesso                                & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Transparência                                                  & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Custo de VM                                                    & Sim                         & Sim                                                & \cellcolor[HTML]{EA9999}Não                        & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Algoritmos de criptografia                                     & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Servidores de aplicação                                        & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Camadas de aplicação                                           & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Tipo de aplicação                                              & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Confidencialidade                                              & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Custo de recursos de componentes                               & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Custo por FLOP                                                 & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Efetividade                                                    & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-I/O performance                                                & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Modularidade                                                   & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Privacidade dos Dados                                          & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Razão Preço/Performance                                        & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Região                                                         & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Segurança (métrica geral)                                      & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Sensibilidade                                                  & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Taxa de atualização de RAM                                     & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Taxa de FLOPs (Float Point Operations Per Second)              & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Tempo de computação                                            & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Usuários suportados em um orçamento fixo                       & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Utilização de recursos                                         & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
-Velocidade de memória                                          & \cellcolor[HTML]{EA9999}Não & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                          & \cellcolor[HTML]{EA9999}-                        \\ \hline
+\caption{Avaliação das métricas nos critérios definidos}
+\label{tab:avaliacao_metricas}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Métrica}}              & \multicolumn{1}{l}{\textbf{Critério 1}} & \multicolumn{1}{l}{\textbf{Critério 2}} & \multicolumn{1}{l}{\textbf{Critério 3}} & \textbf{Critério 4}         \\ \midrule
+Atraso de transferência TCP/UDP/IP                & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Largura de Banda (download, upload)               & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Carga de CPU                                      & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Confiabilidade (número de erros)                  & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Controle de acesso                                & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Frequência de CPU                                 & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Custo total                                       & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Eficiência da Instância                           & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Elasticidade                                      & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Frequência de perda de pacotes                    & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Habilidade de auditoria                           & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Latência de comunicação sobre SSL                 & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Latência máxima (aplicação)                       & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Número máximo de usuários concorrentes            & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Memória (RAM requerida para instância)            & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Suporte a banco de dados NoSQL                    & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Número de núcleos de CPU                          & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Número de instância                               & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Número de balanceadores de carga                  & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Sistema Operacional (Tipo, Plataforma, Versão)    & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Suporte a SGBD relacional                         & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo de resposta (memória)                       & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+SSL aplicável?                                    & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Armazenamento (Memória permanente. ex: HD)        & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo de boot                                     & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo de comunicação                              & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo de deleção                                  & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo de implantação                              & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo de resposta (aplicação)                     & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo de suspensão                                & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo médio entre falhas (MTBF)                   & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Tempo total de aquisição                          & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Velocidade de transferência bit/byte TCP/UDP/IP   & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Performance de I/O                                & Sim                                     & Sim                                     & Sim                                     & Sim                         \\
+Acurácia                                          & Sim                                     & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não \\
+Disponibilidade                                   & Sim                                     & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não \\
+Adequação                                         & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Apreensibilidade do serviço                       & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Controle de Dados                                 & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Custo por tempo fixo                              & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Defeitos por milhão                               & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Facilidade de uso                                 & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Instalabilidade do IaaS                           & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Interoperabilidade                                & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Políticas de controle de acesso                   & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Transparência                                     & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Custo de VM                                       & Sim                                     & Sim                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-   \\
+Algoritmos de criptografia                        & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Servidores de aplicação                           & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Camadas de aplicação                              & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Tipo de aplicação                                 & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Confidencialidade                                 & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Custo de recursos de componentes                  & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Custo por FLOP                                    & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Efetividade                                       & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Modularidade                                      & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Privacidade dos Dados                             & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Razão Preço/Performance                           & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Região                                            & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Segurança (métrica geral)                         & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Sensibilidade                                     & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Taxa de atualização de RAM                        & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Taxa de FLOPs (Float Point Operations Per Second) & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Tempo de computação                               & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Usuários suportados em um orçamento fixo          & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Utilização de recursos                            & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Velocidade de memória                             & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\
+Taxa de erros de conexão                          & \cellcolor[HTML]{EA9999}Não             & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-               & \cellcolor[HTML]{EA9999}-   \\ \bottomrule
 \end{tabular}
 \end{table*}
+   
+  \subsection{Confronto das métricas} \label{confronto}
   
-  \subsection{Levantamento das métricas do OpenStack}
+  Com a filtragem obteve-se 34 métricas resultantes a serem confrontadas no Openstack. Para isso, as métricas foram divididas em estáticas e
+  dinâmicas, ou seja, aquelas que não necessitam de execução da ferramenta para serem coletadas e aquelas que necessitam da execução da ferramenta,
+  respectivamente. Além disso, as métricas foram categorizadas com base no estudo de Bardsiri e Hashemi \cite{bardsiri2014}.As categorias foram:
+  Confiabilidade, Economia, Memória, Performance, Segurança e Geral. Vale ressaltar, que foram identificadas duas métricas equivalentes (Velocidade de transferência bit/byte TCP/UDP/IP
+  e Largura de Banda (download, upload)) e dessa forma, apenas a Largura de Banda foi considerada na avaliação.
   
-    As métricas fornecidas pelo OpenStack foram levantadas executando um cenário de teste de uso da ferramenta. 
+  A categorização e o confronto das métricas pode ser visualizado nas Tabelas   \ref{tab:confronto_estaticas} e \ref{tab:confronto_dinamicas}  
+ que representam as métricas estáticas e dinâmicas, respectivamente. 
+
+\begin{table}[ht]
+\centering
+\caption{Avaliação das métricas estáticas existentes no Openstack}
+\label{tab:confronto_estaticas}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\multicolumn{3}{c}{\textbf{Estáticas}}                                                                  \\ \midrule
+\textbf{Categoria}         & \textbf{Métrica}                               & \textbf{Há no Openstack?} \\
+Economia                   & Custo total                                    & -                         \\
+\multirow{3}{*}{Geral}     & Suporte a banco de dados NoSQL                 & Sim                       \\
+                           & \begin{tabular}[c]{@{}l@{}}Sistema Operacional \\ (Tipo, Plataforma, Versão)\end{tabular} & Sim                       \\
+                           & Suporte a SGBD relacional                      & Sim                       \\
+\multirow{3}{*}{Segurança} & Controle de acesso                             & Sim                       \\
+                           & SSL aplicável?                                 & Sim                       \\
+                           & Habilidade de auditoria                        & Sim                       \\ \bottomrule
+\end{tabular}
+\end{table}  
+
+\begin{table}[ht]
+\centering
+\caption{Avaliação das métricas dinâmicas existentes no Openstack}
+\label{tab:confronto_dinamicas}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\multicolumn{1}{c}{Dinâmicas}          &                                                                                       &                                               \\ \midrule
+\multicolumn{1}{c}{\textbf{Categoria}} & \multicolumn{1}{c}{\textbf{Métrica}}                                                  & \multicolumn{1}{c}{\textbf{Há no Openstack?}} \\
+\multirow{2}{*}{Confiabilidade}        & Confiabilidade (número de erros)                                                      & Não                                           \\
+                                       & Tempo médio entre falhas (MTBF)                                                       & Não                                           \\
+\multirow{6}{*}{Economia}              & Elasticidade                                                                          & Não                                           \\
+                                       & Tempo de boot                                                                         & Não                                           \\
+                                       & Tempo de deleção                                                                      & Não                                           \\
+                                       & Tempo de implantação                                                                  & Não                                           \\
+                                       & Tempo de suspensão                                                                    & Não                                           \\
+                                       & Tempo total de aquisição                                                              & Não                                           \\
+\multirow{2}{*}{Memória}               & \begin{tabular}[c]{@{}l@{}}Memória (RAM requerida \\ para instância)\end{tabular}     & Sim                                           \\
+                                       & \begin{tabular}[c]{@{}l@{}}Armazenamento (Memória \\ permanente. ex: HD)\end{tabular} & Sim                                           \\
+\multirow{15}{*}{Performance}          & Latência máxima  (aplicação)                                                          & Não                                           \\
+                                       & \begin{tabular}[c]{@{}l@{}}Número máximo de usuários \\ concorrentes\end{tabular}     & Não                                           \\
+                                       & Número de núcleos de CPU                                                              & Não                                           \\
+                                       & Número de instâncias                                                                  & Sim                                           \\
+                                       & Número de balanceadores de carga                                                      & Não                                           \\
+                                       & Tempo de resposta (aplicação)                                                         & Não                                           \\
+                                       & Largura de Banda (download, upload)                                                   & Sim                                           \\
+                                       & Carga de CPU                                                                          & Sim                                           \\
+                                       & Frequência de CPU                                                                     & Sim                                           \\
+                                       & Eficiência da Instância                                                               & Sim                                           \\
+                                       & Frequência de perda de pacotes                                                        & Não                                           \\
+                                       & Atraso de transferência TCP/UDP/IP                                                    & Não                                           \\
+                                       & Performance de I/O                                                                    & Sim                                           \\
+                                       & Tempo de resposta (memória)                                                           & Não                                           \\
+                                       & Tempo de comunicação                                                                  & Não                                           \\
+Segurança                              & Latência de comunicação sobre SSL                                                     & Não                                           \\ \bottomrule
+\end{tabular}
+\end{table}  
+
+As métricas existentes no Openstack podem ser sumarizadas nos itens abaixo.
+Além das métricas idênticas ao que foi levantado, foram identificadas outras
+métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser consultadas na documentação \cite{openstack}.
+
+\begin{itemize}
+ \item \textbf{Memória (RAM requerida para instância)}
+    \subitem - Volume de RAM alocado para a instância (memory);
+    \subitem - Volume de RAM utilizado pela instância (memory.usage);
+    \subitem - Volume de RAM utilizada por projeto.
+ \item \textbf{Armazenamento (Memória permanente. ex: HD)}
+    \subitem - Tamanho do disco do nó de processamento (disk.root.size);
+    \subitem - Memória permanente utilizada por projeto;
+    \subitem - Memória permante utilizada por instância.
+ \item \textbf{Latência máxima  (aplicação)}
+    \subitem - Latência média do disco (disk.latency);
+    \subitem - Latência média do disco por dispositivo (disk.device.latency).
+ \item \textbf{Número de núcleos de CPU}
+    \subitem - Número de CPUs virtuais alocadas para a instância (vcpus);
+    \subitem - Número de CPUs virtuais por projeto;
+    \subitem - Média de utilização de CPU (cpu\_util).
+ \item \textbf{Número de instâncias}
+    \subitem - Número de instâncias ativas.
+ \item \textbf{Número de balanceadores de carga}
+    \subitem - Existência de um pool de balanceador de carga (network.services.lb.pool);
+    \subitem - Existência de um balanceador de carga VIP (network.services.lb.vip);
+    \subitem - Existência de um membro de balanceador de carga (network.services.lb.member);
+    \subitem - Existência de um balanceador de carga health probe (network.services.lb.health\_monitor);
+    \subitem - Total de conexões em um balanceador de carga (network.services.lb.total.connections);
+    \subitem - Conexões ativas em um balanceador de carga (network.services.lb.active.connections).
+  \item \textbf{Largura de Banda (download, upload)}
+    \subitem - Bytes via roteadores de rótulo L3 (roteadores de camada de rede) (bandwidth).
+  \item \textbf{Carga de CPU}   
+    \subitem - Carga de CPU no último 1 minuto (hardware.cpu.load.1min);
+    \subitem - Carga de CPU nos últimos 5 minutos (hardware.cpu.load.5min);
+    \subitem - Carga de CPU nos últimos 10 minutos (hardware.cpu.load.10min);
+  \item \textbf{Frequência de CPU}  
+    \subitem - Frequência da CPU (compute.node.cpu.frequency);
+  \item \textbf{Eficiência da Instância}    
+    \subitem - Utilização da CPU (compute.node.cpu.percent);
+    \item \textbf{Frequência de perda de pacotes}   
+    \subitem - Taxa de entrada de pacotes (network.incoming.packets.rate);
+    \subitem - Taxa de saída de pacotes (network.outgoing.packets.rate);
+  \item \textbf{Performance de I/O} 
+    \subitem - Número de requisições de leitura (disk.read.requests);
+    \subitem - Taxa média de requisições de leitura (disk.read.requests.rate);
+    \subitem - Número de requisições de escrita (disk.write.requests);
+    \subitem - Taxa média de requisições de escrita (disk.write.requests.rate);
+    \subitem - Volume de leitura (disk.read.bytes);
+    \subitem - Taxa média de leituras (disk.read.bytes.rate);
+    \subitem - Volume de escritas (disk.write.bytes);
+    \subitem - Taxa média de escritas (disk.write.bytes.rate);
+ \end{itemize}  
+
+  \subsection{Validação das métricas} 
+    Para verificar como se apresentavam as métricas ditas presentes no OpenStack, foi executado um cenário de teste de uso da ferramenta
+    para coletar tais métricas obtidas na seção \ref{confronto}. 
     A Subseção \ref{cenario} descreve o cenário utilizado, a Subseção \ref{plano_medicao} apresenta o planejamento para a
     coleta dos dados realizado e a Subseção \ref{resultados_levantamento} discorre sobre os resultados obtidos.
   
@@ -683,21 +967,22 @@ Velocidade de memória                                          & \cellcolor[HTM
 	 \item Utilização da topologia apresentada na Figura \ref{fig:topologia};
 	    \subitem Foram utilizados dois computadores interconectados para distribuir a carga de processamento entre eles, 
 		     de modo que um computador ficava com o nó Controlador (\textit{Controller}) e o outro computador ficava
-		     com os nós de Processamento (\textit{Compute}) e de Rede (\textit{Network}).
+		     com os nós de Processamento (\textit{Compute}) e de Rede (\textit{Network}), como ilustra a Figura \ref{fig:topologia}.
+	    \subitem A topologia utilizada foi baseada na topologia proposta por Ahmad Imanudin em \cite{imanudin}.
 	\end{itemize}
+	 
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{figuras/topologia.png}
+	\caption{Topologia utilizada no cenário de teste. Fonte: Autor.}
+	\label{fig:topologia}
+	\end{figure}
 	
-	Foi utilizada a versão \textit{Kilo} \cite{openstack_kilo} do OpenStack por ser uma versão estável e mais leve, pois, como
-	os recursos disponíveis eram limitados, era preciso utilizar uma versão mais leve da ferramenta. Vale ressaltar que apesar do
-	suporte para versão \textit{Kilo} ter sido encerrado pelos mantenedores do OpenStack, sua arquitetura não distoa muito do seu 
-	sucessor subsequente ainda suportado, o OpenStack \textit{Liberty}, o que não impacta significativamente nem invalida
-	o presente trabalho \cite{openstack_liberty}.
-	
-% 	\begin{figure}[ht]
-% 	\centering
-% 	\includegraphics[width=.5\textwidth]{figuras/topologia.png}
-% 	\caption{Topologia utilizada no cenário de teste. Fonte: Autor.}
-% 	\label{fig:topologia}
-% 	\end{figure}
+	Foi utilizada a versão \textit{Kilo} \cite{openstack_kilo} do OpenStack por ser uma versão estável e mais leve, devido a
+	limitação dos recursos disponíveis.
+	Vale ressaltar que apesar do suporte para versão \textit{Kilo} ter sido encerrado pelos mantenedores do OpenStack,
+	sua arquitetura não distoa muito do seu sucessor subsequente ainda suportado, o OpenStack \textit{Liberty}, o que
+	não impacta significativamente nem invalida o presente trabalho \cite{openstack_liberty}.
 
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -705,15 +990,25 @@ Velocidade de memória                                          & \cellcolor[HTM
 % % % %  Ou colocar como trabalho futuro, ou tentar trocar a versão.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    \subsubsection{Plano de Medição} \label{plano_medicao}
-    
-    \subsubsection{Resultados} \label{resultados_levantamento}
-
-  \subsection{Confronto das métricas}
+%     \subsubsection{Plano de Medição} \label{plano_medicao}
+%     
+%     \subsubsection{Resultados} \label{resultados_levantamento}
   
 
 \section{Conclusão}
-The conclusion goes here.
+Com a revisão de literatura realizada foi possível coletar 68 métricas relacionadas a QoS para serviços de nuvem, das quais
+35 foram avaliadas no Openstack. Na avaliação foi possível perceber que o Openstack provia 40\% das métricas exatas e além disso
+possuia algumas outras métricas relacionadas com as métricas identificadas.
+
+% .....
+
+Uma limitação identificada do trabalho é que foi considerada uma versão antiga da ferramenta. Outra limitação é que as métricas
+foram identificadas por uma revisão simples de literatura, o que não possibilitou uma visibilidade do máximo de trabalhos possíveis,
+ou seja, foram considerados poucos estudos relacionados.
+
+Como proposta de trabalho futuro é vista a aplicação de uma revisão sistemática com o intuito de encontrar mais métricas e aplicá-las para
+uma versão mais atual do Openstack.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -859,6 +1154,9 @@ The conclusion goes here.
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
