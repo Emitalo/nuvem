@@ -382,7 +382,17 @@ Email: italopaivab@gmail.com}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-The abstract goes here.
+A computação em nuvem é um paradigma que está sendo bastante difundido por causa dos seus benefícios e,
+para fornecer seus respectivos serviços, a computação em nuvem é estruturada em três diferentes módulos:
+Infraestrutura como serviço (IaaS), Plataforma como serviço (PaaS) e Software como serviço (SaaS).
+Segundo Sefraoui et al. \cite{sefraoui2012openstack}, no modelo de 
+serviço IaaS é onde o recurso de hardware é provido em forma de máquinas virtuais. O OpenStack é uma ferramenta
+que fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos inter-relacionados
+que se comunicam para construir uma infraestrutura de nuvem. A Qualidade do Serviço (QoS) é uma característica almejada
+pelo usuários de serviços de nuvem e é importante que a ferramenta escolhida forneça métricas para evidenciar, monitorar e
+garantir a qualidade do serviço. Portanto, o objetivo deste trabalho foi levantar as métricas de QoS fornecidas nativamente 
+pelo OpenStack, comparando-as com as métricas propostas na literatura. Com a execução deste trabalho percebeu-se que o
+OpenStack fornecia 41\% das métricas de QoS propostas na literatura.
 \end{abstract}
 
 % no keywords
@@ -463,7 +473,7 @@ Sefraoui et al. \cite{sefraoui2012openstack} afirmam que a IaaS é onde o recurs
 O cliente mantém as aplicações, bancos de dados e servidores enquanto o servidor mantém a virtualização da nuvem, 
 o hardware, o armazenamento e as redes. 
 
-Para Bhardwaj et al. \cite{bhardwaj2010cloud}, é o serviço de entrega de hardware 
+Para Bhardwaj et al. \cite{bhardwaj2010cloud}, o modelo IaaS é o serviço de entrega de hardware 
 (servidor, armazenamento e rede) e software associado (sistema de arquivos e virtualização de sistemas). Os autores estabelecem
 os seguintes serviços a serem providos  por IaaS: Infraestrutura virtual (servidor, armazenamento e rede);
 Implantação de aplicativos baseados na Web para fácil disponibilização sob demanda; Balanceamento de carga; 
@@ -542,17 +552,14 @@ Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada n
 	métricas que Openstack fornecia mas não se encontravam na literatura, porém estavam relacionadas com as métricas encontradas,
 	foram identificadas e documentadas;
  
- \item \textbf{Validação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta e
+ \item \textbf{Exemplificação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta e
 	como eram fornecidas,
 	realizando uma simples coleta das métricas idenficadas presentes no Openstack a partir da execução da ferramenta em um cenário de teste.
 	Esta etapa englobou as seguintes atividades:
-	\subitem - \emph{\textbf{Caracterizar cenário/contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta,
+	\subitem - \emph{\textbf{Caracterizar cenário/contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta e o cenário de teste utilizado,
 		 considerando itens como ambiente para execução do teste, versão da ferramenta utilizada, topologia utilizada, ferramentas
 		 e recursos disponíveis;
-	\subitem - \emph{\textbf{Elaborar plano de medição}}: Nesta atividade um plano de medição resumido foi criado para guiar a medição
-		 a ser feita;
-	\subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas foram coletadas e documentadas, seguindo o
-		 plano de medição definido anteriormente.
+	\subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas identificadas na etapa anterior foram coletadas e documentadas;
 
  \item \textbf{Análise e redação dos resultados}: Nesta etapa os resultados obtidos na etapa anterior foram interpretados e documentados.
 \end{itemize}
@@ -578,9 +585,9 @@ Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada n
 \centering
  \caption{Métricas encontradas na literatura}
 \label{tab:metricas_literatura}
-\begin{tabular}{lll}
+\begin{tabular}{|l|l|l|}
 \hline
-\multicolumn{1}{c}{\textbf{Métrica}}                                                       & \multicolumn{1}{c}{\textbf{Categoria}}                                                                    & \multicolumn{1}{c}{\textbf{Artigo}}                                                    \\ \hline
+\multicolumn{1}{|c|}{\textbf{Métrica}}                                                       & \multicolumn{1}{c|}{\textbf{Categoria}}                                                                    & \multicolumn{1}{c|}{\textbf{Artigo}}                                                    \\ \hline
 Algoritmos de criptografia                                                                   & Segurança                                                                                                  & \multirow{9}{*}{Artigo 6 [19]}                                                          \\ \cline{1-2}
 Apreensibilidade do serviço                                                                  & Usabilidade                                                                                                &                                                                                         \\ \cline{1-2}
 Controle de acesso                                                                           & Segurança                                                                                                  &                                                                                         \\ \cline{1-2}
@@ -627,7 +634,7 @@ Velocidade de memória                                                          
 \end{table}
 
 \begin{table}
-\begin{tabular}{lll}
+\begin{tabular}{|l|l|l|}
 \hline
 Carga de CPU                                                                                 & \begin{tabular}[c]{@{}l@{}}Performance /\\ Computação\end{tabular}                                         & \multirow{21}{*}{\begin{tabular}[c]{@{}l@{}}Artigo 1 [5] \\ Artigo 2 [4]\end{tabular}} \\ \cline{1-2}
 \begin{tabular}[c]{@{}l@{}}Custo de recursos de \\ componentes\end{tabular}                  & Economia / Custo                                                                                           &                                                                                         \\ \cline{1-2}
@@ -658,83 +665,6 @@ Transparência                                                                  
 \end{tabular}
 \end{table}
 
-% \begin{table*}[]
-% \centering
-% \caption{Métricas encontradas na literatura}
-% \label{tab:metricas_literatura}
-% \begin{tabular}{@{}lccc@{}}
-% \toprule
-% \multicolumn{1}{c}{\textbf{Métrica}}                                                       & \textbf{Unidade}      & \textbf{Categoria}                                                                                   & \textbf{Artigo}                                                                                  \\ \hline
-% Algoritmos de criptografia                                                                   & -                     & Segurança                                                                                            & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Apreensibilidade do serviço                                                                  & -                     & Usabilidade                                                                                          & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Controle de acesso                                                                           & boolean               & Segurança                                                                                            & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Controle de Dados                                                                            & \%                    & Controle de Dados                                                                                    & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Defeitos por milhão (DPM)                                                                    & -                     & -                                                                                                    & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Facilidade de uso                                                                            & -                     & Usabilidade                                                                                          & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Instalabilidade do IaaS                                                                      & -                     & Usabilidade                                                                                          & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Privacidade dos Dados                                                                        & -                     & Segurança                                                                                            & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Tempo médio entre falhas (MTBF)								     & \%                    & Confiabilidade                                                                                       & Artigo 6 {[}19{]}                                                                                \\ \hline
-% Políticas de controle de acesso                                                              & escala ordinal        & Segurança/ Privacidade                                                                               & Artigo 5 {[}18{]}                                                                                \\ \hline
-% Custo de VM                                                                                  &                       & Custo;On-going cost base                                                                             & Artigo 5 {[}18{]}; Artigo 4 {[}1{]}                                                              \\ \hline
-% \begin{tabular}[c]{@{}l@{}}Armazenamento (memória \\ permanente, ex.HD)\end{tabular}         & GB                    & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Banco de dados NoSQL                                                                         & boolean               & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Camadas de aplicação                                                                         & -                     & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Frequência de CPU                                                                            & MHz, GHz              & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Performance de I/O                                                                           & escala ordinal        & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% \begin{tabular}[c]{@{}l@{}}Largura de banda \\ (download, upload)\end{tabular}               & MB/s, GB/s            & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Latência máxima (aplicação)                                                                  & ms                    & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Número de balanceadores de carga                                                             & escala absoluta       & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Número de instâncias                                                                         & escala absoluta       & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Número de núcleos de CPU                                                                     & escala absoluta       & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% \begin{tabular}[c]{@{}l@{}}Número máximo de usuários \\ concorrentes\end{tabular}            & escala absoluta       & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Região                                                                                       & -                     & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Servidores de aplicação                                                                      & -                     & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% \begin{tabular}[c]{@{}l@{}}Sistema Operacional \\ (Tipo, Plataforma, Versão)\end{tabular}    & escala nominal        & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Suporte a SGBD relacional                                                                    & boolean               & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Tipo de aplicação                                                                            & -                     & -                                                                                                    & Artigo 3 {[}3{]}                                                                                 \\ \hline
-% Segurança (métrica geral)                                                                    & escala ordinal; \%    & -                                                                                                    & Artigo 3 {[}3{]}; Artigo 6 {[}19{]}                                                              \\ \hline
-% Memória (RAM requerida para instância)                                                       & MB, GB                & Garantia; Sustentabilidade do serviço                                                                & Artigo 3 {[}3{]}; Artigo 4 {[}1{]}                                                               \\ \hline
-% Tempo de resposta (aplicação)                                                                & ms                    & Performance                                                                                          & Artigo 3 {[}3{]}; Artigo 4 {[}1{]}                                                               \\ \hline
-% Disponibilidade                                                                              & \%                    & -                                                                                                    & \begin{tabular}[c]{@{}c@{}}Artigo 3 {[}3{]}; Artigo 4 {[}1{]}; \\ Artigo 6 {[}19{]}\end{tabular} \\ \hline
-% Atraso de transferência TCP/UDP/IP                                                           & s, us                 & Performance / Comunicação/ Latência                                                                  & Artigo 2 {[}4{]}                                                                                 \\ \hline
-% \begin{tabular}[c]{@{}l@{}}Velocidade de transferência \\ bit/byte TCP/UDP/IP\end{tabular}   & bps, Mbps, MB/s, GB/s & \begin{tabular}[c]{@{}c@{}}Performance / Comunicação/\\  Taxa de transferência de dados\end{tabular} & Artigo 2 {[}4{]}                                                                                 \\ \hline
-% Confidencialidade                                                                            & -                     & Segurança / Autenticação                                                                             & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Efetividade                                                                                  & -                     & Segurança / Autenticação                                                                             & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Habilidade de auditoria                                                                      & boolean               & Segurança / Segurança dos dados                                                                      & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Modularidade                                                                                 & -                     & -                                                                                                    & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Sensibilidade                                                                                & -                     & Segurança / Autenticação                                                                             & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Tempo de boot                                                                                & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Tempo de computação                                                                          & -                     & Performance / Tempo                                                                                  & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Utilização de recursos                                                                       & -                     & Eficiência                                                                                           & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Velocidade de memória                                                                        & MB/s, GB/s            & Performance / Memória                                                                                & Artigo 1 {[}5{]}                                                                                 \\ \hline
-% Carga de CPU                                                                                 & \%                    & Performance / Computação                                                                             & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Custo de recursos de componentes                                                             & \$                     & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Custo por FLOP                                                                               & cent/FLOP, \$/GFLOP   & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Custo por tempo fixo                                                                         & \$/ano                & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Custo total                                                                                  & \$                     & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Eficiência da Instância                                                                      & \% de pico de CPU     & Performance / Computação                                                                             & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Frequência de perda de pacotes                                                               & pacotes/(s, ms)       & Performance / Comunicação                                                                            & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Latência de comunicação sobre SSL                                                            & ms, s                 & Segurança / Segurança dos dados                                                                      & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Razão Preço/Performance                                                                      &                       & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% SSL aplicável?                                                                               & boolean               & Segurança / Segurança dos dados                                                                      & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Taxa de atualização de RAM                                                                   & -                     & Performance / Memória                                                                                & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Taxa de erros de conexão                                                                     & -                     & Performance / Comunicação                                                                            & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Taxa de FLOPs (Float Point Operations Per Second)                                          & Gflops, TFlops        & Performance / Computação                                                                             & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Tempo de comunicação                                                                         & s                     & Performance / Tempo                                                                                  & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Tempo de deleção                                                                             & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Tempo de implantação                                                                         & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Tempo de suspensão                                                                           & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Tempo total de aquisição                                                                     & s                     & Economia / Elasticidade                                                                              & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% \begin{tabular}[c]{@{}l@{}}Usuários suportados em \\ um orçamento fixo\end{tabular}          & usuarios/\$           & Economia / Custo                                                                                     & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Interoperabilidade                                                                           & -                     & -                                                                                                    & Artigo 1 {[}5{]}; Artigo 4 {[}1{]}                                                               \\ \hline
-% Tempo de resposta (memória)                                                                  & ms                    & Performance / Memória                                                                                & Artigo 1 {[}5{]}; Artigo 2 {[}4{]}                                                               \\ \hline
-% Acurácia                                                                                     & escala absoluta       & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
-% Adequação                                                                                    & escala ordinal        & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
-% Confiabilidade                                                                               & -                     & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
-% Elasticidade                                                                                 & -                     & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
-% Transparência                                                                                & -                     & -                                                                                                    & Artigo 4 {[}1{]}                                                                                 \\ \hline
-% \end{tabular}
-% \end{table*}
      
   \subsection{Filtragem das métricas}
   
@@ -743,14 +673,14 @@ Transparência                                                                  
    
 	\begin{itemize}
 	 \item \textbf{Critério 1 - O significado é conhecido?}
-	    \subitem Esse critério foi utilizado para avaliar se o significado da métrica e sua forma de cálculo, eram conhecidas.
+	    \subitem Esse critério foi utilizado para avaliar se o significado da métrica e sua forma de cálculo eram conhecidas.
 	 \item \textbf{Critério 2 - Aplica-se para o modelo de serviço IaaS?}
 	    \subitem Este critério foi utilizado para selecionar as métricas propícias ao modelo IaaS, 
 	    devido às suas características peculiares;
 % 	    \subitem Este critério foi utilizado pois pode acontecer de algumas métricas se encaixarem mais aos outros modelos
 % 		     de serviço e não serem propícias ao modelo IaaS, devido às suas características peculiares;
 	 \item \textbf{Critério 3 - Pode ser coletada objetivamente?}
-	    \subitem Este critério foi utilizado para selecionar as métricas que são coletadas de forma objetiva, pois esse tipo
+	    \subitem Este critério foi utilizado para selecionar as métricas que são coletadas de forma objetiva, pois este tipo
 	    de métrica pode ser coletado por meio de ferramentas;
 	 \item \textbf{Critério 4 - É do ponto de vista do provedor?}
 	    \subitem Este critério foi utilizado para selecionar as métricas que se tratavam do ponto de vista do provedor do serviço
@@ -958,8 +888,7 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
   \subsection{Exemplificação das métricas} 
     Para verificar como se apresentavam as métricas ditas presentes no OpenStack, foi executado um cenário de teste de uso da ferramenta
     para coletar tais métricas obtidas na seção \ref{confronto}. 
-    A Subseção \ref{cenario} descreve o cenário utilizado, a Subseção \ref{plano_medicao} apresenta o planejamento para a
-    coleta dos dados realizado e a Subseção \ref{resultados_levantamento} discorre sobre os resultados obtidos.
+    A Subseção \ref{cenario} descreve o cenário utilizado e a Subseção \ref{resultados_levantamento} discorre sobre os resultados obtidos.
   
     \subsubsection{\textbf{Cenário de teste}} \label{cenario}
 	
@@ -986,18 +915,14 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
 	\label{fig:topologia}
 	\end{figure}
 	
-	Foram criadas duas instâncias na ferramenta para os dados serem coletados com as características elencadas abaixo. 
-	A topologia pode ser vista na Figura \ref{fig:instancias}.
-
-	\begin{itemize}
-	 \item Memória: 512 MB
-	 \item Sistema Operacional: CirrOS
-	\end{itemize}
+	Foram criadas duas instâncias (com 512 MB de RAM e sistema operacional CirrOS) na ferramenta como cenário de teste
+	para os dados serem coletados.
+	A topologia utilizada como cenário de teste pode ser vista na Figura \ref{fig:instancias}.
     
 	 
 	\begin{figure}[ht]
 	\centering
-	\includegraphics[width=.5\textwidth]{figuras/topologia.png}
+	\includegraphics[width=.4\textwidth]{figuras/topologia_teste.png}
 	\caption{Topologia utilizada como cenário de teste. {\tiny \textit{Imagem Retirada da Ferramenta}}}
 	\label{fig:instancias}
 	\end{figure}
@@ -1011,16 +936,13 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
 		    
     \subsubsection{Resultados} \label{resultados_levantamento}
   
-	As métricas foram coletadas por meio do serviço de coleta de dados (módulo - \textit{Ceilometer}) e 
-	da aplicação \textit{Web} (módulo \textit{Horizon}). 
-	
-	Todas as métricas coletadas pelo serviço \textit{Ceilometer} foram obtidas pelo comando \textit{ceilometer meter-list} e
-	pode ser visualizada na Tabela \ref{tab:meters_list}.
+	As métricas foram coletadas por meio do serviço de coleta de dados do OpenStack (módulo - \textit{Ceilometer}) e 
+	da aplicação \textit{Web} (módulo \textit{Horizon}).
 	
 % 	  \caption{Lista de métricas coletadas pelo \textit{Ceilometer}.}
 % 	  \label{tab:meters_list}
 	
-	Com o cenário de teste realizado as métricas coletadas podem ser vista na Tabela \ref{tab:metricas_coletadas}.
+	Com o cenário de teste realizado as métricas coletadas podem ser vistas na Tabela \ref{tab:metricas_coletadas}.
 	
 \begin{table}[h!]
 \centering
@@ -1028,35 +950,47 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
 \label{tab:metricas_coletadas}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
-\multicolumn{1}{c}{Métrica}   & Max      & Min      & Media      & Unidade       \\ \midrule
-cpu\_util                     & 16.11    & 0        & 7.9        & \%            \\
-memory                        & 512      & 512      & 512        & MB            \\
-memory.usage                  & -        & -        & -          & MB            \\
-disk.root.size                & 1        & 1        & 1          & GB            \\
-vcpus                         & 1        & 1        & 1          & nº vCPUs      \\
-network.incoming.packets      & 19       & 8        & 11.75      & pacotes       \\
-network.incoming.packets.rate & 0.0016   & 0.00011  & 0.00011    & pacotes/s     \\
-network.outgoing.packets      & 9        & 9        & 9          & pacotes       \\
-network.outgoing.packets.rate & 0        & 0        & 0          & pacotes/s     \\
-disk.read.requests            & 1122     & 877      & 1032.77    & requisições   \\
-disk.read.requests.rate       & 0.23     & 0        & 0.015      & requisições/s \\
-disk.write.requests           & 134      & 55       & 111.9      & requisições   \\
-disk.write.requests.rate      & 0.091    & 0        & 0.001      & requisições/s \\
-disk.read.bytes               & 20436992 & 18510848 & 20245043.2 & bytes         \\
-disk.read.bytes.rate          & 3700.63  & 0        & 206.49     & bytes/s       \\
-disk.write.bytes              & 397312   & 206848   & 348262.4   & bytes         \\
-disk.write.bytes.rate         & 268.85   & 0        & 22.14      & bytes/s       \\ \bottomrule
+\multicolumn{1}{c}{\textbf{Métrica}}                                     & \textbf{Max} & \textbf{Min} & \textbf{Media} & \textbf{Unidade} \\ \midrule
+cpu\_util                                                                & 16.11        & 0            & 7.9            & \%               \\
+memory                                                                   & 512          & 512          & 512            & MB               \\
+memory.usage                                                             & -            & -            & -              & MB               \\
+disk.root.size                                                           & 1            & 1            & 1              & GB               \\
+vcpus                                                                    & 1            & 1            & 1              & nº vCPUs         \\
+\begin{tabular}[c]{@{}l@{}}network.incoming\\ .packets\end{tabular}      & 19           & 8            & 11.75          & pacotes          \\
+\begin{tabular}[c]{@{}l@{}}network.incoming\\ .packets.rate\end{tabular} & 0.0016       & 0.00011      & 0.00011        & pacotes/s        \\
+\begin{tabular}[c]{@{}l@{}}network.outgoing\\ .packets\end{tabular}      & 9            & 9            & 9              & pacotes          \\
+\begin{tabular}[c]{@{}l@{}}network.outgoing\\ .packets.rate\end{tabular} & 0            & 0            & 0              & pacotes/s        \\
+disk.read.requests                                                       & 1122         & 877          & 1032.77        & requisições      \\
+\begin{tabular}[c]{@{}l@{}}disk.read\\ .requests.rate\end{tabular}       & 0.23         & 0            & 0.015          & requisições/s    \\
+disk.write.requests                                                      & 134          & 55           & 111.9          & requisições      \\
+\begin{tabular}[c]{@{}l@{}}disk.write\\ .requests.rate\end{tabular}      & 0.091        & 0            & 0.001          & requisições/s    \\
+disk.read.bytes                                                          & 20436992     & 18510848     & 20245043.2     & bytes            \\
+disk.read.bytes.rate                                                     & 3700.63      & 0            & 206.49         & bytes/s          \\
+disk.write.bytes                                                         & 397312       & 206848       & 348262.4       & bytes            \\
+disk.write.bytes.rate                                                    & 268.85       & 0            & 22.14          & bytes/s          \\ \bottomrule
 \end{tabular}
 \end{table}
 
 \section{Conclusão}
 Com a revisão de literatura realizada foi possível coletar 68 métricas relacionadas a QoS para serviços de nuvem, das quais
-35 foram avaliadas no Openstack. Na avaliação foi possível perceber que o Openstack provia 40\% das métricas exatas e além disso
-possuia algumas outras métricas relacionadas com as métricas identificadas. 
+35 foram avaliadas no Openstack. Na avaliação foi possível perceber que o Openstack provia 41\% das métricas exatas e além disso
+possuia algumas outras métricas relacionadas com as métricas identificadas.
 
 O número de métricas encontradas deve-se ao fato de que o Openstack possui um módulo apenas para coleta de métricas. 
-Os resultados obtidos neste trabalham servem de insumo para outros estudos relacionadas e para construção de ferramentas de seleção de 
+Os resultados obtidos neste trabalham servem de insumo para outros estudos relacionados e para construção de ferramentas de seleção de 
 serviços de nuvem, auxiliando no levantamento das métricas possíveis de serem extraídas do Openstack.
+
+Além do módulo de coleta de dados, o OpenStack oferece alguns mecanismos de garantia de qualidade de serviço. São eles:
+
+\begin{itemize}
+ \item Funcionalidade que permite estabelecer limites para tamanhos de arquivos, memória RAM, instâncias, vCPUs;
+ \item Funcionalidade que permite criar regras de segurança para limitar tráfegos específicos nas instâncias;
+ \item Plugin do Neutron para criar regras de QoS para limitar largura de banda nas instâncias, de modo 
+ a garantir uma largura de banda mínima \cite{openstack_neutron} \cite{openstack_neutron_qos};
+ \item Projeto Aodh \cite{openstack_telemetry} que provê um serviço de alarme, onde é possível criar regras de monitoramento de métricas para que 
+quando um certo limite seja alcançado o usuário seja notificado.
+\end{itemize}
+
 
 Uma limitação identificada do trabalho é que foi considerada uma versão antiga da ferramenta. Outra limitação é que as métricas
 foram identificadas por uma revisão simples de literatura, o que não possibilitou uma visibilidade do máximo de trabalhos possíveis,
