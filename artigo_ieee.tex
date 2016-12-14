@@ -540,71 +540,111 @@ scope of this work deal with metrics only on provider point of view.
 
 \section{OpenStack}
 
-O OpenStack é uma ferramenta que fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos (cada subprojeto é um módulo 
-do OpenStack) inter-relacionados 
-que controlam um conjunto de recursos de processamento (subprojeto \textit{Nova}), armazenamento (subprojetos \textit{Cinder} e \textit{Swift}),
-e de rede (subprojeto \textit{Neutron}) em uma infraestrutura de computação em nuvem \cite{openstack} \cite{bui2016}.
+The Openstack is a tool that provides cloud services on IaaS model. Consists in a group of interrelated subprojects that controls a set of processing resources (\textit{Nova} subproject), storage (\textit{Cinder} and \textit{Swift} subprojects), and network (\textit{Neutron} subproject). Each subproject is a module of Openstack and form a computing cloud infrastructure \cite{openstack} \cite{bui2016}.
 
-Além desses subprojetos apresentados, o OpenStack conta com alguns serviços compartilhados entre os diferentes módulos, como o serviço de 
-autenticação e autorização (subprojeto \textit{Keystone}), serviço de gerenciamento de imagens (subprojeto \textit{Glance}) e o serviço de 
-telemetria (subprojeto \textit{Ceilometer}) \cite{openstack}. Estes são apenas os principais serviços providos pelo OpenStack, a
-descrição completa de todos os serviços pode ser vista na documentação da ferramenta \cite{openstack}.
+% O OpenStack é uma ferramenta que fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos (cada subprojeto é um módulo 
+% do OpenStack) inter-relacionados 
+% que controlam um conjunto de recursos de processamento (subprojeto \textit{Nova}), armazenamento (subprojetos \textit{Cinder} e \textit{Swift}),
+% e de rede (subprojeto \textit{Neutron}) em uma infraestrutura de computação em nuvem \cite{openstack} \cite{bui2016}.
 
-O OpenStack é bastante robusto, capaz de controlar uma grande de quantidade
-de recursos computacionais em um \textit{data center}, o que exige uma infraestrutura de \textit{hardware} 
-considerável para seu funcionamento pleno \cite{openstack_general} \cite{openstack}.
+The Openstack provide too some shared services between the different modules, as the authentication and
+authorization service (\textit{Keystone} subproject), image service (\textit{Glance} subproject) and the
+telemetry service (\textit{Ceilometer} subproject). These are just the mainly services provided by Openstack,
+the whole description of all services can be seen in the documentation of the tool \cite{openstack}.
 
-O gerenciamento e controle da infraestrutura da nuvem pelo usuário podem ser realizados por meio de uma aplicação \textit{Web}
-(subprojeto \textit{Horizon}), via linha de comando (\textit{Command Line Interface} (CLI)) e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
-Em relação à integração interna dos módulos do \textit{OpenStack}, esta é realizada por meio de APIs RESTful e 
-de \textit{Remote Procedure Call} (RPC) via RabbitMQ (ferramenta que implementa a comunicação inter-processos seguindo o protocolo
-\textit{Advanced Message Queue Protocol})\cite{bui2016}. Mais detalhes sobre a integração dos módulos podem ser vistos no estudo de Bui \cite{bui2016}.
+% Além desses subprojetos apresentados, o OpenStack conta com alguns serviços compartilhados entre os diferentes módulos, como o serviço de 
+% autenticação e autorização (subprojeto \textit{Keystone}), serviço de gerenciamento de imagens (subprojeto \textit{Glance}) e o serviço de 
+% telemetria (subprojeto \textit{Ceilometer}) \cite{openstack}. Estes são apenas os principais serviços providos pelo OpenStack, a
+% descrição completa de todos os serviços pode ser vista na documentação da ferramenta \cite{openstack}.
 
-A Figura \ref{fig:openstack_architecture} ilustra a arquitetura conceitual do OpenStack, apresentando o relacionamento entre os
-módulos que o compõe.
+The Openstack is fairly robust. It is capable to control a large number of computional resources
+in a datacenter. This characteristic require a good hardware infrastructure for full operation.
+
+% O OpenStack é bastante robusto, capaz de controlar uma grande de quantidade
+% de recursos computacionais em um \textit{data center}, o que exige uma infraestrutura de \textit{hardware} 
+% considerável para seu funcionamento pleno \cite{openstack_general} \cite{openstack}.
+
+The cloud infrastructure management and control can be realized using an Web application (\textit{Horizon} subproject), via command line (\textit{Command Line Interface} (CLI)) and/or RESTful APIs \cite{bui2016} \cite{openstack}. 
+
+% O gerenciamento e controle da infraestrutura da nuvem pelo usuário podem ser realizados por meio de uma aplicação \textit{Web}
+% (subprojeto \textit{Horizon}), via linha de comando (\textit{Command Line Interface} (CLI)) e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
+
+The internal modules integration is realized by RESTful APIs and Remote Procedure Call (RPC) via RabbitMQ
+(tool that implements the interprocesses communication following the Advanced Message Queue Protocol) \cite{bui2016}. More details about the modules integration can be seen in the study made by  \cite{bui2016}.
+
+% Em relação à integração interna dos módulos do \textit{OpenStack}, esta é realizada por meio de APIs RESTful e 
+% de \textit{Remote Procedure Call} (RPC) via RabbitMQ (ferramenta que implementa a comunicação inter-processos seguindo o protocolo
+% \textit{Advanced Message Queue Protocol})\cite{bui2016}. Mais detalhes sobre a integração dos módulos podem ser vistos no estudo de Bui \cite{bui2016}.
+
+The Figure \ref{fig:openstack_architecture} shows the conceptual arquitecture of the Openstack, presenting the relationship between the modules. 
+% A Figura \ref{fig:openstack_architecture} ilustra a arquitetura conceitual do OpenStack, apresentando o relacionamento entre os
+% módulos que o compõe.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.5\textwidth]{figuras/openstack_architecture.png}
-\caption{Arquitetura conceitual do OpenStack. Fonte: \cite{openstack}}
+% \caption{Arquitetura conceitual do OpenStack. Fonte: \cite{openstack}}
+\caption{Conceptual Arquitecture of the OpenStack. Fonte: \cite{openstack}}
 \label{fig:openstack_architecture}
 \end{figure}
 
-\section{Materiais e métodos}
+% \section{Materiais e métodos}
+\section{Materials and methods}
 
-Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada na Figura \ref{metodologia}.
+The methodology used on this study was organized on five steps and can be seen on Figure \ref{metodologia}.
+% Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada na Figura \ref{metodologia}.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.3\textwidth]{figuras/metodologia.png}
-  \caption{Metodologia proposta. Fonte: Autores.}
+  % \caption{Metodologia proposta. Fonte: Autores.}
+  \caption{Proposed methodology. Source: Authors.}
   \label{metodologia}
 \end{figure}
 
 
 \begin{itemize}
- \item \textbf{Levantamento das métricas existentes} - Esta etapa consistiu em consultar na literatura as métricas de QoS para
-	serviços de nuvem e documentá-las, por meio de uma revisão de literatura;
-
- \item \textbf{Filtragem das métricas} - A partir das métricas levantadas com a revisão da literatura, esta etapa consistiu em 
-	filtrar os resultados a partir de critérios previamente definidos.
-	
- \item \textbf{Confronto das métricas} - Esta etapa consistiu em verificar a existência das métricas filtradas no Openstack,	
-	com base na documentação e execução da ferramenta, identificando também como a ferramenta apresenta essa métrica,
-	para verificar quais métricas propostas na literatura são implementadas nativamente no OpenStack. Além disso,
-	métricas que Openstack fornecia mas não se encontravam na literatura, porém estavam relacionadas com as métricas encontradas,
-	foram identificadas e documentadas;
+ % \item \textbf{Levantamento das métricas existentes} - Esta etapa consistiu em consultar na literatura as métricas de QoS para serviços de nuvem e documentá-las, por meio de uma revisão de literatura;
  
- \item \textbf{Exemplificação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta e
-	como eram fornecidas,
-	realizando uma simples coleta das métricas idenficadas presentes no Openstack a partir da execução da ferramenta em um cenário de teste.
-	Esta etapa englobou as seguintes atividades:
-	\subitem - \emph{\textbf{Caracterizar cenário/contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta e o cenário de teste utilizado,
-		 considerando itens como ambiente para execução do teste, versão da ferramenta utilizada, topologia utilizada, ferramentas
-		 e recursos disponíveis;
-	\subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas identificadas na etapa anterior foram coletadas e documentadas;
+ \item \textbf{Collection of existent metrics} - This step consisted in search at literature the QoS metrics to cloud services and document them, using a literature review;
 
- \item \textbf{Análise e redação dos resultados}: Nesta etapa os resultados obtidos na etapa anterior foram interpretados e documentados.
+ % \item \textbf{Filtragem das métricas} - A partir das métricas levantadas com a revisão da literatura, esta etapa consistiu em filtrar os resultados a partir de critérios previamente definidos.
+  
+ \item \textbf{Metrics filtering} - From identified metrics on literature review this step consisted in
+ filter the results considering previously defined criterias;
+
+
+ % \item \textbf{Confronto das métricas} - Esta etapa consistiu em verificar a existência das métricas filtradas no Openstack,	
+	% com base na documentação e execução da ferramenta, identificando também como a ferramenta apresenta essa métrica,
+	% para verificar quais métricas propostas na literatura são implementadas nativamente no OpenStack. Além disso,
+	% métricas que Openstack fornecia mas não se encontravam na literatura, porém estavam relacionadas com as métricas encontradas,
+	% foram identificadas e documentadas;
+
+  \item \textbf{Metrics Comparison} - For verifing what metrics proposed on literature were implemented natively
+  on Openstack, this step consisted in verify the existence of the filtered metrics on Openstack, based on documentation and tool execution. The form that the tool presents the metrics was identified too. Besides that, the metrics provided by Openstack that was not found on literature, but were related with the foind metrics, were identified and documented;
+ 
+ % \item \textbf{Exemplificação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta e
+	% como eram fornecidas,
+	% realizando uma simples coleta das métricas idenficadas presentes no Openstack a partir da execução da ferramenta em um cenário de teste.
+	% Esta etapa englobou as seguintes atividades:
+ \item \textbf{Metrics exemplification} - This step consisted in verify if the compared metrics were in
+ the tool and how they are provided. The verification was realized through the simple collection of identified metrics present on the Openstack with the execution in a test scenario;
+
+	% \subitem - \emph{\textbf{Caracterizar cenário/contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta e o cenário de teste utilizado,
+	% 	 considerando itens como ambiente para execução do teste, versão da ferramenta utilizada, topologia utilizada, ferramentas
+	% 	 e recursos disponíveis;
+	% \subitem - \emph{\textbf{Coletar dados}}: Nesta atividade as métricas identificadas na etapa anterior foram coletadas e documentadas;
+
+  \subitem - \emph{\textbf{Characterize scenario/context}}: In this activity was described the context of the execution and the test scenario. The scenario was described considering items as the environment for
+  the execution, tool version, topology and available tools and resources.
+
+  \subitem - \emph{\textbf{Collect data}}: In this activity the identified metrics on 
+  the previous step were collected and documented.
+
+ % \item \textbf{Análise e redação dos resultados}: Nesta etapa os resultados obtidos na etapa anterior foram interpretados e documentados.
+ \item \textbf{Analysis and results report}: In this step the obtained results on previous step were
+ interpreted and documented.
+ 
 \end{itemize}
 
 \section{Execução} % MELHORAR ESSE TITULO
