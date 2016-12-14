@@ -327,7 +327,7 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Métricas de Qualidade de Serviço em ferramentas de IaaS: uma análise do OpenStack}
+\title{Métricas de Qualidade de Serviço em ferramentas de IaaS: uma análise investigativa do OpenStack}
 
 
 % author names and affiliations
@@ -414,38 +414,67 @@ OpenStack fornecia aproximadamente 24,25\% das métricas de QoS propostas na lit
 
 \section{Introdução}
 % no \IEEEPARstart
-A computação em nuvem é um paradigma de entrega de recursos, como infraestrutura, plataforma e software,
-por demanda \cite{garg2011}. Esse paradigma tem sido bastante difundido, principalmente por possuir benefícios como: escalabilidade de recursos, flexibilidade de software, pagamento por uso, sistema consolidado de manutenção e gerenciamento, confiabilidade e alta utilização e redução de 
-emissão de carbono \cite{rehman2011teaching}.
 
-Com a difusão do uso de serviços de nuvem alguns estudos (\cite{soltani2016, garg2011, li2012, 
-bardsiri2014, lesun2016, quarati2016}) tem sido realizados com o intuito de auxiliar na 
-escolha do serviço mais adequado, analisando aspectos inerentes a serviços de nuvem e de qualidade de serviço 
-(QoS, do inglês: \textit{Quality of service}). Xia et al. \cite{xia2013} afirmam que a qualidade de serviço na computação
-em nuvem é crítica, porém difícil de analisar.  
+% A computação em nuvem é um paradigma de entrega de recursos, como infraestrutura, plataforma e software,
+% por demanda \cite{garg2011}. Esse paradigma tem sido bastante difundido, principalmente por possuir benefícios como: escalabilidade de recursos,
+% flexibilidade de software, pagamento por uso, sistema consolidado de manutenção e gerenciamento, confiabilidade e alta utilização e redução de 
+% emissão de carbono \cite{rehman2011teaching}.
 
-De acordo com ISO/IEC 15939 \cite{iso15939}, medições dão suporte ao gerenciamento e melhoria de processos e produtos. É uma disciplina
-chave na avaliação da qualidade. De acordo com Peter e Grance \cite{mell2011nist}, a medição dos serviços de nuvem é 
-uma das características essenciais. 
+Cloud Computing is a on demand resource delivering paradigm, such as infrastructure, platform and software. This paradigm have been wide spreaded
+due to it's benefits, like resource scalability, software flexibility, pay per user, consolidated management and maintenance system, reliability 
+and reduction of carbon emissions \cite{rehman2011teaching}.
 
-Filho e Dionísio \cite{leite2016influencia} afirmam que as medições proporcionam
-transparência ao provedor e ao cliente e que medir os serviços de nuvem auxiliam no 
-cumprimento dos níveis de serviços acordados.
+% Com a difusão do uso de serviços de nuvem alguns estudos (\cite{soltani2016, garg2011, li2012, 
+% bardsiri2014, lesun2016, quarati2016}) tem sido realizados com o intuito de auxiliar na 
+% escolha do serviço mais adequado, analisando aspectos inerentes a serviços de nuvem e de qualidade de serviço 
+% (QoS, do inglês: \textit{Quality of service}). Xia et al. \cite{xia2013} afirmam que a qualidade de serviço na computação
+% em nuvem é crítica, porém difícil de analisar.
 
-O OpenStack \cite{openstack_general} é uma plataforma de computação em nuvem de código aberto que permite o gerenciamento e desenvolvimento 
-de infraestruturas de computação em nuvem em um \textit{datacenter}, que é mantido pela 
-\textit{OpenStack Foundation} e está sendo utilizado por diversas empresas \cite{openstack} \cite{bui2016}.
+With the spread of the use of cloud computing services, some studies (\cite{soltani2016, garg2011, li2012, 
+bardsiri2014, lesun2016, quarati2016}) have been developed in order to help choosing the more fitting service, 
+analyzing intrinsic aspects of cloud computing services and Quality of Service (QoS). Xia et al. \cite{xia2013} states that the 
+quality of service in cloud computing is critical, but is hard to analyze.
 
-Considerando esse cenário de seleção de serviços de nuvem e o crescente uso do Openstack, o objetivo deste trabalho foi identificar
-métricas de QoS disponíveis no Openstack.
+% De acordo com ISO/IEC 15939 \cite{iso15939}, medições dão suporte ao gerenciamento e melhoria de processos e produtos. É uma disciplina
+% chave na avaliação da qualidade. De acordo com Peter e Grance \cite{mell2011nist}, a medição dos serviços de nuvem é 
+% uma das características essenciais.
 
-Este trabalho está organizado em cinco seções. 
-Na seção Serviços de Nuvem são apresentados os conceitos relacionados a computação em nuvem e a qualidade desse serviço. 
+Accordingly to the ISO/IEC 15939 \cite{iso15939}, measurements supports the management and processes and products improvement. It is a
+key discipline in quality assessmenta and, accordingly to Peter and Grance \cite{mell2011nist}, cloud computing services measurement is 
+one of the essential characteristics.
+
+% Filho e Dionísio \cite{leite2016influencia} afirmam que as medições proporcionam
+% transparência ao provedor e ao cliente e que medir os serviços de nuvem auxiliam no 
+% cumprimento dos níveis de serviços acordados.
+
+Filho and Dionísio \cite{leite2016influencia} state that the measurements allows transparency to both provider and client, and that measuring the 
+cloud services helps to accomplish the agreed service levels agreements.
+
+% O OpenStack \cite{openstack_general} é uma plataforma de computação em nuvem de código aberto que permite o gerenciamento e desenvolvimento 
+% de infraestruturas de computação em nuvem em um \textit{datacenter}, que é mantido pela 
+% \textit{OpenStack Foundation} e está sendo utilizado por diversas empresas \cite{openstack} \cite{bui2016}.
+
+The OpenStack \cite{openstack_general} is an open source cloud computing platform that allows the management and development of 
+cloud computing infrastructures in a datacenter. It is currently maintained by the \textit{OpenStack Foundation} and have being used by several
+companies \cite{openstack} \cite{bui2016}.
+
+% Considerando esse cenário de seleção de serviços de nuvem e o crescente uso do Openstack, o objetivo deste trabalho foi identificar
+% métricas de QoS disponíveis no Openstack.
+
+In this scenario of cloud services selection and the increasing use of OpenStack, the goal of this paper was to identify QoS metrics
+available in OpenStack.
+
+% Este trabalho está organizado em cinco seções. 
+% Na seção Serviços de Nuvem são apresentados os conceitos relacionados a computação em nuvem e a qualidade desse serviço. 
 Na seção Openstack é apresentada uma visão geral acerca da ferramenta.
 Na seção Materiais e métodos são apresentadas as etapas de realização do trabalho, bem como os métodos utilizados. 
 Na seção Execução é apresentada a execução do trabalho.
 Por fim, na seção Conclusão são apresentadas as considerações finais, limitações e trabalhos futuros.
 
+This paper is divided in five sections.
+In the Cloud Computing Services section some concepts of cloud computing and it's quality are presented.
+In the OpenStack section a general view of the the tool is presented.
+In the Materials and Methods section the stages of the work accomplishment, as well as the used methods.
 
 \section{Serviços de nuvem}
 De acordo com Armbrust et al. \cite{armbrust2010view}, a computação em nuvem refere-se a aplicações que entregam serviços a 
@@ -541,7 +570,7 @@ Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada n
 
 \begin{itemize}
  \item \textbf{Levantamento das métricas existentes} - Esta etapa consistiu em consultar na literatura as métricas de QoS para
-	serviços de nuvem e documentá-las, por meio de uma revisão de literatura não sistemática;
+	serviços de nuvem e documentá-las, por meio de uma revisão de literatura;
 
  \item \textbf{Filtragem das métricas} - A partir das métricas levantadas com a revisão da literatura, esta etapa consistiu em 
 	filtrar os resultados a partir de critérios previamente definidos.
@@ -568,7 +597,7 @@ Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada n
 
   \subsection{Levantamento das métricas existentes}
       
-      Foi realizada uma revisão de literatura não sistemática com o intuito de encontrar as métricas de QoS existentes
+      Foi realizada uma revisão de literatura com o intuito de encontrar as métricas de QoS existentes
       propostas em outros estudos. Foram encontrados seis artigos que apresentavam de forma explícita métricas de QoS para
       serviços de nuvem.  Estes artigos foram analisados e foram identificadas 68 métricas que podem ser vistas na Tabela \ref{tab:metricas_literatura}.
       
