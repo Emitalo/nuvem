@@ -327,7 +327,10 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Métricas de Qualidade de Serviço em ferramentas de IaaS: uma análise investigativa do OpenStack}
+
+
+% \title{Métricas de Qualidade de Serviço em ferramentas de IaaS: uma análise do OpenStack}
+\title{Quality of Service Metrics on IaaS tools: an investigative analysis of Openstack}
 
 
 % author names and affiliations
@@ -381,19 +384,31 @@ Email: italopaivab@gmail.com}
 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
+
+% \begin{abstract}
+% A computação em nuvem é um paradigma que está sendo bastante difundido por causa dos seus benefícios e,
+% para fornecer seus respectivos serviços, a computação em nuvem é estruturada em três diferentes módulos:
+% Infraestrutura como serviço (IaaS), Plataforma como serviço (PaaS) e Software como serviço (SaaS).
+% Segundo Sefraoui et al. \cite{sefraoui2012openstack}, no modelo de 
+% serviço IaaS é onde o recurso de hardware é provido em forma de máquinas virtuais. O OpenStack é uma ferramenta
+% que fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos inter-relacionados
+% que se comunicam para construir uma infraestrutura de nuvem. A Qualidade do Serviço (QoS) é uma característica almejada
+% pelo usuários de serviços de nuvem e é importante que a ferramenta escolhida forneça métricas para evidenciar, monitorar e
+% garantir a qualidade do serviço. Portanto, o objetivo deste trabalho foi levantar as métricas de QoS fornecidas nativamente 
+% pelo OpenStack, comparando-as com as métricas propostas na literatura. Com a execução deste trabalho percebeu-se que o
+% OpenStack fornecia aproximadamente 24,25\% das métricas de QoS propostas na literatura e mais algumas métricas relacionadas.
+% \end{abstract}
+
 \begin{abstract}
-A computação em nuvem é um paradigma que está sendo bastante difundido por causa dos seus benefícios e,
-para fornecer seus respectivos serviços, a computação em nuvem é estruturada em três diferentes módulos:
-Infraestrutura como serviço (IaaS), Plataforma como serviço (PaaS) e Software como serviço (SaaS).
-Segundo Sefraoui et al. \cite{sefraoui2012openstack}, no modelo de 
-serviço IaaS é onde o recurso de hardware é provido em forma de máquinas virtuais. O OpenStack é uma ferramenta
-que fornece serviços de computação em nuvem no modelo IaaS e consiste em um grupo de subprojetos inter-relacionados
-que se comunicam para construir uma infraestrutura de nuvem. A Qualidade do Serviço (QoS) é uma característica almejada
-pelo usuários de serviços de nuvem e é importante que a ferramenta escolhida forneça métricas para evidenciar, monitorar e
-garantir a qualidade do serviço. Portanto, o objetivo deste trabalho foi levantar as métricas de QoS fornecidas nativamente 
-pelo OpenStack, comparando-as com as métricas propostas na literatura. Com a execução deste trabalho percebeu-se que o
-OpenStack fornecia aproximadamente 24,25\% das métricas de QoS propostas na literatura e mais algumas métricas relacionadas.
+Cloud computing is a wide spread paradigm considering its benefits. The cloud services are structured in three modules: 
+Software as a Service (SaaS), Platform as a service (PaaS) and Infrastructure as a service (IaaS). This last one use the hardware resource to provide service on virtual machines. A lot of tools are created to support this type of service. The Openstack is a open-source tool created to provide cloud services on IaaS model through inter-related subprojects.
+An important point of attention on cloud services is the Quality of Service (QoS) and cloud computing tools should provide metrics to 
+monitor and assure the QoS. The purpose of this work was gather the QoS metrics provided by Openstack comparing it with 
+the metrics found in literature. The found metrics show that the Openstack contains approximately 24,25\% of the metrics found
+in literature.
 \end{abstract}
+
+
 
 % no keywords
 
@@ -466,8 +481,8 @@ available in OpenStack.
 
 % Este trabalho está organizado em cinco seções. 
 % Na seção Serviços de Nuvem são apresentados os conceitos relacionados a computação em nuvem e a qualidade desse serviço. 
-Na seção Openstack é apresentada uma visão geral acerca da ferramenta.
-Na seção Materiais e métodos são apresentadas as etapas de realização do trabalho, bem como os métodos utilizados. 
+% Na seção Openstack é apresentada uma visão geral acerca da ferramenta.
+% Na seção Materiais e métodos são apresentadas as etapas de realização do trabalho, bem como os métodos utilizados. 
 Na seção Execução é apresentada a execução do trabalho.
 Por fim, na seção Conclusão são apresentadas as considerações finais, limitações e trabalhos futuros.
 
@@ -475,53 +490,84 @@ This paper is divided in five sections.
 In the Cloud Computing Services section some concepts of cloud computing and it's quality are presented.
 In the OpenStack section a general view of the the tool is presented.
 In the Materials and Methods section the stages of the work accomplishment, as well as the used methods.
+In the Execution section the execution of the work is presented.
+Lastly, in the Conclusion section the final considerations, limitations and future work are presented.
 
-\section{Serviços de nuvem}
-De acordo com Armbrust et al. \cite{armbrust2010view}, a computação em nuvem refere-se a aplicações que entregam serviços a 
-partir da internet. Os quais são providos através de hardware e software presentes em \textit{data centers}.
-São serviços que oferecem mecanismos para prover acesso aos usuários virtualmente a recursos ilimitados baseado no 
-modelo \textit{payper-use}, ou seja, pagamento pelo uso. \cite{sefraoui2012openstack}
+% \section{Serviços de nuvem}
+\section{Cloud Computing Services}
+% De acordo com Armbrust et al. \cite{armbrust2010view}, a computação em nuvem refere-se a aplicações que entregam serviços a 
+% partir da internet. Os quais são providos através de hardware e software presentes em \textit{data centers}.
+% São serviços que oferecem mecanismos para prover acesso aos usuários virtualmente a recursos ilimitados baseado no 
+% modelo \textit{payper-use}, ou seja, pagamento pelo uso. \cite{sefraoui2012openstack}
 
-Para provimento desses serviços a computação em nuvem é estruturada em três módulos: Infraestrutura como serviço(IaaS),
-Plataforma como serviço(PaaS) e Software como serviço (SaaS), as quais estão ordenadas por nível de abstração, do mais baixo 
-para o mais alto, respectivamente \cite{rehman2011teaching, sefraoui2012openstack, armbrust2010view, mell2011nist}. 
-Essa estrutura pode ser vista na Figura \ref{fig:cloud_structure}.
+Accordingly to Armbrust et al. \cite{armbrust2010view} the cloud computing refers to applications that delivery services 
+using the Internet. These services are provided through hardware and software of data centers. Sefraoui et al. conceptualize the 
+cloud computing as services that offers mechanisms to provide virtual access to unlimited resources based on model payper-use.
+
+% Para provimento desses serviços a computação em nuvem é estruturada em três módulos: Infraestrutura como serviço(IaaS),
+% Plataforma como serviço(PaaS) e Software como serviço (SaaS), as quais estão ordenadas por nível de abstração, do mais baixo 
+% para o mais alto, respectivamente \cite{rehman2011teaching, sefraoui2012openstack, armbrust2010view, mell2011nist}. 
+% Essa estrutura pode ser vista na Figura \ref{fig:cloud_structure}.
+
+The cloud computing is structured on three modules: Software as a Service (SaaS), Platform as a service (PaaS) and Infrastructure as a service (IaaS) (Figure \ref{fig:cloud_structure}), order by abstraction level, from high to low, respectively. 
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.3\textwidth]{figuras/cloud_structure.png}
-\caption{Estrutura de serviços da computação em nuvem. Fonte: \cite{sefraoui2012openstack}}
+\caption{Cloud computing services structure. Fonte: \cite{sefraoui2012openstack}}
 \label{fig:cloud_structure}
 \end{figure}
 
-De acordo com Filho e Dionísio \cite{leite2016influencia} (apud \cite{mell2011nist}), os serviços de nuvens devem possuir as seguintes
-características: autoatendimento sob demanda, amplo acesso a rede,
-agrupamento de recursos, elasticidade rápida e medição de serviço.
+% De acordo com Filho e Dionísio \cite{leite2016influencia} (apud \cite{mell2011nist}), os serviços de nuvens devem possuir as seguintes
+% características: autoatendimento sob demanda, amplo acesso a rede,
+% agrupamento de recursos, elasticidade rápida e medição de serviço.
 
-Sefraoui et al. \cite{sefraoui2012openstack} afirmam que a IaaS é onde o recurso de hardware é provido em forma de máquinas vituais. 
-O cliente mantém as aplicações, bancos de dados e servidores enquanto o servidor mantém a virtualização da nuvem, 
-o hardware, o armazenamento e as redes. 
+Accordingly to Filho e Dionísio \cite{leite2016influencia} (apud \cite{mell2011nist}), the cloud services should has the following 
+characteristics: self-service on demand, large network access, resource grouping, fast elasticity and service measurement.
 
-Para Bhardwaj et al. \cite{bhardwaj2010cloud}, o modelo IaaS é o serviço de entrega de hardware 
-(servidor, armazenamento e rede) e software associado (sistema de arquivos e virtualização de sistemas). Os autores estabelecem
-os seguintes serviços a serem providos  por IaaS: Infraestrutura virtual (servidor, armazenamento e rede);
-Implantação de aplicativos baseados na Web para fácil disponibilização sob demanda; Balanceamento de carga; 
-Estabelecimento de acordos de nível de serviço com os clientes;  Segurança dos CPUs, dados e rede;
-e Gestão e provisionamento de conta.
+% Sefraoui et al. \cite{sefraoui2012openstack} afirmam que a IaaS é onde o recurso de hardware é provido em forma de máquinas vituais. 
+% O cliente mantém as aplicações, bancos de dados e servidores enquanto o servidor mantém a virtualização da nuvem, 
+% o hardware, o armazenamento e as redes. 
 
-\subsection{Qualidade de Serviço}
+Sefraoui et al. \cite{sefraoui2012openstack} characterize the IaaS as a hardware resource provided on virtual machines. The client
+maintains the applications, data bases and servers while the server maintains the cloud virtualization, the hardware, the storage and the networks.   
 
-A qualidade de serviço na computação em nuvem pode ser considerada como o
-desempenho de modo geral do serviço provido \cite{openstack}.
+% Para Bhardwaj et al. \cite{bhardwaj2010cloud}, o modelo IaaS é o serviço de entrega de hardware 
+% (servidor, armazenamento e rede) e software associado (sistema de arquivos e virtualização de sistemas). Os autores estabelecem
+% os seguintes serviços a serem providos  por IaaS: Infraestrutura virtual (servidor, armazenamento e rede);
+% Implantação de aplicativos baseados na Web para fácil disponibilização sob demanda; Balanceamento de carga; 
+% Estabelecimento de acordos de nível de serviço com os clientes;  Segurança dos CPUs, dados e rede;
+% e Gestão e provisionamento de conta.
 
-Filho e Dionísio \cite{leite2016influencia} tratam a qualidade de serviço em duas abordagens:
-uma relacionada à rede e outra em nível de aplicação. Em relação a rede são tratados
-os requisitos para garantir a qualidade do serviço. Em nível de aplicação são tratados
-os atributos que implicam no cumprimento dos níveis de serviço acordado. 
+To Bhardwaj et al. \cite{bhardwaj2010cloud} the IaaS model is the service of delivering hardware (server, storage and network) 
+and associated software (files system and systems virtualization). The authors established the following services to IaaS: 
+virtual infraestructure (server, storage and network); Deploy of web-based applications to easy on demand availability;
+Load balancer; Establishing service level agreements with the clients; CPUs, data and network security; and Management and 
+count provisioning.
 
-A qualidade de serviço também pode ser dividida em dois pontos de vista: o 
-ponto de vista do cliente e o ponto de vista do provedor \cite{openstack, bhardwaj2010cloud}. 
-O escopo deste trabalho trata apenas das métricas relacionadas ao ponto de vista do provedor.
+% \subsection{Qualidade de Serviço}
+\subsection{Quality of Service}
+
+% A qualidade de serviço na computação em nuvem pode ser considerada como o
+% desempenho de modo geral do serviço provido \cite{openstack}.
+
+The quality of service in cloud computing can be considered as the performance of service in a general mode \cite{openstack}.
+
+% Filho e Dionísio \cite{leite2016influencia} tratam a qualidade de serviço em duas abordagens:
+% uma relacionada à rede e outra em nível de aplicação. Em relação a rede são tratados
+% os requisitos para garantir a qualidade do serviço. Em nível de aplicação são tratados
+% os atributos que implicam no cumprimento dos níveis de serviço acordado. 
+
+Filho e Dionísio \cite{leite2016influencia} characterize the QoS in two approaches: network and application. In the
+network approach deal with the requirements to assure the QoS. The application approach deal with the attributes
+that imply on the fulfillment of the service level agreed.
+
+% A qualidade de serviço também pode ser dividida em dois pontos de vista: o 
+% ponto de vista do cliente e o ponto de vista do provedor \cite{openstack, bhardwaj2010cloud}. 
+% O escopo deste trabalho trata apenas das métricas relacionadas ao ponto de vista do provedor.
+
+The QoS can be divided on two points of view: of the client and of the provider \cite{openstack, bhardwaj2010cloud}. The 
+scope of this work deal with metrics only on provider point of view.
 
 
 \section{OpenStack}
