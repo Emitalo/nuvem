@@ -442,7 +442,7 @@ in literature.
 % emissão de carbono \cite{rehman2011teaching}.
 
 Cloud Computing is a on demand resource delivering paradigm, such as infrastructure, platform and software. This paradigm have been wide spreaded
-due to it's benefits, like resource scalability, software flexibility, pay per user, consolidated management and maintenance system, reliability 
+due to its benefits, like resource scalability, software flexibility, pay per user, consolidated management and maintenance system, reliability 
 and reduction of carbon emissions \cite{rehman2011teaching}.
 
 % Com a difusão do uso de serviços de nuvem alguns estudos (\cite{soltani2016, garg2011, li2012, 
@@ -493,7 +493,7 @@ Na seção Execução é apresentada a execução do trabalho.
 Por fim, na seção Conclusão são apresentadas as considerações finais, limitações e trabalhos futuros.
 
 This paper is divided in five sections.
-In the Cloud Computing Services section some concepts of cloud computing and it's quality are presented.
+In the Cloud Computing Services section some concepts of cloud computing and its quality are presented.
 In the OpenStack section a general view of the the tool is presented.
 In the Materials and Methods section the stages of the work accomplishment, as well as the used methods.
 In the Execution section the execution of the work is presented.
@@ -658,7 +658,7 @@ The methodology used on this study was organized in five steps that can be seen 
 	% métricas que Openstack fornecia mas não se encontravam na literatura, porém estavam relacionadas com as métricas encontradas,
 	% foram identificadas e documentadas;
 
-  \item \textbf{Metrics Comparison} - For verifying what metrics proposed on literature were implemented natively
+  \item \textbf{Metrics comparison} - For verifying what metrics proposed on literature were implemented natively
   on Openstack, this step consisted in verify the existence of the filtered metrics on Openstack, based on documentation and tool execution. The form that the tool presents the metrics was identified too. Besides that, the metrics provided by Openstack that was not found on literature, but were related with the found metrics, were identified and documented;
  
  % \item \textbf{Exemplificação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta e
@@ -794,25 +794,36 @@ Transparency                                                                    
      
   \subsection{Metrics filtering}
   
-      Para filtragem das métricas foram definidos quatro critérios considerando o contexto e escopo do trabalho. A avaliação das
-      métricas coletadas pode ser vista na Tabela \ref{tab:avaliacao_metricas}.
+%       Para a filtragem das métricas foram definidos quatro critérios considerando o contexto e escopo do trabalho. A avaliação das
+%       métricas coletadas pode ser vista na Tabela \ref{tab:avaliacao_metricas}.
+	
+	Four criteria were defined to filter the metrics considering the context and scope of the work.
+	The evaluation of the collected metrics can be seen in Table \ref{tab:avaliacao_metricas}.
    
 	\begin{itemize}
-	 \item \textbf{Critério 1 - O significado é conhecido?}
-	    \subitem Esse critério foi utilizado para avaliar se o significado da métrica e sua forma de cálculo eram conhecidas.
-	 \item \textbf{Critério 2 - Aplica-se para o modelo de serviço IaaS?}
-	    \subitem Este critério foi utilizado para selecionar as métricas propícias ao modelo IaaS, 
-	    devido às suas características peculiares;
-% 	    \subitem Este critério foi utilizado pois pode acontecer de algumas métricas se encaixarem mais aos outros modelos
-% 		     de serviço e não serem propícias ao modelo IaaS, devido às suas características peculiares;
-	 \item \textbf{Critério 3 - Pode ser coletada objetivamente?}
-	    \subitem Este critério foi utilizado para selecionar as métricas que são coletadas de forma objetiva, pois este tipo
-	    de métrica pode ser coletado por meio de ferramentas;
-	 \item \textbf{Critério 4 - É do ponto de vista do provedor?}
-	    \subitem Este critério foi utilizado para selecionar as métricas que se tratavam do ponto de vista do provedor do serviço
-	    de nuvem;
+% 	 \item \textbf{Critério 1 - O significado é conhecido?}
+	 \item \textbf{Criterion 1 - Is the meaning known?}
+% 	    \subitem Esse critério foi utilizado para avaliar se o significado da métrica e sua forma de cálculo eram conhecidos.
+	    \subitem This criterion was used to assess if the meaning of the metric and its calculation method were known.
+	    
+% 	 \item \textbf{Critério 2 - Aplica-se para o modelo de serviço IaaS?}
+	 \item \textbf{Criterion 2 - Does it apply to the IaaS service model?}
+% 	    \subitem Este critério foi utilizado para selecionar as métricas propícias ao modelo IaaS, devido às suas características peculiares;
+	    \subitem This criterion was used to select the propitious metrics to IaaS model, due to its singular characteristics.
+	    
+% 	 \item \textbf{Critério 3 - Pode ser coletada objetivamente?}
+	 \item \textbf{Criterion 3 - Can it be collected objectively?}
+% 	    \subitem Este critério foi utilizado para selecionar as métricas que são coletadas de forma objetiva, pois este tipo
+% 	    de métrica pode ser coletado por meio de ferramentas;
+	    \subitem This criterion was used to select the metrics that can be collected objectively, because this kind of metric
+	    can be collected using automated tools.
+	    
+% 	 \item \textbf{Critério 4 - É do ponto de vista do provedor?}
+	 \item \textbf{Criterion 4 - Is it from the provider's perspective?}
+% 	    \subitem Este critério foi utilizado para selecionar as métricas que se tratavam do ponto de vista do provedor do serviço de nuvem;
+	    \subitem This criterion was used to select which metrics were related to the cloud computing service provider point of view.
 	\end{itemize}
-	
+
 \begin{table*}[]
 \centering
 % \caption{Avaliação das métricas nos critérios definidos}
