@@ -1152,34 +1152,48 @@ being that in a simple scenario (creation of two instances on the tool) several 
 guarantee QoS.
 
 
-\section{Conclusão}
-Com a revisão de literatura realizada foi possível coletar 68 métricas relacionadas a QoS para serviços de nuvem, das quais
-35 foram avaliadas no Openstack. Na avaliação foi possível perceber que o Openstack provia aproximadamente 24,25\% das métricas
-exatas e, além disso, possuia algumas outras métricas relacionadas com as métricas identificadas.
+% \section{Conclusão}
+\section{Conclusions}
+% Com a revisão de literatura realizada foi possível coletar 68 métricas relacionadas a QoS para serviços de nuvem, das quais
+% 35 foram avaliadas no Openstack. Na avaliação foi possível perceber que o Openstack provia aproximadamente 24,25\% das métricas
+% exatas e, além disso, possuia algumas outras métricas relacionadas com as métricas identificadas.
 
-O número de métricas encontradas deve-se ao fato de que o Openstack possui um módulo apenas para coleta de métricas. 
-Os resultados obtidos neste trabalham servem de insumo para outros estudos relacionados e para construção de ferramentas de seleção de 
-serviços de nuvem, auxiliando no levantamento das métricas possíveis de serem extraídas do Openstack.
+Using a literature review was possible to collect 68 metrics of QoS to cloud services. In the Openstack 35 of this metrics were evaluated. 
+In the evaluation was perceived that the Openstack provides approximately 24,25\% of the metrics, and, besides that, it provide
+another related metrics. 
 
-Além do módulo de coleta de dados, o OpenStack oferece alguns mecanismos de garantia de qualidade de serviço. São eles:
+% O número de métricas encontradas deve-se ao fato de que o Openstack possui um módulo apenas para coleta de métricas. 
+% Os resultados obtidos neste trabalham servem de insumo para outros estudos relacionados e para construção de ferramentas de seleção de 
+% serviços de nuvem, auxiliando no levantamento das métricas possíveis de serem extraídas do Openstack.
 
-\begin{itemize}
- \item Funcionalidade que permite estabelecer limites para tamanhos de arquivos, memória RAM, instâncias, vCPUs;
- \item Funcionalidade que permite criar regras de segurança para limitar tráfegos específicos nas instâncias;
- \item Plugin do Neutron para criar regras de QoS para limitar largura de banda nas instâncias, de modo 
- a garantir uma largura de banda mínima \cite{openstack_neutron} \cite{openstack_neutron_qos};
- \item Projeto Aodh \cite{openstack_telemetry} que provê um serviço de alarme, onde é possível criar regras de monitoramento de métricas para que 
-quando um certo limite seja alcançado o usuário seja notificado.
-\end{itemize}
+The number of found metrics can be related to the fact that the Openstack has a specific module to collect metrics. The obtained results on this study can be used in other related studies and for tools that provide a service of cloud services selection, supporting on the collection of possible metrics that can be found on the Openstack.
 
+% Além do módulo de coleta de dados, o OpenStack oferece alguns mecanismos de garantia de qualidade de serviço. São eles:
 
-Uma limitação identificada do trabalho é que foi considerada uma versão antiga da ferramenta. Outra limitação é que as métricas
-foram identificadas por uma revisão simples de literatura, o que não possibilitou uma visibilidade do máximo de trabalhos possíveis,
-ou seja, foram considerados poucos estudos relacionados. A análise de apenas métricas nativas sem a consideração de \textit{plugins} e/ou
-outras ferramentas também é considerada uma limitação.
+% \begin{itemize}
+%  \item Funcionalidade que permite estabelecer limites para tamanhos de arquivos, memória RAM, instâncias, vCPUs;
+%  \item Funcionalidade que permite criar regras de segurança para limitar tráfegos específicos nas instâncias;
+%  \item Plugin do Neutron para criar regras de QoS para limitar largura de banda nas instâncias, de modo 
+%  a garantir uma largura de banda mínima \cite{openstack_neutron} \cite{openstack_neutron_qos};
+%  \item Projeto Aodh \cite{openstack_telemetry} que provê um serviço de alarme, onde é possível criar regras de monitoramento de métricas para que 
+% quando um certo limite seja alcançado o usuário seja notificado.
+% \end{itemize}
 
-Como trabalho futuro é visto a aplicação de uma revisão sistemática com o intuito de encontrar mais métricas e aplicá-las para
-uma versão mais atual do Openstack e considerar outras ferramentas.
+Beyond of the collect data module, the Openstack offers some mechanisms of quality of service assurance, like: establish limits for 
+files size, RAM memory, instances and virtual CPUs; create security rules to limit specific traffic on instances; create rules of QoS to limit bandwidth on instances (to assure a minimum bandwidth \cite{openstack_neutron} \cite{openstack_neutron_qos}) and   
+
+% Uma limitação identificada do trabalho é que foi considerada uma versão antiga da ferramenta. Outra limitação é que as métricas
+% foram identificadas por uma revisão simples de literatura, o que não possibilitou uma visibilidade do máximo de trabalhos possíveis,
+% ou seja, foram considerados poucos estudos relacionados. A análise de apenas métricas nativas sem a consideração de \textit{plugins} e/ou
+% outras ferramentas também é considerada uma limitação.
+
+An identified limitation of this study is that the metrics were identified using a simple literature review. In this way, it did not possible obtain
+the visibility of a highest studies number. The use of an old version of the tool was identified as another limitation.
+
+% Como trabalho futuro é visto a aplicação de uma revisão sistemática com o intuito de encontrar mais métricas e aplicá-las para
+% uma versão mais atual do Openstack e considerar outras ferramentas.
+
+As future work is seen the application of a systematic review to find more metrics and apply them to a most current version of the Openstack.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
