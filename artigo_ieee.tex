@@ -1021,93 +1021,124 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
     \subitem - Taxa média de leituras (disk.read.bytes.rate);
     \subitem - Volume de escritas (disk.write.bytes);
     \subitem - Taxa média de escritas (disk.write.bytes.rate);
- \end{itemize}  
+ \end{itemize}
 
-  \subsection{Exemplificação das métricas} 
-    Para verificar como se apresentavam as métricas ditas presentes no OpenStack, foi executado um cenário de teste de uso da ferramenta
-    para coletar tais métricas obtidas na seção \ref{confronto}. 
-    A Subseção \ref{cenario} descreve o cenário utilizado e a Subseção \ref{resultados_levantamento} discorre sobre os resultados obtidos.
+  \subsection{Metrics exemplification} 
+%     Para verificar como se apresentavam as métricas ditas presentes no OpenStack, foi executado um cenário de teste de uso da ferramenta
+%     para coletar tais métricas obtidas na seção \ref{confronto}. 
+%     A Subseção \ref{cenario} descreve o cenário utilizado e a Subseção \ref{resultados_levantamento} discorre sobre os resultados obtidos.
+
+      In order to verify how the presented metrics were presented in OpenStack, a tool usage test scenario was performed to collect
+      such metrics obtained in section \ref{confronto}.
+      The Subsection \ref{cenario} describes the used scenario and the Subsection \ref{resultados_levantamento} discusses the obtained results.
   
-    \subsubsection{\textbf{Cenário de teste}} \label{cenario}
+    \subsubsection{\textbf{Test scenario}} \label{cenario}
 	
-	A coleta dos dados foi realizada no seguinte cenário/contexto:
+% 	A coleta dos dados foi realizada no seguinte cenário/contexto:
+	The data collection was performed in the following scenario/context: 
+	
+% 	\begin{itemize}
+% % 	 \item Duas pessoas com dedicação parcial como equipe de coleta ; % COLOCA DEDICAÇÃO PARCIAL ?
+% 	 \item Laboratório com máquinas que possuiam recursos de \textit{hardware} simples;
+% 	    \subitem Apenas máquinas com 4GB de memória RAM no máximo.
+% 	 \item Utilização da versão \textit{Kilo} do OpenStack;
+% 	 \item Utilização do CentOS 7 \cite{centos} como sistema operacional;
+% 	 \item Utilização da topologia apresentada na Figura \ref{fig:topologia} para instalação do OpenStack;
+% 	    \subitem Foram utilizados dois computadores interconectados para distribuir a carga de processamento entre eles, 
+% 		  de modo que um computador ficava com o nó Controlador (\textit{Controller}) e o outro computador ficava
+% 		     com os nós de Processamento (\textit{Compute}) e de Rede (\textit{Network}), como ilustra a Figura \ref{fig:topologia};
+% 	    \subitem A topologia utilizada foi baseada na topologia proposta por Ahmad Imanudin em \cite{imanudin};
+% 	  \item Criação de duas instâncias.
+% 	\end{itemize}
 	
 	\begin{itemize}
-% 	 \item Duas pessoas com dedicação parcial como equipe de coleta; % COLOCA DEDICAÇÃO PARCIAL ?
-	 \item Laboratório com máquinas que possuiam recursos de \textit{hardware} simples;
-	    \subitem Apenas máquinas com 4GB de memória RAM no máximo.
-	 \item Utilização da versão \textit{Kilo} do OpenStack;
-	 \item Utilização do CentOS 7 \cite{centos} como sistema operacional;
-	 \item Utilização da topologia apresentada na Figura \ref{fig:topologia} para instalação do OpenStack;
-	    \subitem Foram utilizados dois computadores interconectados para distribuir a carga de processamento entre eles, 
-		  de modo que um computador ficava com o nó Controlador (\textit{Controller}) e o outro computador ficava
-		     com os nós de Processamento (\textit{Compute}) e de Rede (\textit{Network}), como ilustra a Figura \ref{fig:topologia};
-	    \subitem A topologia utilizada foi baseada na topologia proposta por Ahmad Imanudin em \cite{imanudin};
-	  \item Criação de duas instâncias.
+	 \item Laboratory with machines that had simple hardware features;
+	    \subitem Only machines with 4GB of RAM at most.
+	 \item Use of OpenStack Kilo version;
+	 \item Use of CentOS 7 \cite{centos} as operational system;
+	 \item Use of the topology presented in Figure \ref{fig:topologia} to OpenStack installation;
+	    \subitem Two interconnected computers were used to distribute the processing load between them,
+		     so that a computer had the Controller node and the other computer had the Processing (Compute) and the Network
+		     nodes as shown in Figure \ref{fig:topologia};
+	    \subitem The topology used was based on the topology proposed by Ahmad Imanudin in \cite{imanudin};
+	  \item Creation of two instances.
 	\end{itemize}
 	
 	\begin{figure}[ht]
 	\centering
 	\includegraphics[width=.5\textwidth]{figuras/topologia.png}
-	\caption{Topologia utilizada na instalação do OpenStack. Fonte: Autores.}
+	\caption{Topology used in OpenStack installation. Source: Authors.}
 	\label{fig:topologia}
 	\end{figure}
 	
-	Foram criadas duas instâncias (com 512 MB de RAM e sistema operacional CirrOS) na ferramenta como cenário de teste
-	para os dados serem coletados.
-	A topologia utilizada como cenário de teste pode ser vista na Figura \ref{fig:instancias}.
-    
+% 	Foram criadas duas instâncias (com 512 MB de RAM e sistema operacional CirrOS) na ferramenta como cenário de teste
+% 	para os dados serem coletados. 
+% 	A topologia utilizada como cenário de teste pode ser vista na Figura \ref{fig:instancias}.
+	
+	Two instances (using 512MB of RAM and operational system CirrOS) were created in OpenStack as a test scenario to collect data.
+	The topology used as test scenario can be seen in Figure \ref{fig:instancias}.
 	 
 	\begin{figure}[ht]
 	\centering
 	\includegraphics[width=.4\textwidth]{figuras/topologia_teste.png}
-	\caption{Topologia utilizada como cenário de teste. {\tiny \textit{Imagem Retirada da Ferramenta}}}
+	\caption{Topology used as test scenario. {\tiny \textit{Image taken from OpenStack.}}}
 	\label{fig:instancias}
 	\end{figure}
 	
-	Foi utilizada a versão \textit{Kilo} \cite{openstack_kilo} do OpenStack por ser uma versão estável e mais leve, devido a
-	limitação dos recursos disponíveis.
-	Vale ressaltar que apesar do suporte para versão \textit{Kilo} ter sido encerrado pelos mantenedores do OpenStack,
-	sua arquitetura não distoa muito do seu sucessor subsequente ainda suportado, o OpenStack \textit{Liberty}, o que
-	não impacta significativamente nem invalida o presente trabalho \cite{openstack_liberty}.
-
+% 	Foi utilizada a versão \textit{Kilo} \cite{openstack_kilo} do OpenStack por ser uma versão estável e mais leve, devido a
+% 	limitação dos recursos disponíveis.
+% 	Vale ressaltar que apesar do suporte para versão \textit{Kilo} ter sido encerrado pelos mantenedores do OpenStack,
+% 	sua arquitetura não distoa muito do seu sucessor subsequente ainda suportado, o OpenStack \textit{Liberty}, o que
+% 	não impacta significativamente nem invalida o presente trabalho \cite{openstack_liberty}.
+	
+	The Kilo \cite{openstack_kilo} version of OpenStack was used because it is a stable and lighter version,
+	due to the limited resources available.
+	It is worth mentioning that although the support for the Kilo version has been terminated by the OpenStack maintainers,
+	its architecture is not far from its subsequent successor, OpenStack Liberty, which does not significantly impact
+	or invalidate this work \cite{openstack_liberty}.
 		    
-    \subsubsection{Resultados} \label{resultados_levantamento}
+    \subsubsection{Obtained results} \label{resultados_levantamento}
   
-	As métricas foram coletadas por meio do serviço de coleta de dados do OpenStack (módulo - \textit{Ceilometer}) e 
-	da aplicação \textit{Web} (módulo \textit{Horizon}).
+% 	As métricas foram coletadas por meio do serviço de coleta de dados do OpenStack (módulo - \textit{Ceilometer}) e 
+% 	da aplicação \textit{Web} (módulo \textit{Horizon}).
 	
-% 	  \caption{Lista de métricas coletadas pelo \textit{Ceilometer}.}
-% 	  \label{tab:meters_list}
+	The metrics were collected through the OpenStack data collection service (Ceilometer module) and web application (Horizon module).,
 	
-	Com o cenário de teste realizado as métricas coletadas podem ser vistas na Tabela \ref{tab:metricas_coletadas}.
+% 	Com o cenário de teste realizado as métricas coletadas podem ser vistas na Tabela \ref{tab:metricas_coletadas}.
+	
+	With the test scenario fulfilled, the collected metrics can be seen in Table \ref{tab:metricas_coletadas}.
 	
 \begin{table}[h!]
 \centering
-\caption{Métricas coletadas no cenário de teste}
+\caption{Collected metrics in test scenario}
 \label{tab:metricas_coletadas}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
-\multicolumn{1}{c}{\textbf{Métrica}}                                     & \textbf{Max} & \textbf{Min} & \textbf{Media} & \textbf{Unidade} \\ \midrule
+\multicolumn{1}{c}{\textbf{OpenStack metric}}                                     & \textbf{Max} & \textbf{Min} & \textbf{Average} & \textbf{Unit} \\ \midrule
 cpu\_util                                                                & 16.11        & 0            & 7.9            & \%               \\
 memory                                                                   & 512          & 512          & 512            & MB               \\
 memory.usage                                                             & -            & -            & -              & MB               \\
 disk.root.size                                                           & 1            & 1            & 1              & GB               \\
 vcpus                                                                    & 1            & 1            & 1              & nº vCPUs         \\
-\begin{tabular}[c]{@{}l@{}}network.incoming\\ .packets\end{tabular}      & 19           & 8            & 11.75          & pacotes          \\
-\begin{tabular}[c]{@{}l@{}}network.incoming\\ .packets.rate\end{tabular} & 0.0016       & 0.00011      & 0.00011        & pacotes/s        \\
-\begin{tabular}[c]{@{}l@{}}network.outgoing\\ .packets\end{tabular}      & 9            & 9            & 9              & pacotes          \\
-\begin{tabular}[c]{@{}l@{}}network.outgoing\\ .packets.rate\end{tabular} & 0            & 0            & 0              & pacotes/s        \\
-disk.read.requests                                                       & 1122         & 877          & 1032.77        & requisições      \\
-\begin{tabular}[c]{@{}l@{}}disk.read\\ .requests.rate\end{tabular}       & 0.23         & 0            & 0.015          & requisições/s    \\
-disk.write.requests                                                      & 134          & 55           & 111.9          & requisições      \\
-\begin{tabular}[c]{@{}l@{}}disk.write\\ .requests.rate\end{tabular}      & 0.091        & 0            & 0.001          & requisições/s    \\
+\begin{tabular}[c]{@{}l@{}}network.incoming\\ .packets\end{tabular}      & 19           & 8            & 11.75          & packets          \\
+\begin{tabular}[c]{@{}l@{}}network.incoming\\ .packets.rate\end{tabular} & 0.0016       & 0.00011      & 0.00011        & packets/s        \\
+\begin{tabular}[c]{@{}l@{}}network.outgoing\\ .packets\end{tabular}      & 9            & 9            & 9              & packets          \\
+\begin{tabular}[c]{@{}l@{}}network.outgoing\\ .packets.rate\end{tabular} & 0            & 0            & 0              & packets/s        \\
+disk.read.requests                                                       & 1122         & 877          & 1032.77        & requests      \\
+\begin{tabular}[c]{@{}l@{}}disk.read\\ .requests.rate\end{tabular}       & 0.23         & 0            & 0.015          & requests/s    \\
+disk.write.requests                                                      & 134          & 55           & 111.9          & requests      \\
+\begin{tabular}[c]{@{}l@{}}disk.write\\ .requests.rate\end{tabular}      & 0.091        & 0            & 0.001          & requests/s    \\
 disk.read.bytes                                                          & 20436992     & 18510848     & 20245043.2     & bytes            \\
 disk.read.bytes.rate                                                     & 3700.63      & 0            & 206.49         & bytes/s          \\
 disk.write.bytes                                                         & 397312       & 206848       & 348262.4       & bytes            \\
 disk.write.bytes.rate                                                    & 268.85       & 0            & 22.14          & bytes/s          \\ \bottomrule
 \end{tabular}
 \end{table}
+
+It is possible to see that OpenStack is a very powerful tool that provides a good service of measurement (Ceilometer module),
+being that in a simple scenario (creation of two instances on the tool) several metrics are generated and can be monitored to 
+guarantee QoS.
+
 
 \section{Conclusão}
 Com a revisão de literatura realizada foi possível coletar 68 métricas relacionadas a QoS para serviços de nuvem, das quais
