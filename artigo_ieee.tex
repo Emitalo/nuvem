@@ -433,7 +433,7 @@ in literature.
 
 
 
-\section{Introdução}
+\section{Introduction}
 % no \IEEEPARstart
 
 % A computação em nuvem é um paradigma de entrega de recursos, como infraestrutura, plataforma e software,
@@ -489,8 +489,8 @@ available in OpenStack.
 % Na seção Serviços de Nuvem são apresentados os conceitos relacionados a computação em nuvem e a qualidade desse serviço. 
 % Na seção Openstack é apresentada uma visão geral acerca da ferramenta.
 % Na seção Materiais e métodos são apresentadas as etapas de realização do trabalho, bem como os métodos utilizados. 
-Na seção Execução é apresentada a execução do trabalho.
-Por fim, na seção Conclusão são apresentadas as considerações finais, limitações e trabalhos futuros.
+% Na seção Execução é apresentada a execução do trabalho.
+% Por fim, na seção Conclusão são apresentadas as considerações finais, limitações e trabalhos futuros.
 
 This paper is divided in five sections.
 In the Cloud Computing Services section some concepts of cloud computing and its quality are presented.
@@ -520,7 +520,7 @@ The cloud computing is structured on three modules: Software as a Service (SaaS)
 \begin{figure}[ht]
 \centering
 \includegraphics[width=.3\textwidth]{figuras/cloud_structure.png}
-\caption{Cloud computing services structure. Fonte: \cite{sefraoui2012openstack}}
+\caption{Cloud computing services structure. Cited from: \cite{sefraoui2012openstack}}
 \label{fig:cloud_structure}
 \end{figure}
 
@@ -622,7 +622,7 @@ The Figure \ref{fig:openstack_architecture} shows the conceptual arquitecture of
 \centering
 \includegraphics[width=.5\textwidth]{figuras/openstack_architecture.png}
 % \caption{Arquitetura conceitual do OpenStack. Fonte: \cite{openstack}}
-\caption{Conceptual Arquitecture of the OpenStack. Fonte: \cite{openstack}}
+\caption{Conceptual Arquitecture of the OpenStack. Cited from: \cite{openstack}}
 \label{fig:openstack_architecture}
 \end{figure}
 
@@ -636,7 +636,7 @@ The methodology used on this study was organized in five steps that can be seen 
   \centering
   \includegraphics[width=.3\textwidth]{figuras/metodologia.png}
   % \caption{Metodologia proposta. Fonte: Autores.}
-  \caption{Proposed methodology. Source: Authors.}
+  \caption{Proposed methodology.}
   \label{metodologia}
 \end{figure}
 
@@ -658,8 +658,7 @@ The methodology used on this study was organized in five steps that can be seen 
 	% métricas que Openstack fornecia mas não se encontravam na literatura, porém estavam relacionadas com as métricas encontradas,
 	% foram identificadas e documentadas;
 
-  \item \textbf{Metrics comparison} - For verifying what metrics proposed on literature were implemented natively
-  on Openstack, this step consisted in verify the existence of the filtered metrics on Openstack, based on documentation and tool execution. The form that the tool presents the metrics was identified too. Besides that, the metrics provided by Openstack that was not found on literature, but were related with the found metrics, were identified and documented;
+  \item \textbf{Metrics comparison} - For verifying what metrics proposed on literature were natively implemented on Openstack, this step consisted in verify the existence of the filtered metrics on Openstack, based on documentation and tool execution. The form that the tool presents the metrics was identified too. Besides that, the metrics provided by Openstack that was not found on literature, but were related with the found metrics, were identified and documented;
  
  % \item \textbf{Exemplificação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta e
 	% como eram fornecidas,
@@ -840,7 +839,7 @@ Access Control                                & Yes                             
 CPU frequency                                 & Yes                                     & Yes                                     & Yes                                     & Yes                         \\
 Total cost                                       & Yes                                     & Yes                                     & Yes                                     & Yes                         \\
 Instance efficiency                           & Yes                                     & Yes                                     & Yes                                     & Yes                         \\
-Elasticidade                                      & Yes                                     & Yes                                     & Yes                                     & Yes                         \\
+Elasticity                                      & Yes                                     & Yes                                     & Yes                                     & Yes                         \\
 Packet loss frequency                    & Yes                                     & Yes                                     & Yes                                     & Yes                         \\
 Auditability                           & Yes                                     & Yes                                     & Yes                                     & Yes                         \\
 Latency over SLL                 & Yes                                     & Yes                                     & Yes                                     & Yes                         \\
@@ -903,125 +902,138 @@ Connection errors rate                          & \cellcolor[HTML]{EA9999}No    
 \end{tabular}
 \end{table*}
    
-  \subsection{Confronto das métricas} \label{confronto}
+  \subsection{Metrics comparison} \label{confronto}
   
-  Com a filtragem obteve-se 34 métricas resultantes a serem confrontadas no Openstack. Para isso, as métricas foram divididas em estáticas e
-  dinâmicas, ou seja, aquelas que não necessitam de execução da ferramenta para serem coletadas e aquelas que necessitam da execução da ferramenta,
-  respectivamente. Além disso, as métricas foram categorizadas com base no estudo de Bardsiri e Hashemi \cite{bardsiri2014}.As categorias foram:
-  Confiabilidade, Economia, Memória, Performance, Segurança e Geral. Vale ressaltar, que foram identificadas duas métricas equivalentes (Velocidade de transferência bit/byte TCP/UDP/IP
-  e Largura de Banda (download, upload)) e dessa forma, apenas a Largura de Banda foi considerada na avaliação.
+  % Com a filtragem obteve-se 34 métricas resultantes a serem confrontadas no Openstack. Para isso, as métricas foram divididas em estáticas e
+  % dinâmicas, ou seja, aquelas que não necessitam de execução da ferramenta para serem coletadas e aquelas que necessitam da execução da ferramenta,
+  % respectivamente. Além disso, as métricas foram categorizadas com base no estudo de Bardsiri e Hashemi \cite{bardsiri2014}.As categorias foram:
+  % Confiabilidade, Economia, Memória, Performance, Segurança e Geral. Vale ressaltar, que foram identificadas duas métricas equivalentes (Velocidade de transferência bit/byte TCP/UDP/IP
+  % e Largura de Banda (download, upload)) e dessa forma, apenas a Largura de Banda foi considerada na avaliação.
   
-  A categorização e o confronto das métricas pode ser visualizado nas Tabelas   \ref{tab:confronto_estaticas} e \ref{tab:confronto_dinamicas}  
- que representam as métricas estáticas e dinâmicas, respectivamente. 
+  After the filtering step it was obtained 34 resulting metrics to be compared on the Openstack. For making this, the metrics were organized in static metrics and dynamic metrics. The static metrics do not need of tool execution to be collected while the dynamic metrics have this necessity. Besides that, the metrics were categorized based on the study realized by Bardsiri e Hashemi \cite{bardsiri2014}. 
+
+  The used categories were: Reliability, Economy, Memory, Performance,
+  Security and General. It is worth mentioning that were identified two equivalent metrics: Transfer Speed bit/byte TCP/UDP/IP and Bandwidth (download, upload). Considering this, only bandwidth was used on comparison.
+
+ %  A categorização e o confronto das métricas pode ser visualizado nas Tabelas   \ref{tab:confronto_estaticas} e \ref{tab:confronto_dinamicas}  
+ % que representam as métricas estáticas e dinâmicas, respectivamente. 
+
+  The categorization and the metrics comparison is presented on Tables \ref{tab:confronto_estaticas} and \ref{tab:confronto_dinamicas} that represents the static metrics and dynamic metrics, respectively.
 
 \begin{table}[ht]
 \centering
-\caption{Avaliação das métricas estáticas existentes no Openstack}
+% \caption{Avaliação das métricas estáticas existentes no Openstack}
+\caption{Static metrics evaluation on Openstack}
 \label{tab:confronto_estaticas}
 \begin{tabular}{@{}lll@{}}
 \toprule
-\multicolumn{3}{c}{\textbf{Estáticas}}                                                                  \\ \midrule
-\multicolumn{1}{c}{\textbf{Categoria}} & \multicolumn{1}{c}{\textbf{Métrica}}                                                  & \multicolumn{1}{c}{\textbf{Há no Openstack?}} \\
-Economia                   & Custo total                                    & -                         \\
-\multirow{3}{*}{Geral}     & Suporte a banco de dados NoSQL                 & Sim                       \\
-                           & \begin{tabular}[c]{@{}l@{}}Sistema Operacional \\ (Tipo, Plataforma, Versão)\end{tabular} & Sim                       \\
-                           & Suporte a SGBD relacional                      & Sim                       \\
-\multirow{3}{*}{Segurança} & Controle de acesso                             & Sim                       \\
-                           & SSL aplicável?                                 & Sim                       \\
-                           & Habilidade de auditoria                        & Sim                       \\ \bottomrule
+\multicolumn{3}{c}{\textbf{Statics}}                                                                  \\ \midrule
+\multicolumn{1}{c}{\textbf{Category}} & \multicolumn{1}{c}{\textbf{Metrics}}                                                  & \multicolumn{1}{c}{\textbf{Is it provided by the Openstack?}} \\
+Economy                   & Total cost                                    & -                         \\
+\multirow{3}{*}{General}     & NoSQL databases support                 & Yes                       \\
+                           & \begin{tabular}[c]{@{}l@{}}Operational System \\ (Type, Platform, Version)\end{tabular} & Yes                       \\
+                           & Relational database support                 & Yes                       \\
+\multirow{3}{*}{Security} & Access control policies                             & Yes                       \\
+                           & Is SSL applicable?                             & Yes                       \\
+                           & Auditability                        & Yes                       \\ \bottomrule
 \end{tabular}
 \end{table}  
 
 \begin{table}[ht]
 \centering
-\caption{Avaliação das métricas dinâmicas existentes no Openstack}
+% \caption{Avaliação das métricas dinâmicas existentes no Openstack}
+\caption{Dynamic metrics evaluation on Openstack}
 \label{tab:confronto_dinamicas}
 \begin{tabular}{@{}lll@{}}
 \toprule
-\multicolumn{3}{c}{\textbf{Dinâmicas}}                                                                  \\ \midrule
-\multicolumn{1}{c}{\textbf{Categoria}} & \multicolumn{1}{c}{\textbf{Métrica}}                                                  & \multicolumn{1}{c}{\textbf{Há no Openstack?}} \\
-\multirow{2}{*}{Confiabilidade}        & Confiabilidade (número de erros)                                                      & Não                                           \\
-                                       & Tempo médio entre falhas (MTBF)                                                       & Não                                           \\
-\multirow{6}{*}{Economia}              & Elasticidade                                                                          & Não                                           \\
-                                       & Tempo de boot                                                                         & Não                                           \\
-                                       & Tempo de deleção                                                                      & Não                                           \\
-                                       & Tempo de implantação                                                                  & Não                                           \\
-                                       & Tempo de suspensão                                                                    & Não                                           \\
-                                       & Tempo total de aquisição                                                              & Não                                           \\
-\multirow{2}{*}{Memória}               & \begin{tabular}[c]{@{}l@{}}Memória (RAM requerida \\ para instância)\end{tabular}     & Sim                                           \\
-                                       & \begin{tabular}[c]{@{}l@{}}Storage (HD)\end{tabular} & Sim                                           \\
-\multirow{15}{*}{Performance}          & Latência máxima  (aplicação)                                                          & Não                                           \\
-                                       & \begin{tabular}[c]{@{}l@{}}Número máximo de usuários \\ concorrentes\end{tabular}     & Não                                           \\
-                                       & Número de núcleos de CPU                                                              & Não                                           \\
-                                       & Número de instâncias                                                                  & Sim                                           \\
-                                       & Número de balanceadores de carga                                                      & Não                                           \\
-                                       & Tempo de resposta (aplicação)                                                         & Não                                           \\
-                                       & Largura de Banda (download, upload)                                                   & Sim                                           \\
-                                       & Carga de CPU                                                                          & Sim                                           \\
-                                       & Frequência de CPU                                                                     & Sim                                           \\
-                                       & Eficiência da Instância                                                               & Sim                                           \\
-                                       & Frequência de perda de pacotes                                                        & Não                                           \\
-                                       & Atraso de transferência TCP/UDP/IP                                                    & Não                                           \\
-                                       & Performance de I/O                                                                    & Sim                                           \\
-                                       & Tempo de resposta (memória)                                                           & Não                                           \\
-                                       & Tempo de comunicação                                                                  & Não                                           \\
-Segurança                              & Latência de comunicação sobre SSL                                                     & Não                                           \\ \bottomrule
+\multicolumn{3}{c}{\textbf{Dynamics}}                                                                  \\ \midrule
+\multicolumn{1}{c}{\textbf{Category}} & \multicolumn{1}{c}{\textbf{Metrics}}                                                  & \multicolumn{1}{c}{\textbf{Is it provided by the Openstack?}} \\
+\multirow{2}{*}{Reliability}        & Reliability (errors numbers)                                                      & No                                           \\
+                                       & Mean time between
+failures (MTBF)                                                       & No                                           \\
+\multirow{6}{*}{Economy}              & Elasticity                                                                          & No                                           \\
+                                       & Boot time                                                                         & No                                           \\
+                                       & Deletion time                                                                      & No                                           \\
+                                       & Deploy time                                                                  & No                                           \\
+                                       & Suspension Time                                                                    & No                                           \\
+                                       & Acquisition total time                                                              & No                                           \\
+\multirow{2}{*}{Memory}               & \begin{tabular}[c]{@{}l@{}}Memory (RAM required \\ for the instance)\end{tabular}     & Yes                                           \\
+                                       & \begin{tabular}[c]{@{}l@{}}Storage (HD)\end{tabular} & Yes                                           \\
+\multirow{15}{*}{Performance}          & Application maximum latency -                                                          & No                                           \\
+                                       & \begin{tabular}[c]{@{}l@{}}Concurrent users \\ maximum number\end{tabular}     & No                                           \\
+                                       & Number of CPU cores                                                               & No                                           \\
+                                       & Number of instances                                                                  & Yes                                           \\
+                                       & Number of load balancers                                                     & No                                           \\
+                                       & Application response time                                                         & No                                           \\
+                                       & Bandwidth (download, upload)                                                   & Yes                                           \\
+                                       & CPU load                                                                          & Yes                                           \\
+                                       & CPU frequency                                                                     & Yes                                           \\
+                                       & Instance efficiency                                                               & Yes                                           \\
+                                       & Packet loss frequency                                                        & No                                           \\
+                                       & Transfer latency TCP/UDP/IP                                                    & No                                           \\
+                                       & I/O Performance                                                                    & Yes                                           \\
+                                       & Memory reponse time                                                           & No                                           \\
+                                       & Communication time                                                                  & No                                           \\
+Security                              & Latency over SLL                                                     & No                                           \\ \bottomrule
 \end{tabular}
 \end{table}  
 
-As métricas existentes no Openstack podem ser sumarizadas nos itens abaixo.
-Além das métricas idênticas ao que foi levantado, foram identificadas outras
-métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser consultadas na documentação \cite{openstack}.
+% As métricas existentes no Openstack podem ser sumarizadas nos itens abaixo.
+% Além das métricas idênticas ao que foi levantado, foram identificadas outras
+% métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser consultadas na documentação \cite{openstack}.
+
+The existent metrics on the Openstack can be sumarized in the following items. Beyond of the identical metrics, related metrics were identified.
+All metrics provided by the tool can be consulted in the documentation \cite{openstack}.
 
 \begin{itemize}
- \item \textbf{Memória (RAM requerida para instância)}
-    \subitem - Volume de RAM alocado para a instância (memory);
-    \subitem - Volume de RAM utilizado pela instância (memory.usage);
-    \subitem - Volume de RAM utilizada por projeto.
+ \item \textbf{Memory (RAM required for the instance)}
+    \subitem - Volume of RAM allocated to the instance (memory);
+    \subitem - Volume of RAM used by the instance from the amount of its allocated memory (memory.usage);
+    \subitem - Volume of RAM used per project.
  \item \textbf{Storage (HD)}
-    \subitem - Tamanho do disco  (disk.root.size);
-    \subitem - Memória permanente utilizada por projeto;
- \item \textbf{Latência máxima  (aplicação)}
-    \subitem - Latência média do disco (disk.latency);
-    \subitem - Latência média do disco por dispositivo (disk.device.latency).
- \item \textbf{Número de núcleos de CPU}
-    \subitem - Número de CPUs virtuais alocadas para a instância (vcpus);
-    \subitem - Número de CPUs virtuais por projeto;
-    \subitem - Média de utilização de CPU (cpu\_util).
- \item \textbf{Número de instâncias}
-    \subitem - Número de instâncias ativas.
- \item \textbf{Número de balanceadores de carga}
-    \subitem - Existência de um pool de balanceador de carga (network.services.lb.pool);
-    \subitem - Existência de um balanceador de carga VIP (network.services.lb.vip);
-    \subitem - Existência de um membro de balanceador de carga (network.services.lb.member);
-    \subitem - Existência de um balanceador de carga health probe (network.services.lb.health\_monitor);
-    \subitem - Total de conexões em um balanceador de carga (network.services.lb.total.connections);
-    \subitem - Conexões ativas em um balanceador de carga (network.services.lb.active.connections).
-  \item \textbf{Largura de Banda (download, upload)}
-    \subitem - Bytes via roteadores de rótulo L3 (roteadores de camada de rede) (bandwidth).
-  \item \textbf{Carga de CPU}   
-    \subitem - Carga de CPU no último 1 minuto (hardware.cpu.load.1min);
-    \subitem - Carga de CPU nos últimos 5 minutos (hardware.cpu.load.5min);
-    \subitem - Carga de CPU nos últimos 10 minutos (hardware.cpu.load.10min);
-  \item \textbf{Frequência de CPU}  
-    \subitem - Frequência da CPU (compute.node.cpu.frequency);
-  \item \textbf{Eficiência da Instância}    
-    \subitem - Utilização da CPU (compute.node.cpu.percent);
-  \item \textbf{Frequência de perda de pacotes}   
-    \subitem - Taxa de entrada de pacotes (network.incoming.packets.rate);
-    \subitem - Taxa de saída de pacotes (network.outgoing.packets.rate);
-    \subitem - Número de pacotes recebidos (network.incoming.packets);
-    \subitem - Número de pacotes enviados (network.outgoing.packets);
-  \item \textbf{Performance de I/O} 
-    \subitem - Número de requisições de leitura (disk.read.requests);
-    \subitem - Taxa média de requisições de leitura (disk.read.requests.rate);
-    \subitem - Número de requisições de escrita (disk.write.requests);
-    \subitem - Taxa média de requisições de escrita (disk.write.requests.rate);
-    \subitem - Volume de leitura (disk.read.bytes);
-    \subitem - Taxa média de leituras (disk.read.bytes.rate);
-    \subitem - Volume de escritas (disk.write.bytes);
-    \subitem - Taxa média de escritas (disk.write.bytes.rate);
- \end{itemize}
+    \subitem - Size of root disk (disk.root.size);
+    \subitem - Permanent memory used per project;
+ \item \textbf{Application maximum latency}
+    \subitem - Average disk latency (disk.latency);
+    \subitem - Average disk latency per device (disk.device.latency).
+ \item \textbf{Number of CPU cores}
+    \subitem - Number of virtual CPUs allocated to the instance (vcpus);
+    \subitem - Number of virtual CPUs per project;
+    \subitem - Average CPU utilization (cpu\_util).
+ \item \textbf{Number of instances}
+    \subitem - Number of active instances.
+ \item \textbf{Number of load balancers}
+  \subitem - Existence of a LB pool (network.services.lb.pool)
+  \subitem - Existence of a LB VIP (network.services.lb.vip )
+  \subitem - Existence of a LB member (network.services.lb.member)
+  \subitem - Existence of a LB health probe (network.services.lb.health\_monitor)
+  \subitem - Total connections on a LB (network.services.lb.total.connections)
+  \subitem - Active connections on a LB (network.services.lb.active.connections)
+  \item \textbf{Bandwidth (download, upload)}
+    \subitem - Bytes through this l3 metering label (Network layer routers) (bandwidth).
+  \item \textbf{CPU load}   
+    \subitem - CPU load in the past 1 minute (hardware.cpu.load.1min);
+    \subitem - CPU load in the past 5 minutes (hardware.cpu.load.5min);
+    \subitem - CPU load in the past 10 minutes (hardware.cpu.load.10min);
+  \item \textbf{CPU frequency}  
+    \subitem - CPU frequency (compute.node.cpu.frequency);
+  \item \textbf{Instance efficiency}    
+    \subitem - CPU utilization (compute.node.cpu.percent);
+  \item \textbf{Packet loss frequency}   
+    \subitem - Number of incoming packets (network.incoming.packets)
+    \subitem - Average rate of incoming packets (network.incoming.packets.rate)
+    \subitem - Number of outgoing packets (network.outgoing.packets)
+    \subitem - Average rate of outgoing packets (network.outgoing.packets.rate)
+  \item \textbf{I/O Performance} 
+    \subitem - Number of read requests (disk.read.requests)
+    \subitem - Average rate of read requests (disk.read.requests.rate)
+    \subitem - Number of write requests (disk.write.requests)
+    \subitem - Average rate of write requests (disk.write.requests.rate)
+    \subitem - Volume of reads (disk.read.bytes)
+    \subitem - Average rate of reads (disk.read.bytes.rate)
+    \subitem - Volume of writes (disk.write.bytes)
+    \subitem - Average rate of writes (disk.write.bytes.rate)
+ \end{itemize}  
 
   \subsection{Metrics exemplification} 
 %     Para verificar como se apresentavam as métricas ditas presentes no OpenStack, foi executado um cenário de teste de uso da ferramenta
@@ -1067,7 +1079,7 @@ métricas relacionadas. Todas as métricas fornecidas pela ferramenta podem ser 
 	\begin{figure}[ht]
 	\centering
 	\includegraphics[width=.5\textwidth]{figuras/topologia.png}
-	\caption{Topology used in OpenStack installation. Source: Authors.}
+	\caption{Topology used in OpenStack installation.}
 	\label{fig:topologia}
 	\end{figure}
 	
