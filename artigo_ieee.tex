@@ -347,6 +347,12 @@ Email: emiliemoraist@gmail.com}
   (UnB)\\
   Gama, DF -- Brasil\\
 Email: italopaivab@gmail.com}
+\and
+\IEEEauthorblockN{Edna Dias Canedo}
+\IEEEauthorblockA{Faculdade do Gama, Universidade de Brasília
+  (UnB)\\
+  Gama, DF -- Brasil\\
+Email: ednacanedo@unb.br}
 }
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -596,7 +602,7 @@ in a datacenter. This characteristic require a good hardware infrastructure for 
 % de recursos computacionais em um \textit{data center}, o que exige uma infraestrutura de \textit{hardware} 
 % considerável para seu funcionamento pleno \cite{openstack_general} \cite{openstack}.
 
-The cloud infrastructure management and control can be realized using an Web application (\textit{Horizon} subproject), via command line (\textit{Command Line Interface} (CLI)) and/or RESTful APIs \cite{bui2016} \cite{openstack}. 
+The cloud infrastructure management and control can be realized using a Web application (\textit{Horizon} subproject), via command line (\textit{Command Line Interface} (CLI)) and/or RESTful APIs \cite{bui2016} \cite{openstack}. 
 
 % O gerenciamento e controle da infraestrutura da nuvem pelo usuário podem ser realizados por meio de uma aplicação \textit{Web}
 % (subprojeto \textit{Horizon}), via linha de comando (\textit{Command Line Interface} (CLI)) e/ou APIs RESTful \cite{bui2016} \cite{openstack}.
@@ -623,7 +629,7 @@ The Figure \ref{fig:openstack_architecture} shows the conceptual arquitecture of
 % \section{Materiais e métodos}
 \section{Materials and methods}
 
-The methodology used on this study was organized on five steps and can be seen on Figure \ref{metodologia}.
+The methodology used on this study was organized in five steps that can be seen on Figure \ref{metodologia}.
 % Para atingir o objetivo deste trabalho foi utilizada a metodologia apresentada na Figura \ref{metodologia}.
 
 \begin{figure}[ht]
@@ -638,7 +644,7 @@ The methodology used on this study was organized on five steps and can be seen o
 \begin{itemize}
  % \item \textbf{Levantamento das métricas existentes} - Esta etapa consistiu em consultar na literatura as métricas de QoS para serviços de nuvem e documentá-las, por meio de uma revisão de literatura;
  
- \item \textbf{Collection of existent metrics} - This step consisted in search at literature the QoS metrics to cloud services and document them, using a literature review;
+ \item \textbf{Collection of existing metrics} - This step consisted in search at literature the QoS metrics to cloud services and document them, using a literature review;
 
  % \item \textbf{Filtragem das métricas} - A partir das métricas levantadas com a revisão da literatura, esta etapa consistiu em filtrar os resultados a partir de critérios previamente definidos.
   
@@ -652,15 +658,16 @@ The methodology used on this study was organized on five steps and can be seen o
 	% métricas que Openstack fornecia mas não se encontravam na literatura, porém estavam relacionadas com as métricas encontradas,
 	% foram identificadas e documentadas;
 
-  \item \textbf{Metrics Comparison} - For verifing what metrics proposed on literature were implemented natively
-  on Openstack, this step consisted in verify the existence of the filtered metrics on Openstack, based on documentation and tool execution. The form that the tool presents the metrics was identified too. Besides that, the metrics provided by Openstack that was not found on literature, but were related with the foind metrics, were identified and documented;
+  \item \textbf{Metrics Comparison} - For verifying what metrics proposed on literature were implemented natively
+  on Openstack, this step consisted in verify the existence of the filtered metrics on Openstack, based on documentation and tool execution. The form that the tool presents the metrics was identified too. Besides that, the metrics provided by Openstack that was not found on literature, but were related with the found metrics, were identified and documented;
  
  % \item \textbf{Exemplificação das métricas} - Esta etapa consistiu em verificar se as métricas confrontadas constavam realmente na ferramenta e
 	% como eram fornecidas,
 	% realizando uma simples coleta das métricas idenficadas presentes no Openstack a partir da execução da ferramenta em um cenário de teste.
 	% Esta etapa englobou as seguintes atividades:
  \item \textbf{Metrics exemplification} - This step consisted in verify if the compared metrics were in
- the tool and how they are provided. The verification was realized through the simple collection of identified metrics present on the Openstack with the execution in a test scenario;
+ the tool and how they are provided. The verification was realized through the simple collection of identified metrics present on the Openstack with the execution of the tool in a test scenario;
+ This step also involved the following activities:
 
 	% \subitem - \emph{\textbf{Caracterizar cenário/contexto}}: Nesta atividade descreveu-se o contexto da execução da ferramenta e o cenário de teste utilizado,
 	% 	 considerando itens como ambiente para execução do teste, versão da ferramenta utilizada, topologia utilizada, ferramentas
@@ -681,7 +688,7 @@ The methodology used on this study was organized on five steps and can be seen o
 
 \section{Execution} % MELHORAR ESSE TITULO
 
-  \subsection{Survey of existing metrics}
+  \subsection{Collection of existing metrics}
      
 %       Foi realizada uma revisão de literatura com o intuito de encontrar as métricas de QoS existentes
 %       propostas em outros estudos. Foram encontrados seis artigos que apresentavam de forma explícita métricas de QoS para
@@ -689,7 +696,7 @@ The methodology used on this study was organized on five steps and can be seen o
       
       A literature review was performed in order to find existing QoS metrics proposed in other studies.
       Six papers that explicitly presented QoS metrics for cloud services were found. These papers were analyzed and then 
-      68 metrics were identified, that can be seen in the Table \ref{tab:metricas_literatura}. The found papers are:
+      68 metrics were identified, which can be seen in the Table \ref{tab:metricas_literatura}. The found papers are:
       
       \begin{itemize}
        \item \textbf{Paper 1}: \textit{QoS Metrics for Cloud Computing Services Evaluation} \cite{bardsiri2014};
@@ -785,7 +792,7 @@ Transparency                                                                    
 \end{table}
 
      
-  \subsection{Filtering metrics}
+  \subsection{Metrics filtering}
   
       Para filtragem das métricas foram definidos quatro critérios considerando o contexto e escopo do trabalho. A avaliação das
       métricas coletadas pode ser vista na Tabela \ref{tab:avaliacao_metricas}.
